@@ -1,0 +1,32 @@
+23:17:30 **** Incremental Build of configuration Debug for project App ****
+make all 
+C:/Xilinx/Vitis/2022.2/gnuwin/bin/make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+C:/Xilinx/Vitis/2022.2/gnuwin/bin/make --no-print-directory main-build
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -ID:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/sw/SimpleMixer_Platform/standalone_domain/bspinclude/include -I"D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\SimpleMixer_Platform\hw" -I"D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App\src\AudioFormatter\include" -I"D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App\src\I2S\include" -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:72:5: warning: implicit declaration of function 'I2S_Init' [-Wimplicit-function-declaration]
+   72 |     I2S_Init();
+      |     ^~~~~~~~
+../src/main.c:73:5: warning: implicit declaration of function 'AudioFormatter_Init' [-Wimplicit-function-declaration]
+   73 |     AudioFormatter_Init();
+      |     ^~~~~~~~~~~~~~~~~~~
+'Finished building: ../src/main.c'
+' '
+'Building target: App.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LD:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/sw/SimpleMixer_Platform/standalone_domain/bsplib/lib -o "App.elf"  ./src/I2S/source/I2S.o  ./src/AudioFormatter/source/AudioFormatter.o  ./src/main.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: App.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size App.elf  |tee "App.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  25049	   1160	  24680	  50889	   c6c9	App.elf
+'Finished building: App.elf.size'
+' '
+
+23:17:32 Build Finished (took 1s.390ms)
+
