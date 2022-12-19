@@ -45,7 +45,7 @@
 // AES Channel Status 4: Register to specify the 32-bit of the AES Channel Status
 #define XPAR_I2S_RECEIVER_0_AESCHANNEL_STATUS4		0x60
 // AES Channel Status 5: Register to specify the 32-bit of the AES Channel Status
-#define XPAR_I2S_RECEIVER_0_AESCHANNEL_STATUS4		0x64
+#define XPAR_I2S_RECEIVER_0_AESCHANNEL_STATUS5		0x64
 
 
 

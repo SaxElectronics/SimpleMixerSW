@@ -18,5 +18,5 @@
 void AudioFormatter_Init(void)
 {
 	Xil_Out32 ( (XPAR_XAUDIOFORMATTER_0_BASEADDR + 0x10), 1 ); // run the audio formatter
-	u32 AudioFormatterRunStop = Xil_In32(XPAR_XAUDIOFORMATTER_0_BASEADDR + 0x10); // check if audio formatter is ran
+	//u32 AudioFormatterRunStop = Xil_In32(XPAR_XAUDIOFORMATTER_0_BASEADDR + 0x10); // check if audio formatter is ran
 }

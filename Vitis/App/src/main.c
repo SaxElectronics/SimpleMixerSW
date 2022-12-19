@@ -59,8 +59,8 @@
  * own includes
  */
 
-//#include "I2S.h"
-//#include "AudioFormatter.h"
+#include "I2S.h"
+#include "AudioFormatter.h"
 
 
 
@@ -68,7 +68,7 @@ int main()
 {
     init_platform();
     // enable the pl
-    //ps7_post_config(); /*ToDo* Build error? */
+    ps7_post_config(); /*ToDo* Build error? */
     I2S_Init();
     AudioFormatter_Init();
 
