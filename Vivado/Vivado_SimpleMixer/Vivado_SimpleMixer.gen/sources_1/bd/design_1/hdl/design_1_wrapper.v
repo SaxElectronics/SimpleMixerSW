@@ -1,7 +1,7 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-//Date        : Tue Dec  6 15:33:46 2022
+//Date        : Tue Jan  3 21:50:38 2023
 //Host        : LAPTOP-QKLHUPCP running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -41,10 +41,8 @@ module design_1_wrapper
     SDOUT_TX,
     btns_4bits_tri_i,
     leds_4bits_tri_o,
-    rgb_led_tri_o,
-    shield_dp0_dp13_tri_io,
-    shield_dp26_dp41_tri_io,
-    sws_2bits_tri_i);
+    rgb1_tri_o,
+    rgb2_tri_o);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -76,10 +74,8 @@ module design_1_wrapper
   output SDOUT_TX;
   input [3:0]btns_4bits_tri_i;
   output [3:0]leds_4bits_tri_o;
-  output [5:0]rgb_led_tri_o;
-  inout [13:0]shield_dp0_dp13_tri_io;
-  inout [15:0]shield_dp26_dp41_tri_io;
-  input [1:0]sws_2bits_tri_i;
+  output [2:0]rgb1_tri_o;
+  output [2:0]rgb2_tri_o;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -112,128 +108,8 @@ module design_1_wrapper
   wire SDOUT_TX;
   wire [3:0]btns_4bits_tri_i;
   wire [3:0]leds_4bits_tri_o;
-  wire [5:0]rgb_led_tri_o;
-  wire [0:0]shield_dp0_dp13_tri_i_0;
-  wire [1:1]shield_dp0_dp13_tri_i_1;
-  wire [10:10]shield_dp0_dp13_tri_i_10;
-  wire [11:11]shield_dp0_dp13_tri_i_11;
-  wire [12:12]shield_dp0_dp13_tri_i_12;
-  wire [13:13]shield_dp0_dp13_tri_i_13;
-  wire [2:2]shield_dp0_dp13_tri_i_2;
-  wire [3:3]shield_dp0_dp13_tri_i_3;
-  wire [4:4]shield_dp0_dp13_tri_i_4;
-  wire [5:5]shield_dp0_dp13_tri_i_5;
-  wire [6:6]shield_dp0_dp13_tri_i_6;
-  wire [7:7]shield_dp0_dp13_tri_i_7;
-  wire [8:8]shield_dp0_dp13_tri_i_8;
-  wire [9:9]shield_dp0_dp13_tri_i_9;
-  wire [0:0]shield_dp0_dp13_tri_io_0;
-  wire [1:1]shield_dp0_dp13_tri_io_1;
-  wire [10:10]shield_dp0_dp13_tri_io_10;
-  wire [11:11]shield_dp0_dp13_tri_io_11;
-  wire [12:12]shield_dp0_dp13_tri_io_12;
-  wire [13:13]shield_dp0_dp13_tri_io_13;
-  wire [2:2]shield_dp0_dp13_tri_io_2;
-  wire [3:3]shield_dp0_dp13_tri_io_3;
-  wire [4:4]shield_dp0_dp13_tri_io_4;
-  wire [5:5]shield_dp0_dp13_tri_io_5;
-  wire [6:6]shield_dp0_dp13_tri_io_6;
-  wire [7:7]shield_dp0_dp13_tri_io_7;
-  wire [8:8]shield_dp0_dp13_tri_io_8;
-  wire [9:9]shield_dp0_dp13_tri_io_9;
-  wire [0:0]shield_dp0_dp13_tri_o_0;
-  wire [1:1]shield_dp0_dp13_tri_o_1;
-  wire [10:10]shield_dp0_dp13_tri_o_10;
-  wire [11:11]shield_dp0_dp13_tri_o_11;
-  wire [12:12]shield_dp0_dp13_tri_o_12;
-  wire [13:13]shield_dp0_dp13_tri_o_13;
-  wire [2:2]shield_dp0_dp13_tri_o_2;
-  wire [3:3]shield_dp0_dp13_tri_o_3;
-  wire [4:4]shield_dp0_dp13_tri_o_4;
-  wire [5:5]shield_dp0_dp13_tri_o_5;
-  wire [6:6]shield_dp0_dp13_tri_o_6;
-  wire [7:7]shield_dp0_dp13_tri_o_7;
-  wire [8:8]shield_dp0_dp13_tri_o_8;
-  wire [9:9]shield_dp0_dp13_tri_o_9;
-  wire [0:0]shield_dp0_dp13_tri_t_0;
-  wire [1:1]shield_dp0_dp13_tri_t_1;
-  wire [10:10]shield_dp0_dp13_tri_t_10;
-  wire [11:11]shield_dp0_dp13_tri_t_11;
-  wire [12:12]shield_dp0_dp13_tri_t_12;
-  wire [13:13]shield_dp0_dp13_tri_t_13;
-  wire [2:2]shield_dp0_dp13_tri_t_2;
-  wire [3:3]shield_dp0_dp13_tri_t_3;
-  wire [4:4]shield_dp0_dp13_tri_t_4;
-  wire [5:5]shield_dp0_dp13_tri_t_5;
-  wire [6:6]shield_dp0_dp13_tri_t_6;
-  wire [7:7]shield_dp0_dp13_tri_t_7;
-  wire [8:8]shield_dp0_dp13_tri_t_8;
-  wire [9:9]shield_dp0_dp13_tri_t_9;
-  wire [0:0]shield_dp26_dp41_tri_i_0;
-  wire [1:1]shield_dp26_dp41_tri_i_1;
-  wire [10:10]shield_dp26_dp41_tri_i_10;
-  wire [11:11]shield_dp26_dp41_tri_i_11;
-  wire [12:12]shield_dp26_dp41_tri_i_12;
-  wire [13:13]shield_dp26_dp41_tri_i_13;
-  wire [14:14]shield_dp26_dp41_tri_i_14;
-  wire [15:15]shield_dp26_dp41_tri_i_15;
-  wire [2:2]shield_dp26_dp41_tri_i_2;
-  wire [3:3]shield_dp26_dp41_tri_i_3;
-  wire [4:4]shield_dp26_dp41_tri_i_4;
-  wire [5:5]shield_dp26_dp41_tri_i_5;
-  wire [6:6]shield_dp26_dp41_tri_i_6;
-  wire [7:7]shield_dp26_dp41_tri_i_7;
-  wire [8:8]shield_dp26_dp41_tri_i_8;
-  wire [9:9]shield_dp26_dp41_tri_i_9;
-  wire [0:0]shield_dp26_dp41_tri_io_0;
-  wire [1:1]shield_dp26_dp41_tri_io_1;
-  wire [10:10]shield_dp26_dp41_tri_io_10;
-  wire [11:11]shield_dp26_dp41_tri_io_11;
-  wire [12:12]shield_dp26_dp41_tri_io_12;
-  wire [13:13]shield_dp26_dp41_tri_io_13;
-  wire [14:14]shield_dp26_dp41_tri_io_14;
-  wire [15:15]shield_dp26_dp41_tri_io_15;
-  wire [2:2]shield_dp26_dp41_tri_io_2;
-  wire [3:3]shield_dp26_dp41_tri_io_3;
-  wire [4:4]shield_dp26_dp41_tri_io_4;
-  wire [5:5]shield_dp26_dp41_tri_io_5;
-  wire [6:6]shield_dp26_dp41_tri_io_6;
-  wire [7:7]shield_dp26_dp41_tri_io_7;
-  wire [8:8]shield_dp26_dp41_tri_io_8;
-  wire [9:9]shield_dp26_dp41_tri_io_9;
-  wire [0:0]shield_dp26_dp41_tri_o_0;
-  wire [1:1]shield_dp26_dp41_tri_o_1;
-  wire [10:10]shield_dp26_dp41_tri_o_10;
-  wire [11:11]shield_dp26_dp41_tri_o_11;
-  wire [12:12]shield_dp26_dp41_tri_o_12;
-  wire [13:13]shield_dp26_dp41_tri_o_13;
-  wire [14:14]shield_dp26_dp41_tri_o_14;
-  wire [15:15]shield_dp26_dp41_tri_o_15;
-  wire [2:2]shield_dp26_dp41_tri_o_2;
-  wire [3:3]shield_dp26_dp41_tri_o_3;
-  wire [4:4]shield_dp26_dp41_tri_o_4;
-  wire [5:5]shield_dp26_dp41_tri_o_5;
-  wire [6:6]shield_dp26_dp41_tri_o_6;
-  wire [7:7]shield_dp26_dp41_tri_o_7;
-  wire [8:8]shield_dp26_dp41_tri_o_8;
-  wire [9:9]shield_dp26_dp41_tri_o_9;
-  wire [0:0]shield_dp26_dp41_tri_t_0;
-  wire [1:1]shield_dp26_dp41_tri_t_1;
-  wire [10:10]shield_dp26_dp41_tri_t_10;
-  wire [11:11]shield_dp26_dp41_tri_t_11;
-  wire [12:12]shield_dp26_dp41_tri_t_12;
-  wire [13:13]shield_dp26_dp41_tri_t_13;
-  wire [14:14]shield_dp26_dp41_tri_t_14;
-  wire [15:15]shield_dp26_dp41_tri_t_15;
-  wire [2:2]shield_dp26_dp41_tri_t_2;
-  wire [3:3]shield_dp26_dp41_tri_t_3;
-  wire [4:4]shield_dp26_dp41_tri_t_4;
-  wire [5:5]shield_dp26_dp41_tri_t_5;
-  wire [6:6]shield_dp26_dp41_tri_t_6;
-  wire [7:7]shield_dp26_dp41_tri_t_7;
-  wire [8:8]shield_dp26_dp41_tri_t_8;
-  wire [9:9]shield_dp26_dp41_tri_t_9;
-  wire [1:0]sws_2bits_tri_i;
+  wire [2:0]rgb1_tri_o;
+  wire [2:0]rgb2_tri_o;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -267,162 +143,6 @@ module design_1_wrapper
         .SDOUT_TX(SDOUT_TX),
         .btns_4bits_tri_i(btns_4bits_tri_i),
         .leds_4bits_tri_o(leds_4bits_tri_o),
-        .rgb_led_tri_o(rgb_led_tri_o),
-        .shield_dp0_dp13_tri_i({shield_dp0_dp13_tri_i_13,shield_dp0_dp13_tri_i_12,shield_dp0_dp13_tri_i_11,shield_dp0_dp13_tri_i_10,shield_dp0_dp13_tri_i_9,shield_dp0_dp13_tri_i_8,shield_dp0_dp13_tri_i_7,shield_dp0_dp13_tri_i_6,shield_dp0_dp13_tri_i_5,shield_dp0_dp13_tri_i_4,shield_dp0_dp13_tri_i_3,shield_dp0_dp13_tri_i_2,shield_dp0_dp13_tri_i_1,shield_dp0_dp13_tri_i_0}),
-        .shield_dp0_dp13_tri_o({shield_dp0_dp13_tri_o_13,shield_dp0_dp13_tri_o_12,shield_dp0_dp13_tri_o_11,shield_dp0_dp13_tri_o_10,shield_dp0_dp13_tri_o_9,shield_dp0_dp13_tri_o_8,shield_dp0_dp13_tri_o_7,shield_dp0_dp13_tri_o_6,shield_dp0_dp13_tri_o_5,shield_dp0_dp13_tri_o_4,shield_dp0_dp13_tri_o_3,shield_dp0_dp13_tri_o_2,shield_dp0_dp13_tri_o_1,shield_dp0_dp13_tri_o_0}),
-        .shield_dp0_dp13_tri_t({shield_dp0_dp13_tri_t_13,shield_dp0_dp13_tri_t_12,shield_dp0_dp13_tri_t_11,shield_dp0_dp13_tri_t_10,shield_dp0_dp13_tri_t_9,shield_dp0_dp13_tri_t_8,shield_dp0_dp13_tri_t_7,shield_dp0_dp13_tri_t_6,shield_dp0_dp13_tri_t_5,shield_dp0_dp13_tri_t_4,shield_dp0_dp13_tri_t_3,shield_dp0_dp13_tri_t_2,shield_dp0_dp13_tri_t_1,shield_dp0_dp13_tri_t_0}),
-        .shield_dp26_dp41_tri_i({shield_dp26_dp41_tri_i_15,shield_dp26_dp41_tri_i_14,shield_dp26_dp41_tri_i_13,shield_dp26_dp41_tri_i_12,shield_dp26_dp41_tri_i_11,shield_dp26_dp41_tri_i_10,shield_dp26_dp41_tri_i_9,shield_dp26_dp41_tri_i_8,shield_dp26_dp41_tri_i_7,shield_dp26_dp41_tri_i_6,shield_dp26_dp41_tri_i_5,shield_dp26_dp41_tri_i_4,shield_dp26_dp41_tri_i_3,shield_dp26_dp41_tri_i_2,shield_dp26_dp41_tri_i_1,shield_dp26_dp41_tri_i_0}),
-        .shield_dp26_dp41_tri_o({shield_dp26_dp41_tri_o_15,shield_dp26_dp41_tri_o_14,shield_dp26_dp41_tri_o_13,shield_dp26_dp41_tri_o_12,shield_dp26_dp41_tri_o_11,shield_dp26_dp41_tri_o_10,shield_dp26_dp41_tri_o_9,shield_dp26_dp41_tri_o_8,shield_dp26_dp41_tri_o_7,shield_dp26_dp41_tri_o_6,shield_dp26_dp41_tri_o_5,shield_dp26_dp41_tri_o_4,shield_dp26_dp41_tri_o_3,shield_dp26_dp41_tri_o_2,shield_dp26_dp41_tri_o_1,shield_dp26_dp41_tri_o_0}),
-        .shield_dp26_dp41_tri_t({shield_dp26_dp41_tri_t_15,shield_dp26_dp41_tri_t_14,shield_dp26_dp41_tri_t_13,shield_dp26_dp41_tri_t_12,shield_dp26_dp41_tri_t_11,shield_dp26_dp41_tri_t_10,shield_dp26_dp41_tri_t_9,shield_dp26_dp41_tri_t_8,shield_dp26_dp41_tri_t_7,shield_dp26_dp41_tri_t_6,shield_dp26_dp41_tri_t_5,shield_dp26_dp41_tri_t_4,shield_dp26_dp41_tri_t_3,shield_dp26_dp41_tri_t_2,shield_dp26_dp41_tri_t_1,shield_dp26_dp41_tri_t_0}),
-        .sws_2bits_tri_i(sws_2bits_tri_i));
-  IOBUF shield_dp0_dp13_tri_iobuf_0
-       (.I(shield_dp0_dp13_tri_o_0),
-        .IO(shield_dp0_dp13_tri_io[0]),
-        .O(shield_dp0_dp13_tri_i_0),
-        .T(shield_dp0_dp13_tri_t_0));
-  IOBUF shield_dp0_dp13_tri_iobuf_1
-       (.I(shield_dp0_dp13_tri_o_1),
-        .IO(shield_dp0_dp13_tri_io[1]),
-        .O(shield_dp0_dp13_tri_i_1),
-        .T(shield_dp0_dp13_tri_t_1));
-  IOBUF shield_dp0_dp13_tri_iobuf_10
-       (.I(shield_dp0_dp13_tri_o_10),
-        .IO(shield_dp0_dp13_tri_io[10]),
-        .O(shield_dp0_dp13_tri_i_10),
-        .T(shield_dp0_dp13_tri_t_10));
-  IOBUF shield_dp0_dp13_tri_iobuf_11
-       (.I(shield_dp0_dp13_tri_o_11),
-        .IO(shield_dp0_dp13_tri_io[11]),
-        .O(shield_dp0_dp13_tri_i_11),
-        .T(shield_dp0_dp13_tri_t_11));
-  IOBUF shield_dp0_dp13_tri_iobuf_12
-       (.I(shield_dp0_dp13_tri_o_12),
-        .IO(shield_dp0_dp13_tri_io[12]),
-        .O(shield_dp0_dp13_tri_i_12),
-        .T(shield_dp0_dp13_tri_t_12));
-  IOBUF shield_dp0_dp13_tri_iobuf_13
-       (.I(shield_dp0_dp13_tri_o_13),
-        .IO(shield_dp0_dp13_tri_io[13]),
-        .O(shield_dp0_dp13_tri_i_13),
-        .T(shield_dp0_dp13_tri_t_13));
-  IOBUF shield_dp0_dp13_tri_iobuf_2
-       (.I(shield_dp0_dp13_tri_o_2),
-        .IO(shield_dp0_dp13_tri_io[2]),
-        .O(shield_dp0_dp13_tri_i_2),
-        .T(shield_dp0_dp13_tri_t_2));
-  IOBUF shield_dp0_dp13_tri_iobuf_3
-       (.I(shield_dp0_dp13_tri_o_3),
-        .IO(shield_dp0_dp13_tri_io[3]),
-        .O(shield_dp0_dp13_tri_i_3),
-        .T(shield_dp0_dp13_tri_t_3));
-  IOBUF shield_dp0_dp13_tri_iobuf_4
-       (.I(shield_dp0_dp13_tri_o_4),
-        .IO(shield_dp0_dp13_tri_io[4]),
-        .O(shield_dp0_dp13_tri_i_4),
-        .T(shield_dp0_dp13_tri_t_4));
-  IOBUF shield_dp0_dp13_tri_iobuf_5
-       (.I(shield_dp0_dp13_tri_o_5),
-        .IO(shield_dp0_dp13_tri_io[5]),
-        .O(shield_dp0_dp13_tri_i_5),
-        .T(shield_dp0_dp13_tri_t_5));
-  IOBUF shield_dp0_dp13_tri_iobuf_6
-       (.I(shield_dp0_dp13_tri_o_6),
-        .IO(shield_dp0_dp13_tri_io[6]),
-        .O(shield_dp0_dp13_tri_i_6),
-        .T(shield_dp0_dp13_tri_t_6));
-  IOBUF shield_dp0_dp13_tri_iobuf_7
-       (.I(shield_dp0_dp13_tri_o_7),
-        .IO(shield_dp0_dp13_tri_io[7]),
-        .O(shield_dp0_dp13_tri_i_7),
-        .T(shield_dp0_dp13_tri_t_7));
-  IOBUF shield_dp0_dp13_tri_iobuf_8
-       (.I(shield_dp0_dp13_tri_o_8),
-        .IO(shield_dp0_dp13_tri_io[8]),
-        .O(shield_dp0_dp13_tri_i_8),
-        .T(shield_dp0_dp13_tri_t_8));
-  IOBUF shield_dp0_dp13_tri_iobuf_9
-       (.I(shield_dp0_dp13_tri_o_9),
-        .IO(shield_dp0_dp13_tri_io[9]),
-        .O(shield_dp0_dp13_tri_i_9),
-        .T(shield_dp0_dp13_tri_t_9));
-  IOBUF shield_dp26_dp41_tri_iobuf_0
-       (.I(shield_dp26_dp41_tri_o_0),
-        .IO(shield_dp26_dp41_tri_io[0]),
-        .O(shield_dp26_dp41_tri_i_0),
-        .T(shield_dp26_dp41_tri_t_0));
-  IOBUF shield_dp26_dp41_tri_iobuf_1
-       (.I(shield_dp26_dp41_tri_o_1),
-        .IO(shield_dp26_dp41_tri_io[1]),
-        .O(shield_dp26_dp41_tri_i_1),
-        .T(shield_dp26_dp41_tri_t_1));
-  IOBUF shield_dp26_dp41_tri_iobuf_10
-       (.I(shield_dp26_dp41_tri_o_10),
-        .IO(shield_dp26_dp41_tri_io[10]),
-        .O(shield_dp26_dp41_tri_i_10),
-        .T(shield_dp26_dp41_tri_t_10));
-  IOBUF shield_dp26_dp41_tri_iobuf_11
-       (.I(shield_dp26_dp41_tri_o_11),
-        .IO(shield_dp26_dp41_tri_io[11]),
-        .O(shield_dp26_dp41_tri_i_11),
-        .T(shield_dp26_dp41_tri_t_11));
-  IOBUF shield_dp26_dp41_tri_iobuf_12
-       (.I(shield_dp26_dp41_tri_o_12),
-        .IO(shield_dp26_dp41_tri_io[12]),
-        .O(shield_dp26_dp41_tri_i_12),
-        .T(shield_dp26_dp41_tri_t_12));
-  IOBUF shield_dp26_dp41_tri_iobuf_13
-       (.I(shield_dp26_dp41_tri_o_13),
-        .IO(shield_dp26_dp41_tri_io[13]),
-        .O(shield_dp26_dp41_tri_i_13),
-        .T(shield_dp26_dp41_tri_t_13));
-  IOBUF shield_dp26_dp41_tri_iobuf_14
-       (.I(shield_dp26_dp41_tri_o_14),
-        .IO(shield_dp26_dp41_tri_io[14]),
-        .O(shield_dp26_dp41_tri_i_14),
-        .T(shield_dp26_dp41_tri_t_14));
-  IOBUF shield_dp26_dp41_tri_iobuf_15
-       (.I(shield_dp26_dp41_tri_o_15),
-        .IO(shield_dp26_dp41_tri_io[15]),
-        .O(shield_dp26_dp41_tri_i_15),
-        .T(shield_dp26_dp41_tri_t_15));
-  IOBUF shield_dp26_dp41_tri_iobuf_2
-       (.I(shield_dp26_dp41_tri_o_2),
-        .IO(shield_dp26_dp41_tri_io[2]),
-        .O(shield_dp26_dp41_tri_i_2),
-        .T(shield_dp26_dp41_tri_t_2));
-  IOBUF shield_dp26_dp41_tri_iobuf_3
-       (.I(shield_dp26_dp41_tri_o_3),
-        .IO(shield_dp26_dp41_tri_io[3]),
-        .O(shield_dp26_dp41_tri_i_3),
-        .T(shield_dp26_dp41_tri_t_3));
-  IOBUF shield_dp26_dp41_tri_iobuf_4
-       (.I(shield_dp26_dp41_tri_o_4),
-        .IO(shield_dp26_dp41_tri_io[4]),
-        .O(shield_dp26_dp41_tri_i_4),
-        .T(shield_dp26_dp41_tri_t_4));
-  IOBUF shield_dp26_dp41_tri_iobuf_5
-       (.I(shield_dp26_dp41_tri_o_5),
-        .IO(shield_dp26_dp41_tri_io[5]),
-        .O(shield_dp26_dp41_tri_i_5),
-        .T(shield_dp26_dp41_tri_t_5));
-  IOBUF shield_dp26_dp41_tri_iobuf_6
-       (.I(shield_dp26_dp41_tri_o_6),
-        .IO(shield_dp26_dp41_tri_io[6]),
-        .O(shield_dp26_dp41_tri_i_6),
-        .T(shield_dp26_dp41_tri_t_6));
-  IOBUF shield_dp26_dp41_tri_iobuf_7
-       (.I(shield_dp26_dp41_tri_o_7),
-        .IO(shield_dp26_dp41_tri_io[7]),
-        .O(shield_dp26_dp41_tri_i_7),
-        .T(shield_dp26_dp41_tri_t_7));
-  IOBUF shield_dp26_dp41_tri_iobuf_8
-       (.I(shield_dp26_dp41_tri_o_8),
-        .IO(shield_dp26_dp41_tri_io[8]),
-        .O(shield_dp26_dp41_tri_i_8),
-        .T(shield_dp26_dp41_tri_t_8));
-  IOBUF shield_dp26_dp41_tri_iobuf_9
-       (.I(shield_dp26_dp41_tri_o_9),
-        .IO(shield_dp26_dp41_tri_io[9]),
-        .O(shield_dp26_dp41_tri_i_9),
-        .T(shield_dp26_dp41_tri_t_9));
+        .rgb1_tri_o(rgb1_tri_o),
+        .rgb2_tri_o(rgb2_tri_o));
 endmodule

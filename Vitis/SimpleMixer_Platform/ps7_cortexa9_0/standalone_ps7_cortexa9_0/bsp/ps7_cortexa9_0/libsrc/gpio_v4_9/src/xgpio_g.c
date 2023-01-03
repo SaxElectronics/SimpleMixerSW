@@ -5,7 +5,7 @@
 * Version: 2022.2
 * DO NOT EDIT.
 *
-* Copyright (C) 2010-2022 Xilinx, Inc. All Rights Reserved.
+* Copyright (C) 2010-2023 Xilinx, Inc. All Rights Reserved.
 * SPDX-License-Identifier: MIT 
 
 * 
@@ -33,12 +33,6 @@ XGpio_Config XGpio_ConfigTable[XPAR_XGPIO_NUM_INSTANCES] =
 		XPAR_AXI_GPIO_1_BASEADDR,
 		XPAR_AXI_GPIO_1_INTERRUPT_PRESENT,
 		XPAR_AXI_GPIO_1_IS_DUAL
-	},
-	{
-		XPAR_AXI_GPIO_2_DEVICE_ID,
-		XPAR_AXI_GPIO_2_BASEADDR,
-		XPAR_AXI_GPIO_2_INTERRUPT_PRESENT,
-		XPAR_AXI_GPIO_2_IS_DUAL
 	}
 };
 

@@ -1,0 +1,895 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Sat Dec 31 11:48:02 2022
+# Process ID: 24244
+# Current directory: D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1
+# Command line: vivado.exe -log design_1_audio_formatter_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_audio_formatter_0_1.tcl
+# Log file: D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/design_1_audio_formatter_0_1.vds
+# Journal file: D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1\vivado.jou
+# Running On: LAPTOP-QKLHUPCP, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 17007 MB
+#-----------------------------------------------------------
+source design_1_audio_formatter_0_1.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 414.273 ; gain = 82.691
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:02 ; elapsed = 00:00:05 . Memory (MB): peak = 439.113 ; gain = 24.840
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.cache/ip 
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: design_1_audio_formatter_0_1
+Command: synth_design -top design_1_audio_formatter_0_1 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 23716
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+WARNING: [Synth 8-11065] parameter 'ONE' becomes localparam in 'audio_formatter_v1_0_9_s2mm_sync' with formal parameter declaration list [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2493]
+WARNING: [Synth 8-11065] parameter 'ONE' becomes localparam in 'audio_formatter_v1_0_9_mm2s_sync' with formal parameter declaration list [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4893]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 1271.039 ; gain = 409.012
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_audio_formatter_0_1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/synth/design_1_audio_formatter_0_1.v:53]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_async_rst' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1174]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_async_rst' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:1174]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm_top' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:1070]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm_registers' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:1439]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm_registers' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:1439]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_reset' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:589]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_reset' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:589]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm_sync' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2435]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm_sync' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2435]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2050]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm_buffer' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2702]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:493]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1207]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1274]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1296]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_reg_bit' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1907]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_reg_bit' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1907]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_rst' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1619]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_rst' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1619]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized0' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized1' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized2' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized2' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync__parameterized0' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized0' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:493]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:56]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1207]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1274]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1296]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized3' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized3' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized4' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized4' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized5' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized5' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm_buffer' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2702]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_s2mm_command_gen' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3230]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm_command_gen' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3230]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mm2s_omit_wrap' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:53209]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mm2s_omit_wrap' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:53209]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_full_wrap' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:49997]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_reset' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_reset' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_cmd_status' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:2698]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_cmd_status' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:2698]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_status_cntl' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:17704]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized1' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized2' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized2' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_status_cntl' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:17704]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_pcc' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:7416]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_strb_gen2__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_strb_gen2__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:4342]
+INFO: [Synth 8-226] default block is never used [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:9490]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_pcc' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:7416]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_addr_cntl' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized3' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'cntr_incr_decr_addn_f__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-256] done synthesizing module 'cntr_incr_decr_addn_f__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:143]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized1' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized1' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized1' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized3' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_addr_cntl' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wrdata_cntl' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:15674]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized4' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized2' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized2' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized2' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized2' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized2' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized2' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized4' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wrdata_cntl' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:15674]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_skid2mm_buf' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:18998]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_wr_demux' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:14117]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_wr_demux' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:14117]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_skid2mm_buf' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:18998]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_full_wrap' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:49997]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_aclk' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_aresetn' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_halt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_halt_cmplt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_err' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_cmdsts_aclk' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_cmdsts_aresetn' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 's_axis_mm2s_cmd_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 's_axis_mm2s_cmd_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 's_axis_mm2s_cmd_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tkeep' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_sts_tlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_allow_addr_req' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_addr_req_posted' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_rd_xfer_cmplt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_araddr' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arlen' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arsize' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arburst' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arprot' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arcache' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_aruser' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_rdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_rresp' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_rlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_rvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_rready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tkeep' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axis_mm2s_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_dbg_sel' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'mm2s_dbg_data' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_S2MM' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+WARNING: [Synth 8-7023] instance 'I_DATAMOVER_S2MM' of module 'axi_datamover' has 85 connections declared, but only 44 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2355]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2050]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_s2mm_top' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:1070]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s_top' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3547]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s_registers' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3876]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s_registers' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3876]
+WARNING: [Synth 8-7071] port 'soft_reset_proc' of module 'audio_formatter_v1_0_9_reset' is unconnected for instance 'reset_mm2s' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3741]
+WARNING: [Synth 8-7023] instance 'reset_mm2s' of module 'audio_formatter_v1_0_9_reset' has 12 connections declared, but only 11 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3741]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s_sync' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4831]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_array_single' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:902]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_array_single' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:902]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s_sync' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4831]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4465]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s_buffer' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5104]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_sync__parameterized1' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6157] synthesizing module 'xpm_fifo_base__parameterized1' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6157] synthesizing module 'xpm_counter_updn__parameterized6' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_counter_updn__parameterized6' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1859]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1207]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1274]
+INFO: [Synth 8-226] default block is never used [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1296]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_base__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:55]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_fifo_sync__parameterized1' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1955]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_pulse' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:714]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_single__parameterized0' [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_single__parameterized0' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:152]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_pulse' (0#1) [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:714]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s_buffer' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5104]
+INFO: [Synth 8-6157] synthesizing module 'audio_formatter_v1_0_9_mm2s_command_gen' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5444]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s_command_gen' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5444]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_mm2s_full_wrap' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:53572]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rd_status_cntl' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:13746]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rd_status_cntl' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:13746]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_pcc__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:7416]
+INFO: [Synth 8-226] default block is never used [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:9490]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_pcc__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:7416]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_addr_cntl__parameterized0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_addr_cntl__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10000]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rddata_cntl' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12185]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_rdmux' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10681]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rdmux' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10681]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_fifo__parameterized5' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_f__parameterized3' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-638] synthesizing module 'srl_fifo_rbu_f__parameterized3' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-638] synthesizing module 'dynshreg_f__parameterized3' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'dynshreg_f__parameterized3' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:397]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_rbu_f__parameterized3' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:697]
+INFO: [Synth 8-256] done synthesizing module 'srl_fifo_f__parameterized3' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/51ce/hdl/lib_srl_fifo_v1_0_rfs.vhd:1000]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_fifo__parameterized5' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:1886]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_rddata_cntl' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12185]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_mm2s_full_wrap' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:53572]
+INFO: [Synth 8-638] synthesizing module 'axi_datamover_s2mm_omit_wrap' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:49604]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover_s2mm_omit_wrap' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:49604]
+INFO: [Synth 8-256] done synthesizing module 'axi_datamover__parameterized0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:55439]
+WARNING: [Synth 8-7071] port 'm_axi_mm2s_arid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_aclk' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_aresetn' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_halt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_halt_cmplt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_err' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_cmdsts_awclk' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_cmdsts_aresetn' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_cmd_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_cmd_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_cmd_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tkeep' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axis_s2mm_sts_tlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_allow_addr_req' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_addr_req_posted' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_wr_xfer_cmplt' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_ld_nxt_len' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_wr_len' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awaddr' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awlen' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awsize' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awburst' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awprot' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awcache' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awuser' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_awready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_wdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_wstrb' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_wlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_wvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_wready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_bresp' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_bvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 'm_axi_s2mm_bready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_tdata' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_tkeep' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_tlast' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_tvalid' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's_axis_s2mm_tready' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_dbg_sel' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7071] port 's2mm_dbg_data' of module 'axi_datamover' is unconnected for instance 'I_DATAMOVER_MM2S' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+WARNING: [Synth 8-7023] instance 'I_DATAMOVER_MM2S' of module 'axi_datamover' has 85 connections declared, but only 39 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4757]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:4465]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9_mm2s_top' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3547]
+INFO: [Synth 8-226] default block is never used [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:267]
+INFO: [Synth 8-6155] done synthesizing module 'audio_formatter_v1_0_9' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_audio_formatter_0_1' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/synth/design_1_audio_formatter_0_1.v:53]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1391]
+WARNING: [Synth 8-6014] Unused sequential element gen_rd_b.gen_doutb_pipe.enb_pipe_reg[0] was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:3017]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1391]
+WARNING: [Synth 8-6014] Unused sequential element current_channel_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2915]
+WARNING: [Synth 8-6014] Unused sequential element skip_data_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:2916]
+WARNING: [Synth 8-6014] Unused sequential element periods_transferred_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3504]
+WARNING: [Synth 8-6014] Unused sequential element transfer_count_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:3506]
+WARNING: [Synth 8-6014] Unused sequential element sig_cmd_stat_rst_int_reg_n_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:191]
+WARNING: [Synth 8-6014] Unused sequential element sig_mmap_rst_reg_n_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:194]
+WARNING: [Synth 8-6014] Unused sequential element sig_stream_rst_reg_n_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:197]
+WARNING: [Synth 8-6014] Unused sequential element sig_inhibit_rdy_n_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:2014]
+WARNING: [Synth 8-6014] Unused sequential element sig_inhibit_rdy_n_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:2014]
+WARNING: [Synth 8-6014] Unused sequential element sig_input_reg_full_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:8048]
+WARNING: [Synth 8-6014] Unused sequential element sig_xfer_reg_full_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:8359]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_tag_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10410]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_cmd_cmplt_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10417]
+WARNING: [Synth 8-6014] Unused sequential element sig_single_dbeat_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:17228]
+WARNING: [Synth 8-6014] Unused sequential element start_dma_r_aud_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5040]
+WARNING: [Synth 8-6014] Unused sequential element gdvld.data_valid_std_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:537]
+WARNING: [Synth 8-6014] Unused sequential element gen_pntr_flags_cc.gae_cc_std.ram_aempty_i_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:969]
+WARNING: [Synth 8-6014] Unused sequential element gen_fwft.empty_fwft_fb_reg was removed.  [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:1391]
+WARNING: [Synth 8-6014] Unused sequential element INTERLEAVED.start_command_r_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5576]
+WARNING: [Synth 8-6014] Unused sequential element data_ready_r_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5511]
+WARNING: [Synth 8-6014] Unused sequential element periods_transferred_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5813]
+WARNING: [Synth 8-6014] Unused sequential element transfer_count_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/9554/hdl/audio_formatter_v1_0_rfs.v:5815]
+WARNING: [Synth 8-6014] Unused sequential element sig_input_reg_full_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:8048]
+WARNING: [Synth 8-6014] Unused sequential element sig_xfer_reg_full_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:8359]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_tag_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10410]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_cmd_cmplt_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:10417]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_strt_strb_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12818]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_last_strb_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12819]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_dre_src_align_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12886]
+WARNING: [Synth 8-6014] Unused sequential element sig_next_dre_dest_align_reg_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:12887]
+WARNING: [Synth 8-6014] Unused sequential element sig_first_dbeat_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:13057]
+WARNING: [Synth 8-6014] Unused sequential element sig_coelsc_reg_empty_reg was removed.  [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ipshared/2237/hdl/axi_datamover_v5_1_vh_rfs.vhd:13225]
+WARNING: [Synth 8-7129] Port s2mm_aclk in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_aresetn in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmdsts_awclk in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmdsts_aresetn in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wvalid in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[103] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[102] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[101] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[100] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[99] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[98] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[97] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[96] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[95] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[94] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[93] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[92] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[91] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[90] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[89] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[88] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[87] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[86] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[85] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[84] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[83] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[82] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[81] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[80] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[79] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[78] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[77] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[76] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[75] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[74] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[73] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[72] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[71] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[70] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[69] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[68] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[67] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[66] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[65] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[64] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[63] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[62] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[61] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[60] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[59] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[58] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[57] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[56] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[55] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[54] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[53] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[52] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[51] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[50] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[49] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[48] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[47] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[46] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[45] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[44] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[43] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[42] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[41] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[40] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[39] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[38] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[37] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[36] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[35] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[34] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[33] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[32] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[31] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[30] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[29] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[28] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[27] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[26] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[25] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[24] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[23] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[22] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[21] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[20] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[19] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[18] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[17] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[16] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[15] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[14] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[13] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[12] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[11] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[10] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+WARNING: [Synth 8-7129] Port s2mm_cmd_wdata[9] in module axi_datamover_s2mm_omit_wrap is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.474 . Memory (MB): peak = 1553.816 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/design_1_audio_formatter_0_1_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/design_1_audio_formatter_0_1_ooc.xdc] for cell 'inst'
+Parsing XDC File [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/design_1_audio_formatter_0_1.xdc] for cell 'inst'
+Finished Parsing XDC File [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_audio_formatter_0_1/design_1_audio_formatter_0_1.xdc] for cell 'inst'
+Parsing XDC File [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_array_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_audio_formatter_0_1_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_audio_formatter_0_1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_audio_formatter_0_1_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_audio_formatter_0_1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Xilinx/Vivado/2022.2/data/ip/xpm/xpm_fifo/tcl/xpm_fifo_rst.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_audio_formatter_0_1_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_audio_formatter_0_1_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1714] 9 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1553.816 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.165 . Memory (MB): peak = 1553.816 ; gain = 0.000
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/dont_touch.xdc, line 9).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\MM2S_INCLUDED.mm2s_top_1 /mm2s_cdc_1/xpm_cdc_array_multiplier. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\MM2S_INCLUDED.xpm_cdc_async_mm2s_rst_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\S2MM_INCLUDED.xpm_cdc_async_s2mm_rst_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\MM2S_INCLUDED.mm2s_top_1 /mm2s_cdc_1/CDC_START_DMA_AUD_INST. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\MM2S_INCLUDED.mm2s_top_1 /mm2s_logic_1/buffering_1/CDC_SAMPLE_PULSE_INST/xpm_cdc_single_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\S2MM_INCLUDED.s2mm_top_1 /s2mm_logic_1/buffering_1/\FIRST_LEVEL_BUFFERS[0].xpm_fifo_sync_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\S2MM_INCLUDED.s2mm_top_1 /s2mm_logic_1/buffering_1/\FIRST_LEVEL_BUFFERS[1].xpm_fifo_sync_inst . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\MM2S_INCLUDED.mm2s_top_1 /mm2s_logic_1/buffering_1/\INTERLEAVED.interleaved_xpm_fifo_buffer . (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for inst/\S2MM_INCLUDED.s2mm_top_1 /s2mm_logic_1/buffering_1/\INTERLEAVED.second_level_xpm_fifo_buffer . (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'stmWrite_reg' in module 'audio_formatter_v1_0_9_s2mm_registers'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'write_state_reg' in module 'audio_formatter_v1_0_9_s2mm_buffer'
+INFO: [Synth 8-802] inferred FSM for state register 'sig_pcc_sm_state_reg' in module 'axi_datamover_pcc'
+INFO: [Synth 8-802] inferred FSM for state register 'stmWrite_reg' in module 'audio_formatter_v1_0_9_mm2s_registers'
+INFO: [Synth 8-802] inferred FSM for state register 'gen_fwft.curr_fwft_state_reg' in module 'xpm_fifo_base__parameterized1'
+INFO: [Synth 8-802] inferred FSM for state register 'sig_pcc_sm_state_reg' in module 'axi_datamover_pcc__parameterized0'
+INFO: [Synth 8-802] inferred FSM for state register 'stmRead_reg' in module 'audio_formatter_v1_0_9'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             sWriteReset |                               00 |                              000
+              sWriteAddr |                               01 |                              001
+              sWriteData |                               10 |                              010
+              sWriteResp |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'stmWrite_reg' using encoding 'sequential' in module 'audio_formatter_v1_0_9_s2mm_registers'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              WRITE_IDLE |                               00 |                               00
+               WRITE_ACK |                               01 |                               01
+         WRITE_TO_BUFFER |                               10 |                               10
+              WRITE_DONE |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'write_state_reg' using encoding 'sequential' in module 'audio_formatter_v1_0_9_s2mm_buffer'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    init |                         00000001 |                              000
+            wait_for_cmd |                         00000010 |                              001
+                  calc_1 |                         00000100 |                              010
+                  calc_2 |                         00001000 |                              011
+                  calc_3 |                         00010000 |                              100
+       wait_on_xfer_push |                         00100000 |                              101
+             chk_if_done |                         01000000 |                              110
+              error_trap |                         10000000 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sig_pcc_sm_state_reg' using encoding 'one-hot' in module 'axi_datamover_pcc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+             sWriteReset |                               00 |                              000
+              sWriteAddr |                               01 |                              001
+              sWriteData |                               10 |                              010
+              sWriteResp |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'stmWrite_reg' using encoding 'sequential' in module 'audio_formatter_v1_0_9_mm2s_registers'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 invalid |                               00 |                               00
+            stage1_valid |                               01 |                               10
+       both_stages_valid |                               10 |                               11
+            stage2_valid |                               11 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_reg' using encoding 'sequential' in module 'xpm_fifo_base__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    init |                         00000001 |                              000
+            wait_for_cmd |                         00000010 |                              001
+                  calc_1 |                         00000100 |                              010
+                  calc_2 |                         00001000 |                              011
+                  calc_3 |                         00010000 |                              100
+       wait_on_xfer_push |                         00100000 |                              101
+             chk_if_done |                         01000000 |                              110
+              error_trap |                         10000000 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'sig_pcc_sm_state_reg' using encoding 'one-hot' in module 'axi_datamover_pcc__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+              sReadReset |                               00 |                               00
+               sReadAddr |                               01 |                               01
+             sDecodeAddr |                               10 |                               10
+               sReadData |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'stmRead_reg' using encoding 'sequential' in module 'audio_formatter_v1_0_9'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:05 ; elapsed = 00:01:11 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 2     
+	   2 Input   16 Bit       Adders := 9     
+	   3 Input   16 Bit       Adders := 2     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 8     
+	   4 Input    6 Bit       Adders := 8     
+	   2 Input    6 Bit       Adders := 2     
+	   4 Input    5 Bit       Adders := 16    
+	   2 Input    5 Bit       Adders := 2     
+	   3 Input    5 Bit       Adders := 2     
+	   4 Input    4 Bit       Adders := 6     
+	   3 Input    4 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 8     
+	   3 Input    3 Bit       Adders := 6     
+	   2 Input    3 Bit       Adders := 4     
+	   4 Input    2 Bit       Adders := 4     
+	   2 Input    2 Bit       Adders := 6     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	              192 Bit    Registers := 3     
+	              100 Bit    Registers := 2     
+	               64 Bit    Registers := 8     
+	               32 Bit    Registers := 18    
+	               23 Bit    Registers := 2     
+	               16 Bit    Registers := 23    
+	               12 Bit    Registers := 3     
+	                8 Bit    Registers := 19    
+	                6 Bit    Registers := 12    
+	                5 Bit    Registers := 20    
+	                4 Bit    Registers := 46    
+	                3 Bit    Registers := 18    
+	                2 Bit    Registers := 26    
+	                1 Bit    Registers := 366   
++---RAMs : 
+	             1024 Bit	(32 X 32 bit)          RAMs := 2     
+	              512 Bit	(16 X 32 bit)          RAMs := 2     
++---Muxes : 
+	  16 Input  192 Bit        Muxes := 1     
+	  16 Input   64 Bit        Muxes := 2     
+	   2 Input   64 Bit        Muxes := 6     
+	   2 Input   32 Bit        Muxes := 15    
+	   4 Input   32 Bit        Muxes := 2     
+	   3 Input   32 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 11    
+	   4 Input   12 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 4     
+	   2 Input    8 Bit        Muxes := 18    
+	   8 Input    8 Bit        Muxes := 2     
+	   4 Input    8 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 21    
+	   4 Input    4 Bit        Muxes := 8     
+	   2 Input    3 Bit        Muxes := 4     
+	   3 Input    3 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 35    
+	   2 Input    2 Bit        Muxes := 145   
+	  15 Input    2 Bit        Muxes := 2     
+	   8 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 34    
+	  15 Input    1 Bit        Muxes := 16    
+	   2 Input    1 Bit        Muxes := 206   
+	   8 Input    1 Bit        Muxes := 6     
+	   3 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:29 ; elapsed = 00:01:35 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_narrow.mem_reg | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_narrow.mem_reg | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+|Module Name                                                         | RTL Object                       | Inference | Size (Depth x Width) | Primitives  | 
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+|xpm_fifo_sync:/xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 32              | RAM32M x 6  | 
+|xpm_fifo_sync:/xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 32              | RAM32M x 6  | 
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:37 ; elapsed = 00:01:43 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:43 ; elapsed = 00:01:49 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_narrow.mem_reg | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|xpm_memory_base__parameterized0: | gen_wr_a.gen_word_narrow.mem_reg | 32 x 32(READ_FIRST)    | W |   | 32 x 32(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++---------------------------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+|Module Name                                                         | RTL Object                       | Inference | Size (Depth x Width) | Primitives  | 
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+|xpm_fifo_sync:/xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 32              | RAM32M x 6  | 
+|xpm_fifo_sync:/xpm_fifo_base_inst/\gen_sdpram.xpm_memory_base_inst  | gen_wr_a.gen_word_narrow.mem_reg | Implied   | 16 x 32              | RAM32M x 6  | 
++--------------------------------------------------------------------+----------------------------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:46 ; elapsed = 00:01:53 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3295] tying undriven pin S2MM_INCLUDED.s2mm_top_1/s2mm_logic_1/I_DATAMOVER_S2MM/m_axis_mm2s_cmdsts_aclk_inferred:in0 to constant 0
+INFO: [Synth 8-3295] tying undriven pin MM2S_INCLUDED.mm2s_top_1/mm2s_logic_1/I_DATAMOVER_MM2S/m_axis_s2mm_cmdsts_awclk_inferred:in0 to constant 0
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:56 ; elapsed = 00:02:02 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:56 ; elapsed = 00:02:02 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:57 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:57 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:57 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:57 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+--------------------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name                 | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+--------------------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | INFERRED_GEN.data_reg[5] | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__1     | INFERRED_GEN.data_reg[5] | 7      | 7          | 7      | 0       | 0      | 0      | 0      | 
+|dsrl__2     | INFERRED_GEN.data_reg[3] | 91     | 91         | 91     | 0       | 0      | 0      | 0      | 
+|dsrl__3     | INFERRED_GEN.data_reg[3] | 27     | 27         | 27     | 0       | 0      | 0      | 0      | 
+|dsrl__4     | INFERRED_GEN.data_reg[3] | 29     | 29         | 29     | 0       | 0      | 0      | 0      | 
++------------+--------------------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |   175|
+|2     |LUT1     |    31|
+|3     |LUT2     |   241|
+|4     |LUT3     |   476|
+|5     |LUT4     |   390|
+|6     |LUT5     |   454|
+|7     |LUT6     |   586|
+|8     |MUXF7    |     9|
+|9     |RAM32M   |    10|
+|10    |RAM32X1D |     4|
+|11    |RAMB18E1 |     2|
+|12    |SRL16E   |   182|
+|13    |FDCE     |     4|
+|14    |FDRE     |  2474|
+|15    |FDSE     |    75|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:57 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 656 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:13 ; elapsed = 00:01:55 . Memory (MB): peak = 1553.816 ; gain = 691.789
+Synthesis Optimization Complete : Time (s): cpu = 00:01:58 ; elapsed = 00:02:04 . Memory (MB): peak = 1553.816 ; gain = 691.789
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.263 . Memory (MB): peak = 1553.816 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 200 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1553.816 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 14 instances were transformed.
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 4 instances
+
+Synth Design complete, checksum: bd96f849
+INFO: [Common 17-83] Releasing license: Synthesis
+226 Infos, 233 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:09 ; elapsed = 00:02:25 . Memory (MB): peak = 1553.816 ; gain = 1095.887
+INFO: [Common 17-1381] The checkpoint 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/design_1_audio_formatter_0_1.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_audio_formatter_0_1, cache-ID = e84b39992065c2b2
+INFO: [Coretcl 2-1174] Renamed 111 cell refs.
+INFO: [Common 17-1381] The checkpoint 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/design_1_audio_formatter_0_1_synth_1/design_1_audio_formatter_0_1.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_audio_formatter_0_1_utilization_synth.rpt -pb design_1_audio_formatter_0_1_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Dec 31 11:50:53 2022...

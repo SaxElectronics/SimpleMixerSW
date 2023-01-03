@@ -25,3 +25,32 @@ domain active {standalone_domain}
 domain active {standalone_ps7_cortexa9_0}
 platform generate -quick
 platform generate -domains standalone_ps7_cortexa9_0 
+platform clean
+platform generate
+platform generate
+platform clean
+platform generate
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/SimpleMixerHW.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
+platform generate -domains 
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
+platform generate -domains 
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_122622.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_122622.xsa}
+platform generate -domains 
+platform generate -domains standalone_domain 
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_PCM.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/design_1_wrapper_384FS.xsa}
+platform generate -domains 
+platform generate -domains standalone_domain,standalone_ps7_cortexa9_0 

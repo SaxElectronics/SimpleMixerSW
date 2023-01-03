@@ -1,10 +1,10 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-// Date        : Tue Nov 15 23:43:53 2022
+// Date        : Sat Dec 31 11:49:46 2022
 // Host        : LAPTOP-QKLHUPCP running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top design_1_rst_clk_wiz_0_49M_0 -prefix
-//               design_1_rst_clk_wiz_0_49M_0_ design_1_rst_clk_wiz_0_49M_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_0_49M_0/design_1_rst_clk_wiz_0_49M_0_stub.v
 // Design      : design_1_rst_clk_wiz_0_49M_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-1

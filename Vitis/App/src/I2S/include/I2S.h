@@ -10,6 +10,30 @@
 #include "xil_io.h"
 
 /*
+ * Xilinx IP Core Includes
+ */
+#include "xi2srx.h"
+#include "xi2srx_hw.h"
+#include "xi2stx.h"
+#include "xi2stx_hw.h"
+
+/*
+ *  I2S user defines
+ */
+
+#define I2S_RX_DEVICE_ID	XPAR_XI2SRX_0_DEVICE_ID
+#define I2S_RX_INTERRUPT_ID	XPAR_FABRIC_I2SRX_0_VEC_ID
+#define I2S_RX_FS		48 //kHz
+#define I2S_RX_MCLK		(384 * I2S_RX_FS)
+#define I2S_RX_TIME_OUT 500000
+
+#define I2S_TX_DEVICE_ID	XPAR_XI2STX_0_DEVICE_ID
+#define I2S_TX_INTERRUPT_ID	XPAR_FABRIC_I2STX_0_VEC_ID
+#define I2S_TX_FS		48 /* kHz */
+#define I2S_TX_MCLK		(384 * I2S_TX_FS)
+#define I2S_TX_TIME_OUT 500000
+
+/*
  *	register defines
  */
 
@@ -48,12 +72,52 @@
 #define XPAR_I2S_RECEIVER_0_AESCHANNEL_STATUS5		0x64
 
 
+/* I2s Rx declarations */
+extern XI2s_Rx I2sRxInstance;		/* Instance of the I2S receiver device */
+extern u32 I2sRxIntrAesComplete;
+extern u32 I2sRxIntrOvfDetected;
+extern u32 I2sRxIntrCount;
+extern u32 I2sRxIntrAesCntr;
 
+/* I2s Tx declarations */
+extern XI2s_Tx I2sTxInstance;		/* Instance of the I2s Transmitter device */
+extern u32 I2sTxIntrAesComplete;
+extern u32 I2sTxIntrUvfDetected;
+extern u32 I2sTxIntrSyncErr;
+extern u32 I2sTxIntrAesChStsUpd;
+extern u32 I2sTxIntrCount;
+extern u32 I2sTxIntrAesCntr;
 
+/* typedefs */
+typedef struct I2S_HwConfig
+{
+	/* I2S core configuration register */
+	u32 ConfigReg;
+	/* Audio Data Width 16 or 24 bit */
+	u32 DataWidth;
+	/* Number of Channels supported */
+	u32 NumberOfChannels;
+	/* Master or Slave Operating Mode */
+	u32 IsMaster;
+	/* I2S control register */
+	u32 ControlReg;
+	/* core is enabled */
+	u32 IsEnabled;
+	/* Left-Right Justification enabled */
+	u32 RightJustification;
+	/* LRClock32bit */
+	u32 LRClock32bit;
+
+}I2S_HwConfig;
 
 /*
  * function prototypes
  */
-extern void I2S_Init(void); // initialize the I2S IP core
+extern int I2S_Init(void); // initialize the I2S IP core
+extern void I2sTxAesBlockCmplIntrHandler(void *CallBackRef);
+extern void I2sRxAesBlockCmplIntrHandler(void *CallBackRef);
+extern void I2STx_GetHwConfig(XI2s_Tx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr );
+extern void I2SRx_GetHwConfig(XI2s_Rx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr );
+
 
 #endif // I2S_H
