@@ -54,3 +54,4 @@ platform generate -domains
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/design_1_wrapper_384FS.xsa}
 platform generate -domains 
 platform generate -domains standalone_domain,standalone_ps7_cortexa9_0 
+platform generate
