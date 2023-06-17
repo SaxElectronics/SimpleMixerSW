@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Jun 16 14:39:25 2023
-# Process ID: 9152
+# Start of session at: Sat Jun 17 12:47:21 2023
+# Process ID: 43304
 # Current directory: D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1
 # Command line: vivado.exe -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file: D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/design_1_wrapper.vds
@@ -11,13 +11,12 @@
 # Running On: LAPTOP-QKLHUPCP, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 17007 MB
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 414.172 ; gain = 102.594
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 414.547 ; gain = 104.129
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/vivado-library-master'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2022.2/data/ip'.
 WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
 Current IP cache path is d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.cache/ip 
-add_files: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 466.484 ; gain = 27.461
 Command: read_checkpoint -auto_incremental -incremental D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -30,41 +29,41 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26000
+INFO: [Synth 8-7075] Helper process launched with PID 54004
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1297.406 ; gain = 407.633
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1297.266 ; gain = 409.785
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
 INFO: [Synth 8-6157] synthesizing module 'design_1' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:12]
-INFO: [Synth 8-6157] synthesizing module 'design_1_audio_formatter_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_audio_formatter_0_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_audio_formatter_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_audio_formatter_0_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_audio_formatter_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_audio_formatter_0_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_audio_formatter_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_audio_formatter_0_1_stub.v:5]
 WARNING: [Synth 8-7071] port 'm_axi_mm2s_aruser' of module 'design_1_audio_formatter_0_1' is unconnected for instance 'audio_formatter_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:338]
 WARNING: [Synth 8-7071] port 'm_axi_s2mm_awuser' of module 'design_1_audio_formatter_0_1' is unconnected for instance 'audio_formatter_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:338]
 WARNING: [Synth 8-7023] instance 'audio_formatter_0' of module 'design_1_audio_formatter_0_1' has 65 connections declared, but only 63 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:338]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_gpio_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_0_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_gpio_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_0_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_gpio_1_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_1_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_gpio_1_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_1_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_gpio_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_0_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_gpio_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_0_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_gpio_1_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_gpio_1_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_axi_gpio_1_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:872]
 INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1R706YB' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:2530]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_1_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1R706YB' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:2530]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_7HNO1D' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3449]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_us_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_us_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_us_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_us_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'design_1_auto_us_0' is unconnected for instance 'auto_us' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3576]
 WARNING: [Synth 8-7023] instance 'auto_us' of module 'design_1_auto_us_0' has 34 connections declared, but only 33 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3576]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_7HNO1D' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3449]
 INFO: [Synth 8-6157] synthesizing module 's01_couplers_imp_1W60HW0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3917]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_us_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_us_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_us_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_us_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_us_1_stub.v:5]
 WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'design_1_auto_us_1' is unconnected for instance 'auto_us' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:4068]
 WARNING: [Synth 8-7023] instance 'auto_us' of module 'design_1_auto_us_1' has 40 connections declared, but only 39 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:4068]
 INFO: [Synth 8-6155] done synthesizing module 's01_couplers_imp_1W60HW0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3917]
-INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_6' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_xbar_6_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_6' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_xbar_6_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_6' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_xbar_6_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_6' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_xbar_6_stub.v:5]
 WARNING: [Synth 8-689] width (1) of port connection 's_axi_arready' does not match port width (2) of module 'design_1_xbar_6' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1443]
 WARNING: [Synth 8-689] width (64) of port connection 's_axi_rdata' does not match port width (128) of module 'design_1_xbar_6' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1460]
 WARNING: [Synth 8-689] width (1) of port connection 's_axi_rlast' does not match port width (2) of module 'design_1_xbar_6' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1461]
@@ -74,14 +73,14 @@ WARNING: [Synth 8-7071] port 's_axi_bid' of module 'design_1_xbar_6' is unconnec
 WARNING: [Synth 8-7071] port 's_axi_rid' of module 'design_1_xbar_6' is unconnected for instance 'xbar' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1393]
 WARNING: [Synth 8-7023] instance 'xbar' of module 'design_1_xbar_6' has 78 connections declared, but only 76 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1393]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_0' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:872]
-INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_receiver_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_i2s_receiver_0_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_receiver_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_i2s_receiver_0_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_transmitter_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_i2s_transmitter_0_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_transmitter_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_i2s_transmitter_0_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_processing_system7_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_processing_system7_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_receiver_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_i2s_receiver_0_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_receiver_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_i2s_receiver_0_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_transmitter_0_1' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_i2s_transmitter_0_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_transmitter_0_1' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_i2s_transmitter_0_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_processing_system7_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_processing_system7_0_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'USB0_PORT_INDCTL' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:591]
 WARNING: [Synth 8-7071] port 'USB0_VBUS_PWRSELECT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:591]
 WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:591]
@@ -102,31 +101,31 @@ INFO: [Synth 8-6155] done synthesizing module 'm03_couplers_imp_YFYJ3U' (0#1) [d
 INFO: [Synth 8-6157] synthesizing module 'm04_couplers_imp_17KQ732' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3317]
 INFO: [Synth 8-6155] done synthesizing module 'm04_couplers_imp_17KQ732' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3317]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_UYSKKA' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3612]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_auto_pc_0_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_UYSKKA' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:3612]
-INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_5' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_xbar_5_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_5' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_xbar_5_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_5' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_xbar_5_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_5' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_xbar_5_stub.v:5]
 WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'design_1_xbar_5' is unconnected for instance 'xbar' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:2364]
 WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'design_1_xbar_5' is unconnected for instance 'xbar' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:2364]
 WARNING: [Synth 8-7023] instance 'xbar' of module 'design_1_xbar_5' has 40 connections declared, but only 38 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:2364]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_ps7_0_axi_periph_4' (0#1) [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:1472]
-INFO: [Synth 8-6157] synthesizing module 'design_1_rst_clk_wiz_0_49M_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_rst_clk_wiz_0_49M_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_clk_wiz_0_49M_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_rst_clk_wiz_0_49M_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_clk_wiz_0_49M_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_rst_clk_wiz_0_49M_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_clk_wiz_0_49M_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_rst_clk_wiz_0_49M_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_clk_wiz_0_49M_0' is unconnected for instance 'rst_clk_wiz_0_49M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:832]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_clk_wiz_0_49M_0' is unconnected for instance 'rst_clk_wiz_0_49M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:832]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_clk_wiz_0_49M_0' is unconnected for instance 'rst_clk_wiz_0_49M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:832]
 WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'design_1_rst_clk_wiz_0_49M_0' is unconnected for instance 'rst_clk_wiz_0_49M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:832]
 WARNING: [Synth 8-7023] instance 'rst_clk_wiz_0_49M' of module 'design_1_rst_clk_wiz_0_49M_0' has 10 connections declared, but only 6 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:832]
-INFO: [Synth 8-6157] synthesizing module 'design_1_proc_sys_reset_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_proc_sys_reset_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_proc_sys_reset_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_proc_sys_reset_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_proc_sys_reset_0_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_proc_sys_reset_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_proc_sys_reset_0_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_proc_sys_reset_0_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'rst_clk_wiz_98Mhz' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:839]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'rst_clk_wiz_98Mhz' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:839]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'rst_clk_wiz_98Mhz' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:839]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'rst_clk_wiz_98Mhz' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:839]
 WARNING: [Synth 8-7023] instance 'rst_clk_wiz_98Mhz' of module 'design_1_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:839]
-INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_rst_ps7_0_100M_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-9152-LAPTOP-QKLHUPCP/realtime/design_1_rst_ps7_0_100M_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_100M_0' [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_rst_ps7_0_100M_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_100M_0' (0#1) [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/.Xil/Vivado-43304-LAPTOP-QKLHUPCP/realtime/design_1_rst_ps7_0_100M_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:846]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:846]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [d:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.gen/sources_1/bd/design_1/synth/design_1.v:846]
@@ -251,18 +250,18 @@ WARNING: [Synth 8-7129] Port In95[0] in module xlconcat_v2_1_4_xlconcat__paramet
 WARNING: [Synth 8-7129] Port In96[0] in module xlconcat_v2_1_4_xlconcat__parameterized0 is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1402.309 ; gain = 512.535
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1402.293 ; gain = 514.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1402.309 ; gain = 512.535
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1402.293 ; gain = 514.812
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1402.309 ; gain = 512.535
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1402.293 ; gain = 514.812
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.093 . Memory (MB): peak = 1402.309 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.074 . Memory (MB): peak = 1402.293 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -320,23 +319,23 @@ Parsing XDC File [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_S
 Finished Parsing XDC File [D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1411.828 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1419.914 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1411.828 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1419.914 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [C:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -625,10 +624,10 @@ Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/i2s_transmitter_0. (co
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_gpio_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_gpio_1. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:27 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -651,25 +650,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1411.828 ; gain = 522.055
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1419.914 ; gain = 532.434
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:38 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1420.746 ; gain = 533.266
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -687,37 +686,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -766,16 +765,16 @@ Report Cell Usage:
 |18    |OBUF                          |    17|
 +------+------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1425.543 ; gain = 538.062
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 32 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:44 . Memory (MB): peak = 1414.660 ; gain = 515.367
-Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1414.660 ; gain = 524.887
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:33 . Memory (MB): peak = 1425.543 ; gain = 520.441
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1425.543 ; gain = 538.062
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.071 . Memory (MB): peak = 1426.543 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1437.555 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1430.176 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1442.230 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -783,7 +782,7 @@ Synth Design complete, checksum: b2dac41e
 INFO: [Common 17-83] Releasing license: Synthesis
 99 Infos, 155 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1430.176 ; gain = 947.762
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:52 . Memory (MB): peak = 1442.230 ; gain = 959.555
 INFO: [Common 17-1381] The checkpoint 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/Vivado_SimpleMixer.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Jun 16 14:40:53 2023...
+INFO: [Common 17-206] Exiting Vivado at Sat Jun 17 12:48:39 2023...
