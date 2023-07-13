@@ -56,73 +56,37 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_49Mhz__49.15602______0.000______50.0______362.763____418.274
+// CLK_49Mhz__18.43318______0.000______50.0______186.184_____98.575
+// CLK_100Mhz__100.00000______0.000______50.0______130.958_____98.575
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________125.000____________0.010
+// __primary_________100.000____________0.010
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "design_1_clk_wiz_0_0,clk_wiz_v6_0_11_0_0,{component_name=design_1_clk_wiz_0_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=true,enable_axi=1,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=8.000,clkin2_period=10.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "design_1_clk_wiz_0_0,clk_wiz_v6_0_11_0_0,{component_name=design_1_clk_wiz_0_0,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=2,clkin1_period=10.000,clkin2_period=10.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module design_1_clk_wiz_0_0 
  (
-  input s_axi_aclk,
-  input s_axi_aresetn,
-  input [10 : 0] s_axi_awaddr,
-  input s_axi_awvalid,
-  output s_axi_awready,
-  input [31 : 0] s_axi_wdata,
-  input [3 : 0] s_axi_wstrb,
-  input s_axi_wvalid,
-  output s_axi_wready,
-  output [1 : 0] s_axi_bresp,
-  output s_axi_bvalid,
-  input s_axi_bready,
-  input [10 : 0] s_axi_araddr,
-  input s_axi_arvalid,
-  output s_axi_arready,
-  output [31 : 0] s_axi_rdata,
-  output [1 : 0] s_axi_rresp,
-  output s_axi_rvalid,
-  input s_axi_rready,
   // Clock out ports
   output        CLK_49Mhz,
+  output        CLK_100Mhz,
   // Status and control signals
+  input         reset,
   output        locked,
  // Clock in ports
   input         clk_in1
  );
 
-  design_1_clk_wiz_0_0_axi_clk_config #(
-  .C_S_AXI_ADDR_WIDTH(11),
-  .C_S_AXI_DATA_WIDTH(32)
-  ) inst
+  design_1_clk_wiz_0_0_clk_wiz inst
   (
-  .s_axi_aclk      (s_axi_aclk),                    
-  .s_axi_aresetn   (s_axi_aresetn),                    
-  .s_axi_awaddr    (s_axi_awaddr),                    
-  .s_axi_awvalid   (s_axi_awvalid),                    
-  .s_axi_awready   (s_axi_awready),                    
-  .s_axi_wdata     (s_axi_wdata),                    
-  .s_axi_wstrb     (s_axi_wstrb),                    
-  .s_axi_wvalid    (s_axi_wvalid),                    
-  .s_axi_wready    (s_axi_wready),                    
-  .s_axi_bresp     (s_axi_bresp),                    
-  .s_axi_bvalid    (s_axi_bvalid),                    
-  .s_axi_bready    (s_axi_bready),                    
-  .s_axi_araddr    (s_axi_araddr),                    
-  .s_axi_arvalid   (s_axi_arvalid),                    
-  .s_axi_arready   (s_axi_arready),                    
-  .s_axi_rdata     (s_axi_rdata),                    
-  .s_axi_rresp     (s_axi_rresp),                    
-  .s_axi_rvalid    (s_axi_rvalid),                    
-  .s_axi_rready    (s_axi_rready),                    
   // Clock out ports  
   .CLK_49Mhz(CLK_49Mhz),
+  .CLK_100Mhz(CLK_100Mhz),
   // Status and control signals               
+  .reset(reset), 
   .locked(locked),
  // Clock in ports
   .clk_in1(clk_in1)

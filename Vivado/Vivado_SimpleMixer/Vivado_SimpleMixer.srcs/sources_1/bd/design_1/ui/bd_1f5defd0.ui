@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.469689",
-   "Default View_TopLeft":"-373,409",
+   "Default View_ScaleFactor":"1.32848",
+   "Default View_TopLeft":"7,298",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
@@ -19,11 +19,9 @@ preplace port port-id_SCLK_TX -pg 1 -lvl 8 -x 2840 -y 290 -defaultsOSRD
 preplace port port-id_LRCK_TX -pg 1 -lvl 8 -x 2840 -y 260 -defaultsOSRD
 preplace port port-id_SCLK_RX -pg 1 -lvl 8 -x 2840 -y 680 -defaultsOSRD
 preplace port port-id_LRCK_RX -pg 1 -lvl 8 -x 2840 -y 650 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 7 -x 2570 -y 550 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 480 -y 850 -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 680 -defaultsOSRD
 preplace inst rst_clk_wiz_0_49M -pg 1 -lvl 4 -x 1160 -y 1080 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 6 -x 2120 -y 540 -defaultsOSRD
 preplace inst xlslice_0 -pg 1 -lvl 6 -x 2120 -y 370 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 6 -x 2120 -y 1000 -defaultsOSRD -orient R180
 preplace inst xlconcat_2 -pg 1 -lvl 5 -x 1660 -y 990 -defaultsOSRD -orient R180
@@ -35,6 +33,8 @@ preplace inst i2s_receiver_0 -pg 1 -lvl 5 -x 1660 -y 520 -defaultsOSRD
 preplace inst i2s_transmitter_0 -pg 1 -lvl 7 -x 2570 -y 280 -defaultsOSRD
 preplace inst axi_gpio_0 -pg 1 -lvl 7 -x 2570 -y 980 -defaultsOSRD
 preplace inst axi_gpio_1 -pg 1 -lvl 7 -x 2570 -y 820 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 7 -x 2570 -y 550 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 6 -x 2120 -y 540 -defaultsOSRD
 preplace netloc SDIN_RX_1 1 0 5 NJ 540 NJ 540 NJ 540 NJ 540 1370J
 preplace netloc audio_formatter_0_irq_mm2s 1 5 1 1910 250n
 preplace netloc audio_formatter_0_irq_s2mm 1 5 1 1900 270n
