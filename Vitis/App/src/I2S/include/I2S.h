@@ -33,6 +33,11 @@
 #define I2S_TX_MCLK		(384 * I2S_TX_FS)
 #define I2S_TX_TIME_OUT 500000
 
+#define XI2S_RX_IRQSTS_SET_BIT0 0x00000001 // Bit 0 set to 1
+
+#define XI2S_RX_VALIDITY_BIT_OFFSET    0x0C //!< Validity Bit Register
+
+
 /*
  *	register defines
  */

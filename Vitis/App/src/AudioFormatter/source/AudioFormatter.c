@@ -333,7 +333,7 @@ void *XS2MMAFCallbackError(void *data)
 	/* clear interrupt flag */
 	S2MMAFIntrError = 1;
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-	xil_printf("S2MM timout occured!\r\n");
+	xil_printf("S2MM timeout occured!\r\n");
 
 	//AF_ReadAudioSamples(&AFInstance);
 	XAudioFormatterDMAStop(&AFInstance);
