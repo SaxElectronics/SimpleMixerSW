@@ -68,9 +68,13 @@ u32 MM2S_PCMNoPeriods;
 //u8 ChStatBuff[XAUD_CHSTAT_NUMBER_OF_BYTES];
 u32 RxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
 u32 TxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
+uint32_t audio_sample_in_period_l[AF_AUDIOSAMPLES_PER_PERIOD], audio_sample_in_period_r[AF_AUDIOSAMPLES_PER_PERIOD];
 
-u64 TxBufAdr;
-u64 RxBufAdr;
+static u32 current_period;
+u32* AF_bufferPtr;
+u32* AF_PeriodPtr;
+u32 TxBufAdr;
+u32 RxBufAdr;
 
 AudioFormatter_HwConfig HwConfig_S2MM;
 AudioFormatter_HwConfig HwConfig_MM2S;
@@ -118,8 +122,8 @@ void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
 void AudioFormatter_Init(void)
 {
 
-	af_mm2s_hw_params.buf_addr = (u64)(u32)(&TxBuf[0]);
-	af_s2mm_hw_params.buf_addr = (u64)(u32)(&RxBuf[0]);
+//	af_mm2s_hw_params.buf_addr = (u64)(u32)(&TxBuf[0]);
+//	af_s2mm_hw_params.buf_addr = (u64)(u32)(&RxBuf[0]);
 	TxBufAdr = af_mm2s_hw_params.buf_addr;
 	RxBufAdr = af_s2mm_hw_params.buf_addr;
 
@@ -261,27 +265,46 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	AF_S2MM_IOC_counter++;
 	/* stop the S2MM transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-	XAudioFormatterDMAStop(&AFInstance);
-	/* process one period */
-	/* ToDo Place RxBuf at AF S2MM buffer location */
-	for (curren_period_idx = 0; curren_period_idx < AF_NUMBER_OF_PERIODS; curren_period_idx++)
-	{
-		for (int i=0; i<AF_AUDIOSAMPLES_PER_PERIOD; i=i+2)
-		{
-		lSample = RxBuf[curren_period_idx*AF_AUDIOSAMPLES_PER_PERIOD + i];
-		rSample = RxBuf[curren_period_idx*AF_AUDIOSAMPLES_PER_PERIOD + i + 1];
-					if (lSample!=0)
-					{
-						TxBuf[curren_period_idx*AF_AUDIOSAMPLES_PER_PERIOD + i] 	= lSample ;
+	/* do not stop the DMA? */
+	//XAudioFormatterDMAStop(&AFInstance);
+	/* clear the interrupt */
+	XAudioFormatter_InterruptClear(&AFInstance, XAUD_STS_IOC_IRQ_MASK );
+	/* get the number of bytes transfered to memory */
+	u32 NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
+    xil_printf("Audio Formatter current channel ID: %d\r\n",(XAudioFormatter_ChannelId) AFInstancePtr->ChannelId);
 
-					}
-					if (rSample!=0)
-					{
-						TxBuf[curren_period_idx*AF_AUDIOSAMPLES_PER_PERIOD + i + 1] =  rSample ;
+	xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
+			(int) NumberOfBytestransfered);
 
-					}
-		}
-	}
+    AF_bufferPtr = (u32*)  (uint64_t)  (  (AUDIO_BUFFER_BASE_ADDRESS )  );
+
+    uint32_t sample;
+    current_period++;
+   // bufferPtr = &af_mm2s_hw_params.buf_addr;
+	  // Loop through all periods
+	   // Loop through all periods
+//	    for (period = 0; period < AF_NUMBER_OF_PERIODS; period++)
+//	    {
+	        // get the pointer to the next sample
+	        AF_bufferPtr += current_period * AF_AUDIOSAMPLES_PER_PERIOD;
+	        // Loop through all samples in the period
+	        /* this pointer will be used inside one period */
+	        AF_PeriodPtr = AF_bufferPtr;
+	        for (sample = 0; sample < AF_AUDIOSAMPLES_PER_PERIOD; sample+=2)
+	        {
+	            // Read audio samples for left and right channels from the buffer
+//	            uint32_t *audio_sample_ptr = (uint32_t*)(uint64_t)AF_bufferPtr + sample * AF_NUMBER_OF_CHANNELS;
+	        	audio_sample_in_period_l[sample] = *AF_PeriodPtr;
+	            AF_PeriodPtr++;
+	            audio_sample_in_period_r[sample] = *AF_PeriodPtr;
+	            xil_printf("Audio Formatter audio sample left: %d\r\n", (int)audio_sample_in_period_l[sample]);
+	            xil_printf("Audio Formatter audio sample right: %d\r\n", (int)audio_sample_in_period_r[sample]);
+
+
+	            // Process the audio samples or store them as needed
+	            // ...
+	        }
+//	    }
 
 	/* start the MM2S transfer */
 	/* transfer data to the I2S transmitter */

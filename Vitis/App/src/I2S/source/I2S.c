@@ -245,7 +245,7 @@ u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr)
 	/* enable left, right justification */
 	XI2s_Tx_JustifyEnable(I2sTxInstancePtr, true);
 	/* enable logging for Tx */
-	XI2s_Tx_LogEnable(I2sRxInstancePtr);
+	XI2s_Tx_LogEnable(I2sTxInstancePtr);
 	/* enable the core*/
 	XI2s_Tx_Enable(I2sTxInstancePtr, 0x1);
 	/* Read the set up of the Rx core */
@@ -303,11 +303,13 @@ void I2sTxAesBlockCmplIntrHandler(void *CallBackRef)
 	/* Set the interrupt received flag. */
 	I2sTxIntrAesComplete = 1;
 	I2sTxIntrAesCntr++;
+	/* display log buffer */
+	//XI2s_Tx_LogDisplay(InstancePtr);
 	/* stop the transfer of data from MM2S */
 	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
 	XAudioFormatterDMAStop(&AFInstance);
 	/* enable the I2S Tx core*/
-	XI2s_Tx_Enable(&I2sTxInstance, 0x1);
+	//XI2s_Tx_Enable(&I2sTxInstance, 0x1);
 	}
 }
 /*****************************************************************************/
@@ -335,12 +337,12 @@ void I2sRxAesBlockCmplIntrHandler(void *CallBackRef)
 		{
 			I2sRxIntrAesComplete = 1;
 			I2sRxIntrAesCntr++;
+			/* display log buffer */
+			//XI2s_Rx_LogDisplay(I2sRxInstancePtr);
 			/* read the interrupt status */
 			u32 intrsts_regval = XI2s_Rx_ReadReg(I2sRxInstancePtr->Config.BaseAddress, XI2S_RX_IRQSTS_OFFSET);
 			/* Clear AES block received interrupt status register */
-			XI2s_Rx_WriteReg(I2sRxInstancePtr->Config.BaseAddress,
-							 XI2S_RX_IRQSTS_OFFSET,
-							 intrsts_regval | XI2S_RX_IRQSTS_SET_BIT0);
+			XI2s_Rx_WriteReg(I2sRxInstancePtr->Config.BaseAddress, XI2S_RX_IRQSTS_OFFSET, intrsts_regval | XI2S_RX_IRQSTS_SET_BIT0);
 			//u32 validitybit_regval = XI2s_Rx_ReadReg(I2sRxInstancePtr->Config.BaseAddress, XI2S_RX_VALIDITY_BIT_OFFSET);
 
 			/* start the S2MM DMA transfer */

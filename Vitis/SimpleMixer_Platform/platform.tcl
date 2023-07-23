@@ -57,3 +57,4 @@ platform generate -domains standalone_domain,standalone_ps7_cortexa9_0
 platform generate
 platform generate
 platform generate -domains standalone_domain 
+platform generate
