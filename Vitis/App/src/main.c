@@ -194,7 +194,8 @@ int main()
     print("Entering infinite loop\n\r");
     for (;;)
     {
-    	AF_ReadAudioSamples(&AFInstance);
+    	AF_GenerateSineWaveAndWriteToBuff();
+    	//AF_ReadAudioSamples(&AFInstance);
 
     }
     cleanup_platform();

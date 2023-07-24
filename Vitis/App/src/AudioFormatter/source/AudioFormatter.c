@@ -6,6 +6,9 @@
  * and operate it properly.
  *
  */
+
+#include "math.h"
+
 /*
  * Xilinx Platform Includes
  */
@@ -70,6 +73,14 @@ u32 RxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
 u32 TxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
 uint32_t audio_sample_in_period_l[AF_AUDIOSAMPLES_PER_PERIOD], audio_sample_in_period_r[AF_AUDIOSAMPLES_PER_PERIOD];
 
+int samplingRate = 48000; // Sampling rate in Hz
+double frequency = 440.0; // Frequency of the "A" note in Hz
+
+int durationSeconds = 10; // Duration of the audio stream in seconds
+int numSamples = 48000 * 10;
+
+static uint32_t audio_sample_in_period_test_tone[48000 * 10] = {0}; // Buffer to store left channel audio samples
+
 static u32 current_period_s2mm;
 static u32 current_period_mm2s;
 
@@ -83,6 +94,8 @@ AudioFormatter_HwConfig HwConfig_MM2S;
 
 XAudioFormatterHwParams af_mm2s_hw_params = {0x20000000, 2, BIT_DEPTH_24, 8, 64};
 XAudioFormatterHwParams af_s2mm_hw_params = {0x20000000, 2, BIT_DEPTH_24, 8, 64};
+
+const double PI = 3.141592653589793238463;
 
 #define XAUD_CHSTAT_NUMBER_OF_BYTES  24
 int curren_period_idx = 0;
@@ -485,6 +498,30 @@ void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr)
 	}
 	/* copy the channel status information into the buffer */
 //	XSdiAud_GetChStat(AFInstancePtr, &ChStatBuff[0]);
+}
+
+/*****************************************************************************/
+/**
+ *
+ * This function generates a sine A
+ *
+ * @return
+ *
+ * @note
+ *
+*******************************************************************************/
+void AF_GenerateSineWaveAndWriteToBuff(void)
+{
+
+
+	for (int i = 0; i < numSamples; i++) {
+		double t = i / (double)samplingRate; // Time in seconds
+		double sample = sin(2 * PI * frequency * t);
+		// Map the sample value to the desired range for 24-bit PCM
+		int pcmSample = (int)(sample * 8388607); // 24-bit signed PCM value
+		audio_sample_in_period_test_tone[i] = pcmSample; // Store the PCM sample in the buffer
+	}
+
 }
 /*****************************************************************************/
 /**

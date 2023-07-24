@@ -101,6 +101,7 @@ extern u32 InitializeAudioFormatter(XAudioFormatter *AFInstancePtr);
 extern void *XMM2SAFCallback(void *data);
 extern void *XS2MMAFCallback(void *data);
 extern void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
+extern void AF_GenerateSineWaveAndWriteToBuff(void);
 extern void AF_GetHwConfig(XAudioFormatter *AFInstancePtr, AudioFormatter_HwConfig* AFHwConfigPtr);
 
 /*
