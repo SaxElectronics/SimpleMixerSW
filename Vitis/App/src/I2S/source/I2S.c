@@ -170,6 +170,8 @@ u32 InitializeI2sRx(XI2s_Rx *I2sRxInstancePtr)
 	XI2s_Rx_IntrEnable(I2sRxInstancePtr, XI2S_RX_INTR_AUDOVRFLW_MASK);
 	/* enable left, right justification */
 	XI2s_Rx_JustifyEnable(I2sRxInstancePtr, true);
+	/* set left justification */
+	XI2s_Rx_Justify(I2sRxInstancePtr, (XI2s_Rx_Justification) 0U);
 	/* enable logging for Rx */
 	XI2s_Rx_LogEnable(I2sRxInstancePtr);
 	/* enable core operations */
@@ -244,6 +246,8 @@ u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr)
 	XI2s_Tx_IntrEnable(I2sTxInstancePtr, XI2S_TX_INTR_AUDUNDRFLW_MASK);
 	/* enable left, right justification */
 	XI2s_Tx_JustifyEnable(I2sTxInstancePtr, true);
+	/* set left justification */
+	XI2s_Tx_Justify(I2sTxInstancePtr, (XI2s_Rx_Justification) 0U);
 	/* enable logging for Tx */
 	XI2s_Tx_LogEnable(I2sTxInstancePtr);
 	/* enable the core*/

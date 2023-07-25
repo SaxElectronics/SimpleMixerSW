@@ -33,13 +33,20 @@ set_property -dict { PACKAGE_PIN L19    IOSTANDARD LVCMOS33 } [get_ports { btn[3
 
 ## Pmod Header JA
 set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { MCLK_TX }]; #IO_L17P_T2_34 Sch=JA1_P (Pin 1)
-set_property -dict { PACKAGE_PIN Y19   IOSTANDARD LVCMOS33 } [get_ports { LRCK_TX }]; #IO_L17N_T2_34 Sch=JA1_N (Pin 2)
-set_property -dict { PACKAGE_PIN Y16   IOSTANDARD LVCMOS33 } [get_ports { SCLK_TX }]; #IO_L7P_T1_34 Sch=JA2_P (Pin 3)
+#set_property -dict { PACKAGE_PIN Y19   IOSTANDARD LVCMOS33 } [get_ports { LRCK_TX }]; #IO_L17N_T2_34 Sch=JA1_N (Pin 2)
+#set_property -dict { PACKAGE_PIN Y16   IOSTANDARD LVCMOS33 } [get_ports { SCLK_TX }]; #IO_L7P_T1_34 Sch=JA2_P (Pin 3)
 set_property -dict { PACKAGE_PIN Y17   IOSTANDARD LVCMOS33 } [get_ports { SDOUT_TX }]; #IO_L7N_T1_34 Sch=JA2_N (Pin 4)
 set_property -dict { PACKAGE_PIN U18   IOSTANDARD LVCMOS33 } [get_ports { MCLK_RX }]; #IO_L12P_T1_MRCC_34 Sch=JA3_P (Pin 7)
-set_property -dict { PACKAGE_PIN U19   IOSTANDARD LVCMOS33 } [get_ports { LRCK_RX }]; #IO_L12N_T1_MRCC_34 Sch=JA3_N (Pin 8)
-set_property -dict { PACKAGE_PIN W18   IOSTANDARD LVCMOS33 } [get_ports { SCLK_RX }]; #IO_L22P_T3_34 Sch=JA4_P (Pin 9)
+#set_property -dict { PACKAGE_PIN U19   IOSTANDARD LVCMOS33 } [get_ports { LRCK_RX }]; #IO_L12N_T1_MRCC_34 Sch=JA3_N (Pin 8)
+#set_property -dict { PACKAGE_PIN W18   IOSTANDARD LVCMOS33 } [get_ports { SCLK_RX }]; #IO_L22P_T3_34 Sch=JA4_P (Pin 9)
 set_property -dict { PACKAGE_PIN W19   IOSTANDARD LVCMOS33 } [get_ports { SDIN_RX }]; #IO_L22N_T3_34 Sch=JA4_N (Pin 10)
+
+set_property -dict { PACKAGE_PIN U19   IOSTANDARD LVCMOS33 } [get_ports { lrclk_out_0 }]; #IO_L12N_T1_MRCC_34 Sch=JA3_N (Pin 8)
+set_property -dict { PACKAGE_PIN W18   IOSTANDARD LVCMOS33 } [get_ports { sclk_out_0 }]; #IO_L22P_T3_34 Sch=JA4_P (Pin 9)
+set_property -dict { PACKAGE_PIN Y19   IOSTANDARD LVCMOS33 } [get_ports { lrclk_out_1 }]; #IO_L17N_T2_34 Sch=JA1_N (Pin 2)
+set_property -dict { PACKAGE_PIN Y16   IOSTANDARD LVCMOS33 } [get_ports { sclk_out_1 }]; #IO_L7P_T1_34 Sch=JA2_P (Pin 3)
+
+
 
 ## Pmod Header JB
 set_property -dict { PACKAGE_PIN W14   IOSTANDARD LVCMOS33 } [get_ports { PMOD[0] }]; #IO_L8P_T1_34 Sch=JB1_P (Pin 1)
@@ -184,18 +191,18 @@ set_property -dict { PACKAGE_PIN W13   IOSTANDARD LVCMOS33 } [get_ports { PMOD[7
 #set_property PACKAGE_PIN T9 [get_ports {netic20_t9}]; #IO_L12P_T1_MRCC_13
 #set_property PACKAGE_PIN U9 [get_ports {netic20_u9}]; #IO_L17P_T2_13
 
-set_property IOSTANDARD LVCMOS33 [get_ports LRCK_RX]
-set_property IOSTANDARD LVCMOS33 [get_ports LRCK_TX]
+#set_property IOSTANDARD LVCMOS33 [get_ports LRCK_RX]
+#set_property IOSTANDARD LVCMOS33 [get_ports LRCK_TX]
 set_property IOSTANDARD LVCMOS33 [get_ports MCLK_RX]
 set_property IOSTANDARD LVCMOS33 [get_ports MCLK_TX]
-set_property IOSTANDARD LVCMOS33 [get_ports SCLK_RX]
+#set_property IOSTANDARD LVCMOS33 [get_ports SCLK_RX]
 set_property IOSTANDARD LVCMOS33 [get_ports SCLK_TX]
 set_property IOSTANDARD LVCMOS33 [get_ports SDIN_RX]
 set_property IOSTANDARD LVCMOS33 [get_ports SDOUT_TX]
 #set_property IOSTANDARD LVCMOS33 [get_ports reset_rtl]
-set_property PACKAGE_PIN U19 [get_ports LRCK_RX]
-set_property PACKAGE_PIN Y19 [get_ports LRCK_TX]
-set_property PACKAGE_PIN W18 [get_ports SCLK_RX]
+#set_property PACKAGE_PIN U19 [get_ports LRCK_RX]
+#set_property PACKAGE_PIN Y19 [get_ports LRCK_TX]
+#set_property PACKAGE_PIN W18 [get_ports SCLK_RX]
 set_property PACKAGE_PIN Y16 [get_ports SCLK_TX]
 set_property PACKAGE_PIN W19 [get_ports SDIN_RX]
 set_property PACKAGE_PIN Y17 [get_ports SDOUT_TX]

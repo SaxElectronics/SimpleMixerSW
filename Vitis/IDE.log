@@ -8447,3 +8447,687 @@ con
 08:10:12 INFO  : Checking for BSP changes to sync application flags for project 'App'...
 08:10:21 INFO  : Checking for BSP changes to sync application flags for project 'App'...
 08:11:19 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:12:19 INFO  : Disconnected from the channel tcfchan#9.
+08:12:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+08:12:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+08:12:29 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+08:12:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+08:12:44 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+08:12:44 INFO  : 'jtag frequency' command is executed.
+08:12:44 INFO  : Context for 'APU' is selected.
+08:12:44 INFO  : System reset is completed.
+08:12:47 INFO  : 'after 3000' command is executed.
+08:12:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+08:12:49 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit"
+08:12:49 INFO  : Context for 'APU' is selected.
+08:12:49 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_384FS.xsa'.
+08:12:49 INFO  : 'configparams force-mem-access 1' command is executed.
+08:12:49 INFO  : Context for 'APU' is selected.
+08:12:49 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+08:12:50 INFO  : 'ps7_init' command is executed.
+08:12:50 INFO  : 'ps7_post_config' command is executed.
+08:12:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+08:12:50 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+08:12:50 INFO  : 'configparams force-mem-access 0' command is executed.
+08:12:50 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_384FS.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+08:12:50 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+08:12:50 INFO  : 'con' command is executed.
+08:12:50 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+08:12:50 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+08:25:28 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:25:59 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:26:39 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:27:38 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:27:52 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:28:53 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:29:15 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:29:47 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:30:02 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:30:11 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:30:38 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:31:23 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+08:31:51 INFO  : Disconnected from the channel tcfchan#10.
+08:31:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+08:31:53 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+08:31:53 INFO  : 'jtag frequency' command is executed.
+08:31:53 INFO  : Context for 'APU' is selected.
+08:31:53 INFO  : System reset is completed.
+08:31:56 INFO  : 'after 3000' command is executed.
+08:31:56 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+08:31:58 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit"
+08:31:58 INFO  : Context for 'APU' is selected.
+08:31:58 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_384FS.xsa'.
+08:31:58 INFO  : 'configparams force-mem-access 1' command is executed.
+08:31:58 INFO  : Context for 'APU' is selected.
+08:31:58 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+08:31:59 INFO  : 'ps7_init' command is executed.
+08:31:59 INFO  : 'ps7_post_config' command is executed.
+08:31:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+08:31:59 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+08:31:59 INFO  : 'configparams force-mem-access 0' command is executed.
+08:31:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_384FS.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+08:31:59 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+08:31:59 INFO  : 'con' command is executed.
+08:31:59 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+08:31:59 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+10:23:46 INFO  : Hardware specification for platform project 'SimpleMixer_Platform' is updated.
+10:25:24 INFO  : Result from executing command 'getProjects': SimpleMixer_Platform
+10:25:24 INFO  : Result from executing command 'getPlatforms': SimpleMixer_Platform|D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/SimpleMixer_Platform.xpfm
+11:09:21 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+11:09:27 INFO  : The hardware specification used by project 'App' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+11:09:27 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream\design_1_wrapper.bit' stored in project is removed.
+11:09:27 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream\design_1_wrapper_384FS.bit' stored in project is removed.
+11:09:27 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream' in project 'App'.
+11:09:27 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit\ps7_init.tcl' stored in project is removed.
+11:09:36 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit' in project 'App'.
+11:09:43 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+11:09:47 INFO  : The hardware specification used by project 'fsbl' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+11:09:47 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream\design_1_wrapper_384FS.bit' stored in project is removed.
+11:09:48 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream' in project 'fsbl'.
+11:09:48 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit\ps7_init.tcl' stored in project is removed.
+11:09:56 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit' in project 'fsbl'.
+11:12:34 INFO  : Disconnected from the channel tcfchan#11.
+11:12:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:12:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+11:12:44 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+11:13:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:13:10 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+11:13:10 INFO  : 'jtag frequency' command is executed.
+11:13:10 INFO  : Context for 'APU' is selected.
+11:13:11 INFO  : System reset is completed.
+11:13:14 INFO  : 'after 3000' command is executed.
+11:13:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+11:13:14 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit": no such file or directory
+11:13:14 ERROR : Exception occured while running Program Device.
+java.lang.RuntimeException: couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit": no such file or directory
+11:13:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+----------------End of Script----------------
+
+11:13:14 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_384FS.bit": no such file or directory
+11:14:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:14:01 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+11:14:01 INFO  : 'jtag frequency' command is executed.
+11:14:01 INFO  : Context for 'APU' is selected.
+11:14:01 INFO  : System reset is completed.
+11:14:04 INFO  : 'after 3000' command is executed.
+11:14:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+11:14:07 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave.bit"
+11:14:07 INFO  : Context for 'APU' is selected.
+11:14:07 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave.xsa'.
+11:14:07 INFO  : 'configparams force-mem-access 1' command is executed.
+11:14:07 INFO  : Context for 'APU' is selected.
+11:14:07 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+11:14:08 INFO  : 'ps7_init' command is executed.
+11:14:08 INFO  : 'ps7_post_config' command is executed.
+11:14:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:14:08 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+11:14:08 INFO  : 'configparams force-mem-access 0' command is executed.
+11:14:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:14:08 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+11:14:08 INFO  : 'con' command is executed.
+11:14:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+11:14:08 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+14:02:11 INFO  : Result from executing command 'getProjects': SimpleMixer_Platform
+14:02:11 INFO  : Result from executing command 'getPlatforms': SimpleMixer_Platform|D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/SimpleMixer_Platform.xpfm
+14:02:12 INFO  : Hardware specification for platform project 'SimpleMixer_Platform' is updated.
+14:05:12 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+14:05:21 INFO  : The hardware specification used by project 'App' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+14:05:21 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream\design_1_wrapper_I2S_slave.bit' stored in project is removed.
+14:05:21 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream' in project 'App'.
+14:05:21 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit\ps7_init.tcl' stored in project is removed.
+14:05:31 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit' in project 'App'.
+14:05:40 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+14:05:45 INFO  : The hardware specification used by project 'fsbl' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+14:05:45 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream\design_1_wrapper_I2S_slave.bit' stored in project is removed.
+14:05:45 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream' in project 'fsbl'.
+14:05:45 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit\ps7_init.tcl' stored in project is removed.
+14:05:54 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit' in project 'fsbl'.
+19:37:39 INFO  : Disconnected from the channel tcfchan#15.
+19:37:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:37:58 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+19:37:58 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+19:39:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:39:54 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+19:39:54 INFO  : 'jtag frequency' command is executed.
+19:39:54 INFO  : Context for 'APU' is selected.
+19:39:54 INFO  : System reset is completed.
+19:39:57 INFO  : 'after 3000' command is executed.
+19:40:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+19:40:03 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit"
+19:40:03 INFO  : Context for 'APU' is selected.
+19:40:03 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.xsa'.
+19:40:03 INFO  : 'configparams force-mem-access 1' command is executed.
+19:40:03 INFO  : Context for 'APU' is selected.
+19:40:03 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+19:40:03 INFO  : 'ps7_init' command is executed.
+19:40:03 INFO  : 'ps7_post_config' command is executed.
+19:40:03 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+19:40:03 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+19:40:03 INFO  : 'configparams force-mem-access 0' command is executed.
+19:40:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+19:40:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+19:40:04 INFO  : 'con' command is executed.
+19:40:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+19:40:04 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+19:45:32 INFO  : Result from executing command 'getProjects': SimpleMixer_Platform
+19:45:33 INFO  : Result from executing command 'getPlatforms': SimpleMixer_Platform|D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/SimpleMixer_Platform.xpfm
+19:45:34 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+19:45:48 INFO  : The hardware specification used by project 'App' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+19:45:48 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream\design_1_wrapper_I2S_slave_32bitLRclock.bit' stored in project is removed.
+19:45:48 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream' in project 'App'.
+19:45:48 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit\ps7_init.tcl' stored in project is removed.
+19:45:59 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit' in project 'App'.
+19:46:07 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+19:46:12 INFO  : The hardware specification used by project 'fsbl' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+19:46:12 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream\design_1_wrapper_I2S_slave_32bitLRclock.bit' stored in project is removed.
+19:46:12 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream' in project 'fsbl'.
+19:46:12 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit\ps7_init.tcl' stored in project is removed.
+19:46:23 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit' in project 'fsbl'.
+19:46:33 INFO  : Hardware specification for platform project 'SimpleMixer_Platform' is updated.
+19:49:45 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+19:50:01 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+19:59:24 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+19:59:52 INFO  : Disconnected from the channel tcfchan#19.
+19:59:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:00:13 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+20:00:13 INFO  : 'jtag frequency' command is executed.
+20:00:13 INFO  : Context for 'APU' is selected.
+20:00:14 INFO  : System reset is completed.
+20:00:17 INFO  : 'after 3000' command is executed.
+20:00:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+20:00:20 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+20:00:20 ERROR : Exception occured while running Program Device.
+java.lang.RuntimeException: couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+20:00:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+----------------End of Script----------------
+
+20:00:20 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+21:09:22 INFO  : Hardware specification for platform project 'SimpleMixer_Platform' is updated.
+21:10:24 INFO  : Result from executing command 'getProjects': SimpleMixer_Platform
+21:10:24 INFO  : Result from executing command 'getPlatforms': SimpleMixer_Platform|D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/SimpleMixer_Platform.xpfm
+21:10:25 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+21:10:40 INFO  : The hardware specification used by project 'App' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+21:10:40 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream\design_1_wrapper_32bit_LRclock.bit' stored in project is removed.
+21:10:40 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\bitstream' in project 'App'.
+21:10:40 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit\ps7_init.tcl' stored in project is removed.
+21:11:00 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App\_ide\psinit' in project 'App'.
+21:11:08 INFO  : Checking for BSP changes to sync application flags for project 'fsbl'...
+21:11:14 INFO  : The hardware specification used by project 'fsbl' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+21:11:14 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream\design_1_wrapper_32bit_LRclock.bit' stored in project is removed.
+21:11:14 INFO  : The updated bitstream files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\bitstream' in project 'fsbl'.
+21:11:14 INFO  : The file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit\ps7_init.tcl' stored in project is removed.
+21:11:25 INFO  : The updated ps init files are copied from platform to folder 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\fsbl\_ide\psinit' in project 'fsbl'.
+21:17:05 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+21:17:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:17:41 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+21:17:41 INFO  : 'jtag frequency' command is executed.
+21:17:41 INFO  : Context for 'APU' is selected.
+21:17:41 INFO  : System reset is completed.
+21:17:44 INFO  : 'after 3000' command is executed.
+21:17:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+21:17:48 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+21:17:48 ERROR : Exception occured while running Program Device.
+java.lang.RuntimeException: couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+21:17:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+----------------End of Script----------------
+
+21:17:48 ERROR : couldn't open "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_I2S_slave_32bitLRclock.bit": no such file or directory
+21:19:56 INFO  : Hardware specification for platform project 'SimpleMixer_Platform' is updated.
+21:20:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:20:54 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+21:20:54 INFO  : 'jtag frequency' command is executed.
+21:20:54 INFO  : Context for 'APU' is selected.
+21:20:54 INFO  : System reset is completed.
+21:20:57 INFO  : 'after 3000' command is executed.
+21:21:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+21:21:03 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+21:21:03 INFO  : Context for 'APU' is selected.
+21:21:03 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+21:21:03 INFO  : 'configparams force-mem-access 1' command is executed.
+21:21:03 INFO  : Context for 'APU' is selected.
+21:21:03 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+21:21:04 INFO  : 'ps7_init' command is executed.
+21:21:04 INFO  : 'ps7_post_config' command is executed.
+21:21:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:21:04 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+21:21:04 INFO  : 'configparams force-mem-access 0' command is executed.
+21:21:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:21:04 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+21:21:04 INFO  : 'con' command is executed.
+21:21:04 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+21:21:04 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+21:48:50 INFO  : Disconnected from the channel tcfchan#25.
+21:54:59 DEBUG : Logs will be stored at 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/IDE.log'.
+21:55:01 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\temp_xsdb_launch_script.tcl
+21:55:06 INFO  : XSCT server has started successfully.
+21:55:06 INFO  : Successfully done setting XSCT server connection channel  
+21:55:06 INFO  : plnx-install-location is set to ''
+21:55:06 INFO  : Successfully done setting workspace for the tool. 
+21:55:09 INFO  : Platform repository initialization has completed.
+21:55:09 INFO  : Registering command handlers for Vitis TCF services
+21:55:19 INFO  : Successfully done query RDI_DATADIR 
+22:05:10 DEBUG : Logs will be stored at 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/IDE.log'.
+22:05:11 INFO  : Launching XSCT server: xsct.bat -n  -interactive D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\temp_xsdb_launch_script.tcl
+22:05:19 INFO  : Platform repository initialization has completed.
+22:05:19 INFO  : XSCT server has started successfully.
+22:05:19 INFO  : Registering command handlers for Vitis TCF services
+22:05:26 INFO  : plnx-install-location is set to ''
+22:05:26 INFO  : Successfully done setting XSCT server connection channel  
+22:05:26 INFO  : Successfully done query RDI_DATADIR 
+22:05:26 INFO  : Successfully done setting workspace for the tool. 
+22:19:35 INFO  : Result from executing command 'getProjects': SimpleMixer_Platform
+22:19:35 INFO  : Result from executing command 'getPlatforms': SimpleMixer_Platform|D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/SimpleMixer_Platform.xpfm
+22:19:36 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:22:20 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:22:21 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+22:22:21 INFO  : 'jtag frequency' command is executed.
+22:22:21 INFO  : Context for 'APU' is selected.
+22:22:21 INFO  : System reset is completed.
+22:22:24 INFO  : 'after 3000' command is executed.
+22:22:24 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+22:22:27 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+22:22:27 INFO  : Context for 'APU' is selected.
+22:22:27 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+22:22:27 INFO  : 'configparams force-mem-access 1' command is executed.
+22:22:27 INFO  : Context for 'APU' is selected.
+22:22:27 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+22:22:27 INFO  : 'ps7_init' command is executed.
+22:22:27 INFO  : 'ps7_post_config' command is executed.
+22:22:27 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:22:28 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:22:28 INFO  : 'configparams force-mem-access 0' command is executed.
+22:22:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:22:28 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:22:28 INFO  : 'con' command is executed.
+22:22:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:22:28 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+22:26:59 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:27:13 INFO  : Disconnected from the channel tcfchan#2.
+22:27:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:27:15 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+22:27:15 INFO  : 'jtag frequency' command is executed.
+22:27:15 INFO  : Context for 'APU' is selected.
+22:27:15 INFO  : System reset is completed.
+22:27:18 INFO  : 'after 3000' command is executed.
+22:27:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+22:27:20 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+22:27:20 INFO  : Context for 'APU' is selected.
+22:27:20 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+22:27:20 INFO  : 'configparams force-mem-access 1' command is executed.
+22:27:20 INFO  : Context for 'APU' is selected.
+22:27:20 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+22:27:21 INFO  : 'ps7_init' command is executed.
+22:27:21 INFO  : 'ps7_post_config' command is executed.
+22:27:21 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:27:21 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:27:21 INFO  : 'configparams force-mem-access 0' command is executed.
+22:27:21 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:27:21 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:27:21 INFO  : 'con' command is executed.
+22:27:21 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:27:21 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+22:32:50 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:33:02 INFO  : Disconnected from the channel tcfchan#3.
+22:33:03 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:33:05 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+22:33:05 INFO  : 'jtag frequency' command is executed.
+22:33:05 INFO  : Context for 'APU' is selected.
+22:33:05 INFO  : System reset is completed.
+22:33:08 INFO  : 'after 3000' command is executed.
+22:33:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+22:33:10 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+22:33:11 INFO  : Context for 'APU' is selected.
+22:33:11 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+22:33:11 INFO  : 'configparams force-mem-access 1' command is executed.
+22:33:11 INFO  : Context for 'APU' is selected.
+22:33:11 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+22:33:11 INFO  : 'ps7_init' command is executed.
+22:33:11 INFO  : 'ps7_post_config' command is executed.
+22:33:11 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:33:11 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:33:11 INFO  : 'configparams force-mem-access 0' command is executed.
+22:33:11 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:33:11 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:33:12 INFO  : 'con' command is executed.
+22:33:12 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:33:12 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+22:35:19 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:36:27 INFO  : Disconnected from the channel tcfchan#4.
+22:36:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:36:29 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+22:36:29 INFO  : 'jtag frequency' command is executed.
+22:36:29 INFO  : Context for 'APU' is selected.
+22:36:29 INFO  : System reset is completed.
+22:36:32 INFO  : 'after 3000' command is executed.
+22:36:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+22:36:35 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+22:36:35 INFO  : Context for 'APU' is selected.
+22:36:35 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+22:36:35 INFO  : 'configparams force-mem-access 1' command is executed.
+22:36:35 INFO  : Context for 'APU' is selected.
+22:36:35 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+22:36:35 INFO  : 'ps7_init' command is executed.
+22:36:35 INFO  : 'ps7_post_config' command is executed.
+22:36:35 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:36:36 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:36:36 INFO  : 'configparams force-mem-access 0' command is executed.
+22:36:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:36:36 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:36:36 INFO  : 'con' command is executed.
+22:36:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:36:36 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+22:38:50 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:44:40 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:45:28 INFO  : Checking for BSP changes to sync application flags for project 'App'...
+22:45:43 INFO  : Disconnected from the channel tcfchan#5.
+22:45:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:45:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+22:45:53 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+22:46:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+22:46:01 INFO  : Jtag cable 'Digilent Arty Z7 003017B5BD7AA' is selected.
+22:46:01 INFO  : 'jtag frequency' command is executed.
+22:46:01 INFO  : Context for 'APU' is selected.
+22:46:01 INFO  : System reset is completed.
+22:46:04 INFO  : 'after 3000' command is executed.
+22:46:04 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}' command is executed.
+22:46:06 INFO  : Device configured successfully with "D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit"
+22:46:06 INFO  : Context for 'APU' is selected.
+22:46:06 INFO  : Hardware design and registers information is loaded from 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa'.
+22:46:06 INFO  : 'configparams force-mem-access 1' command is executed.
+22:46:06 INFO  : Context for 'APU' is selected.
+22:46:06 INFO  : Sourcing of 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl' is done.
+22:46:07 INFO  : 'ps7_init' command is executed.
+22:46:07 INFO  : 'ps7_post_config' command is executed.
+22:46:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:46:07 INFO  : The application 'D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf' is downloaded to processor 'ps7_cortexa9_0'.
+22:46:07 INFO  : 'configparams force-mem-access 0' command is executed.
+22:46:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_32bitLR_AFadrsrange.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/Debug/App.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+22:46:07 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+22:46:07 INFO  : 'con' command is executed.
+22:46:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+22:46:07 INFO  : Launch script is exported to file 'D:\AudioProcessing\Project\Repo\SimpleMixer\SW\Vitis\App_system\_ide\scripts\debugger_app-default.tcl'
+23:02:38 INFO  : Disconnected from the channel tcfchan#6.

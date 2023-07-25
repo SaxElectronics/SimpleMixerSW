@@ -195,6 +195,7 @@ int main()
     for (;;)
     {
     	AF_GenerateSineWaveAndWriteToBuff();
+    	AF_RestartDMAs();
     	//AF_ReadAudioSamples(&AFInstance);
 
     }

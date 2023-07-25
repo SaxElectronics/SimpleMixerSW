@@ -103,6 +103,8 @@ extern void *XS2MMAFCallback(void *data);
 extern void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
 extern void AF_GenerateSineWaveAndWriteToBuff(void);
 extern void AF_GetHwConfig(XAudioFormatter *AFInstancePtr, AudioFormatter_HwConfig* AFHwConfigPtr);
+extern void AF_RestartDMAs(void);
+
 
 /*
  * variables declarations

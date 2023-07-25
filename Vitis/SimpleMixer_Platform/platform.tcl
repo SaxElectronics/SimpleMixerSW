@@ -58,3 +58,17 @@ platform generate
 platform generate
 platform generate -domains standalone_domain 
 platform generate
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_I2S_slave.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_I2S_slave_32bitLRclock.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_32bit_LRclock.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_32bitLR_AFadrsrange.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_32bitLR_AFadrsrange.xsa}
+platform generate
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_I2S_master_LR_24bit.xsa}
+platform generate -domains 
