@@ -85,14 +85,16 @@ static u32 current_period_s2mm;
 static u32 current_period_mm2s;
 
 u32* AF_bufferPtr;
-u32* AF_PeriodPtr;
+u32* AF_PeriodPtr_s2mm;
+u32* AF_PeriodPtr_mm2s;
+
 u32 TxBufAdr;
 u32 RxBufAdr;
 
 AudioFormatter_HwConfig HwConfig_S2MM;
 AudioFormatter_HwConfig HwConfig_MM2S;
 
-XAudioFormatterHwParams af_mm2s_hw_params = {0x1000000000000000UL, 2, BIT_DEPTH_24, 8, 64};
+XAudioFormatterHwParams af_mm2s_hw_params = {0x0000000010000000UL, 2, BIT_DEPTH_24, 8, 64};
 XAudioFormatterHwParams af_s2mm_hw_params = {0x0000000000000000UL, 2, BIT_DEPTH_24, 8, 64};
 
 const double PI = 3.141592653589793238463;
@@ -139,8 +141,8 @@ void AudioFormatter_Init(void)
 
 	//af_mm2s_hw_params.buf_addr = (u64)(u32)(&TxBuf[0]);
 	//af_s2mm_hw_params.buf_addr = (u64)(u32)(&RxBuf[0]);
-	TxBufAdr = af_mm2s_hw_params.buf_addr;
-	RxBufAdr = af_s2mm_hw_params.buf_addr;
+	TxBufAdr = (u32) af_mm2s_hw_params.buf_addr;
+	RxBufAdr = (u32) af_s2mm_hw_params.buf_addr;
 
 	u32 Status;
 	XAudioFormatter *AFInstancePtr = &AFInstance;
@@ -285,7 +287,7 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	    AF_bufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
 	}
 	/* do not stop the DMA? */
-	XAudioFormatterDMAStop(&AFInstance);
+	//XAudioFormatterDMAStop(&AFInstance);
 	/* get the number of bytes transfered to memory */
 	u32 NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
     xil_printf("Audio Formatter current channel ID: %d\r\n",(XAudioFormatter_ChannelId) AFInstancePtr->ChannelId);
@@ -307,17 +309,17 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	        AF_bufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
 	        // Loop through all samples in the period
 	        /* this pointer will be used inside one period */
-	        AF_PeriodPtr = AF_bufferPtr;
+	        AF_PeriodPtr_s2mm = AF_bufferPtr;
 	        for (sample = 0; sample < AF_AUDIOSAMPLES_PER_PERIOD; sample+=2)
 	        {
 	            // Read audio samples for left and right channels from the buffer
 //	            uint32_t *audio_sample_ptr = (uint32_t*)(uint64_t)AF_bufferPtr + sample * AF_NUMBER_OF_CHANNELS;
-	        	audio_sample_in_period_l[sample/2] = *AF_PeriodPtr;
-	        	audio_sample_in_period_lr[sample] = *AF_PeriodPtr;
-	            AF_PeriodPtr++;
-	            audio_sample_in_period_r[sample/2] = *AF_PeriodPtr;
-	        	audio_sample_in_period_lr[sample+1] = *AF_PeriodPtr;
-	            AF_PeriodPtr++;
+	        	audio_sample_in_period_l[sample/2] = *AF_PeriodPtr_s2mm;
+	        	audio_sample_in_period_lr[sample] = *AF_PeriodPtr_s2mm;
+	            AF_PeriodPtr_s2mm++;
+	            audio_sample_in_period_r[sample/2] = *AF_PeriodPtr_s2mm;
+	        	audio_sample_in_period_lr[sample+1] = *AF_PeriodPtr_s2mm;
+	            AF_PeriodPtr_s2mm++;
 
 	            xil_printf("Audio Formatter audio sample left: %d\r\n", (int)audio_sample_in_period_l[sample]);
 	            xil_printf("Audio Formatter audio sample right: %d\r\n", (int)audio_sample_in_period_r[sample]);
@@ -587,22 +589,23 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 		current_period_mm2s = 0;
 	}
 	/* enable the I2S Tx core*/
-	XI2s_Tx_Enable(&I2sTxInstance, 0x1);
+	//XI2s_Tx_Enable(&I2sTxInstance, 0x1);
 
 	// get the pointer to the next sample
 	AF_bufferPtr += current_period_mm2s * AF_AUDIOSAMPLES_PER_PERIOD;
 	// Loop through all samples in the period
 	/* this pointer will be used inside one period */
-	AF_PeriodPtr = AF_bufferPtr;
+	AF_PeriodPtr_mm2s = AF_bufferPtr;
     uint32_t sample;
 
 	for (sample = 0; sample < AF_AUDIOSAMPLES_PER_PERIOD; sample+=2)
 	{
 		// Read audio samples for left and right channels from the buffer
 //	            uint32_t *audio_sample_ptr = (uint32_t*)(uint64_t)AF_bufferPtr + sample * AF_NUMBER_OF_CHANNELS;
-		*AF_PeriodPtr = audio_sample_in_period_l[sample];
-		AF_PeriodPtr++;
-		*AF_PeriodPtr = audio_sample_in_period_r[sample];
+		*AF_PeriodPtr_mm2s = audio_sample_in_period_l[sample/2];
+		AF_PeriodPtr_mm2s++;
+		*AF_PeriodPtr_mm2s = audio_sample_in_period_r[sample/2];
+		AF_PeriodPtr_mm2s++;
 
 		xil_printf("DMA sent audio sample left: %d\r\n", (int)audio_sample_in_period_l[sample]);
 		xil_printf("DMA sent audio sample right: %d\r\n", (int)audio_sample_in_period_r[sample]);

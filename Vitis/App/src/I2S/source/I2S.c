@@ -71,7 +71,8 @@ void I2sTxAesGetChStsHandler(void *CallBackRef);
 void I2sTxAesBlockErrIntrHandler(void *CallBackRef);
 void I2sTxAesBlockCmplIntrHandler(void *CallBackRef);
 u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr);
-
+extern u32 XI2s_Rx_GetChMux(XI2s_Rx *InstancePtr, XI2s_Rx_ChannelId ChID);
+extern u32 XI2s_Tx_GetChMux(XI2s_Tx *InstancePtr, XI2s_Tx_ChannelId ChID);
 
 /*****************************************************************************/
 /**
@@ -169,7 +170,7 @@ u32 InitializeI2sRx(XI2s_Rx *I2sRxInstancePtr)
 	XI2s_Rx_IntrEnable(I2sRxInstancePtr, XI2S_RX_INTR_AES_BLKCMPLT_MASK);
 	XI2s_Rx_IntrEnable(I2sRxInstancePtr, XI2S_RX_INTR_AUDOVRFLW_MASK);
 	/* enable left, right justification */
-	XI2s_Rx_JustifyEnable(I2sRxInstancePtr, true);
+	XI2s_Rx_JustifyEnable(I2sRxInstancePtr, false);
 	/* set left justification */
 	XI2s_Rx_Justify(I2sRxInstancePtr, (XI2s_Rx_Justification) 0U);
 	/* enable logging for Rx */
@@ -490,6 +491,11 @@ void I2SRx_GetHwConfig(XI2s_Rx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr )
 	VERBOSE("I2S Rx LR clock is 32bit: ");
 	VERBOSE("%d",(I2SHwConfigPtr->LRClock32bit));
 
+	/* get Channel Mux status */
+	I2SHwConfigPtr->ChannelMux = XI2s_Rx_GetChMux(I2SInstancePtr, 0x0);
+	VERBOSE("I2S Rx Channel Mux is: ");
+	VERBOSE("%d",(I2SHwConfigPtr->ChannelMux ));
+
 }
 
 /*****************************************************************************/
@@ -511,10 +517,10 @@ void I2SRx_GetHwConfig(XI2s_Rx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr )
 void I2STx_GetHwConfig(XI2s_Tx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr )
 {
 	/* read out Control Register */
-	I2SHwConfigPtr->ControlReg = XI2s_Rx_ReadReg(I2SInstancePtr->Config.BaseAddress,
+	I2SHwConfigPtr->ControlReg = XI2s_Tx_ReadReg(I2SInstancePtr->Config.BaseAddress,
 				XI2S_TX_CORE_CTRL_OFFSET);
 	/* read out Config Register */
-	I2SHwConfigPtr->ConfigReg = XI2s_Rx_ReadReg(I2SInstancePtr->Config.BaseAddress,
+	I2SHwConfigPtr->ConfigReg = XI2s_Tx_ReadReg(I2SInstancePtr->Config.BaseAddress,
 					XI2S_TX_CORE_CFG_OFFSET);
 	/* Audio Data Width */
 	I2SHwConfigPtr->DataWidth = (I2SHwConfigPtr->ConfigReg & XI2S_TX_REG_CFG_DWDTH_MASK);
@@ -548,6 +554,72 @@ void I2STx_GetHwConfig(XI2s_Tx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr )
 	VERBOSE("I2S Tx LR clock is 32bit: ");
 	VERBOSE("%d",(I2SHwConfigPtr->LRClock32bit));
 
+	/* get Channel Mux status */
+	I2SHwConfigPtr->ChannelMux = XI2s_Tx_GetChMux(I2SInstancePtr, 0x0);
+	VERBOSE("I2S Tx Channel Mux is: ");
+	VERBOSE("%d",(I2SHwConfigPtr->ChannelMux ));
 }
 
 
+/****************************************************************************/
+/**
+ * This function sets the input source for the specified AXI-Stream channel pair
+ *
+ * @param  InstancePtr is a pointer to the XI2s Receiver instance.
+ * @param  ChID specifies the AXI-Stream channel pair
+ *   - 0 : AXI-Stream channel 0 and 1
+ *   - 1 : AXI-Stream channel 2 and 3
+ *   - 2 : AXI-Stream channel 4 and 5
+ *   - 3 : AXI-Stream channel 6 and 7
+ * @param  InputSource specifies the input source
+ *
+ * @return
+ *   - XST_SUCCESS : if successful.
+ *   - XST_FAILURE : if the AXI-Stream channel pair is invalid.
+ *
+ *****************************************************************************/
+u32 XI2s_Rx_GetChMux(XI2s_Rx *InstancePtr, XI2s_Rx_ChannelId ChID)
+{
+	Xil_AssertNonvoid(InstancePtr != NULL);
+
+	if (ChID > XI2S_RX_NUM_CHANNELS)
+		return XST_FAILURE;
+
+	int RegOffset = XI2S_RX_CH01_OFFSET + (ChID * 4);
+
+	u32 data = XI2s_Rx_ReadReg(InstancePtr->Config.BaseAddress,
+			RegOffset);
+	return data;
+}
+
+
+/****************************************************************************/
+/**
+ * This function sets the input source for the specified AXI-Stream channel pair
+ *
+ * @param  InstancePtr is a pointer to the XI2s Receiver instance.
+ * @param  ChID specifies the AXI-Stream channel pair
+ *   - 0 : AXI-Stream channel 0 and 1
+ *   - 1 : AXI-Stream channel 2 and 3
+ *   - 2 : AXI-Stream channel 4 and 5
+ *   - 3 : AXI-Stream channel 6 and 7
+ * @param  InputSource specifies the input source
+ *
+ * @return
+ *   - XST_SUCCESS : if successful.
+ *   - XST_FAILURE : if the AXI-Stream channel pair is invalid.
+ *
+ *****************************************************************************/
+u32 XI2s_Tx_GetChMux(XI2s_Tx *InstancePtr, XI2s_Tx_ChannelId ChID)
+{
+	Xil_AssertNonvoid(InstancePtr != NULL);
+
+	if (ChID > XI2S_TX_NUM_CHANNELS)
+		return XST_FAILURE;
+
+	int RegOffset = XI2S_TX_CH01_OFFSET + (ChID * 4);
+
+	u32 data = XI2s_Tx_ReadReg(InstancePtr->Config.BaseAddress,
+			RegOffset);
+	return data;
+}

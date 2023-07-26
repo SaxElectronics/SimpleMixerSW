@@ -366,7 +366,7 @@
 #define XPAR_I2S_RECEIVER_0_DWIDTH 24
 #define XPAR_I2S_RECEIVER_0_IS_MASTER 1
 #define XPAR_I2S_RECEIVER_0_NUM_CHANNELS 1
-#define XPAR_I2S_RECEIVER_0_32BIT_LR 1
+#define XPAR_I2S_RECEIVER_0_32BIT_LR 0
 
 
 /******************************************************************/
@@ -378,7 +378,7 @@
 #define XPAR_XI2SRX_0_DWIDTH 24
 #define XPAR_XI2SRX_0_IS_MASTER 1
 #define XPAR_XI2SRX_0_NUM_CHANNELS 1
-#define XPAR_XI2SRX_0_32BIT_LR 1
+#define XPAR_XI2SRX_0_32BIT_LR 0
 
 
 /******************************************************************/
@@ -393,7 +393,7 @@
 #define XPAR_I2S_TRANSMITTER_0_DWIDTH 24
 #define XPAR_I2S_TRANSMITTER_0_IS_MASTER 1
 #define XPAR_I2S_TRANSMITTER_0_NUM_CHANNELS 1
-#define XPAR_I2S_TRANSMITTER_0_32BIT_LR 1
+#define XPAR_I2S_TRANSMITTER_0_32BIT_LR 0
 
 
 /******************************************************************/
@@ -405,7 +405,7 @@
 #define XPAR_XI2STX_0_DWIDTH 24
 #define XPAR_XI2STX_0_IS_MASTER 1
 #define XPAR_XI2STX_0_NUM_CHANNELS 1
-#define XPAR_XI2STX_0_32BIT_LR 1
+#define XPAR_XI2STX_0_32BIT_LR 0
 
 
 /******************************************************************/

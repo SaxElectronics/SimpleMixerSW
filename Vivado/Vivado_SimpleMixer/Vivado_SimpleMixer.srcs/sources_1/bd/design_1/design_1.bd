@@ -1211,11 +1211,17 @@
         "xci_path": "ip\\design_1_audio_formatter_0_1\\design_1_audio_formatter_0_1.xci",
         "inst_hier_path": "audio_formatter_0",
         "parameters": {
+          "C_MM2S_ADDR_WIDTH": {
+            "value": "32"
+          },
           "C_MM2S_ASYNC_CLOCK": {
             "value": "0"
           },
           "C_MM2S_DATAFORMAT": {
             "value": "2"
+          },
+          "C_S2MM_ADDR_WIDTH": {
+            "value": "32"
           },
           "C_S2MM_ASYNC_CLOCK": {
             "value": "0"
@@ -1231,8 +1237,8 @@
             "address_space_ref": "m_axi_mm2s",
             "base_address": {
               "minimum": "0x00000000",
-              "maximum": "0xFFFFFFFFFFFFFFFF",
-              "width": "64"
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
             }
           },
           "m_axi_s2mm": {
@@ -1241,20 +1247,20 @@
             "address_space_ref": "m_axi_s2mm",
             "base_address": {
               "minimum": "0x00000000",
-              "maximum": "0xFFFFFFFFFFFFFFFF",
-              "width": "64"
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
             }
           }
         },
         "addressing": {
           "address_spaces": {
             "m_axi_mm2s": {
-              "range": "16E",
-              "width": "64"
+              "range": "4G",
+              "width": "32"
             },
             "m_axi_s2mm": {
-              "range": "16E",
-              "width": "64"
+              "range": "4G",
+              "width": "32"
             }
           }
         }
@@ -1814,7 +1820,7 @@
         "inst_hier_path": "i2s_receiver_0",
         "parameters": {
           "C_32BIT_LR": {
-            "value": "0"
+            "value": "1"
           },
           "C_DEPTH": {
             "value": "512"
@@ -1831,7 +1837,7 @@
         "inst_hier_path": "i2s_transmitter_0",
         "parameters": {
           "C_32BIT_LR": {
-            "value": "0"
+            "value": "1"
           },
           "C_DEPTH": {
             "value": "512"
@@ -4069,8 +4075,8 @@
             "segments": {
               "SEG_processing_system7_0_HP0_DDR_LOWOCM": {
                 "address_block": "/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM",
-                "offset": "0x1000000000000000",
-                "range": "256M"
+                "offset": "0x10000000",
+                "range": "4K"
               }
             }
           },
@@ -4078,8 +4084,8 @@
             "segments": {
               "SEG_processing_system7_0_HP0_DDR_LOWOCM": {
                 "address_block": "/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM",
-                "offset": "0x0000000000000000",
-                "range": "256M"
+                "offset": "0x00000000",
+                "range": "4K"
               }
             }
           }

@@ -112,6 +112,8 @@ typedef struct I2S_HwConfig
 	u32 RightJustification;
 	/* LRClock32bit */
 	u32 LRClock32bit;
+	/* Channel Mux */
+	u32 ChannelMux;
 
 }I2S_HwConfig;
 
