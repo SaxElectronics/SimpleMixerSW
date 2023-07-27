@@ -73,6 +73,10 @@ u32 RxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
 u32 TxBuf[AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD];
 uint32_t audio_sample_in_period_l[AF_AUDIOSAMPLES_PER_PERIOD/2], audio_sample_in_period_r[AF_AUDIOSAMPLES_PER_PERIOD/2];
 uint32_t audio_sample_in_period_lr[AF_AUDIOSAMPLES_PER_PERIOD];
+
+float audio_sample_l = 0, float audio_sample_r = 0;
+
+
 int samplingRate = 48000; // Sampling rate in Hz
 double frequency = 440.0; // Frequency of the "A" note in Hz
 
@@ -85,6 +89,9 @@ static u32 current_period_s2mm;
 static u32 current_period_mm2s;
 
 u32* AF_bufferPtr;
+u32* AF_RxbufferPtr;
+u32* AF_TxbufferPtr;
+
 u32* AF_PeriodPtr_s2mm;
 u32* AF_PeriodPtr_mm2s;
 
@@ -94,8 +101,28 @@ u32 RxBufAdr;
 AudioFormatter_HwConfig HwConfig_S2MM;
 AudioFormatter_HwConfig HwConfig_MM2S;
 
-XAudioFormatterHwParams af_mm2s_hw_params = {0x0000000010000000UL, 2, BIT_DEPTH_24, 8, 64};
-XAudioFormatterHwParams af_s2mm_hw_params = {0x0000000000000000UL, 2, BIT_DEPTH_24, 8, 64};
+XAudioFormatterHwParams af_mm2s_hw_params = {
+		/* buf_addr */
+		0x0000000010000000UL,
+		/* active_ch */
+		2,
+		/* bits_per_sample */
+		BIT_DEPTH_24,
+		/* periods */
+		2,
+		/* bytes_per_period */
+		64*4};
+XAudioFormatterHwParams af_s2mm_hw_params = {
+		/* buf_addr */
+		0x0000000000000000UL,
+		/* active_ch */
+		2,
+		/* bits_per_sample */
+		BIT_DEPTH_24,
+		/* periods */
+		2,
+		/* bytes_per_period */
+		64*4};
 
 const double PI = 3.141592653589793238463;
 
@@ -262,6 +289,20 @@ u32 InitializeAudioFormatter(XAudioFormatter *AFInstancePtr)
 	return Status;
 }
 
+
+
+int32_t SampleSaturate (float inSample) {
+
+    /*
+     * Max sample value can be +/- 2^31. So before back-conversion from float to int_32 we need to saturate the sample (otherwise distorted sound might appear)
+     */
+
+    if (inSample > 2147400000.0f) inSample = 2147400000.0f;
+    if (inSample < -2147400000.0f) inSample = -2147400000.0f;
+    return (int32_t) roundf(inSample);
+}
+
+
 /*****************************************************************************/
 /**
  *
@@ -282,12 +323,14 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	AF_S2MM_IOC_counter++;
 	/* stop the S2MM transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_S2MM)
-	{
-	    AF_bufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
-	}
 	/* do not stop the DMA? */
 	//XAudioFormatterDMAStop(&AFInstance);
+	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_S2MM)
+	{
+	    AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
+	}
+    AF_TxbufferPtr = (u32*)  (uintptr_t) (  (af_mm2s_hw_params.buf_addr )  );
+
 	/* get the number of bytes transfered to memory */
 	u32 NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
     xil_printf("Audio Formatter current channel ID: %d\r\n",(XAudioFormatter_ChannelId) AFInstancePtr->ChannelId);
@@ -306,23 +349,36 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 //	    for (period = 0; period < AF_NUMBER_OF_PERIODS; period++)
 //	    {
 	        // get the pointer to the next sample
-	        AF_bufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
+    		AF_RxbufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
+    		AF_TxbufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
+
 	        // Loop through all samples in the period
 	        /* this pointer will be used inside one period */
-	        AF_PeriodPtr_s2mm = AF_bufferPtr;
+	        AF_PeriodPtr_s2mm = AF_RxbufferPtr;
+	        AF_PeriodPtr_mm2s = AF_TxbufferPtr;
+
 	        for (sample = 0; sample < AF_AUDIOSAMPLES_PER_PERIOD; sample+=2)
 	        {
 	            // Read audio samples for left and right channels from the buffer
 //	            uint32_t *audio_sample_ptr = (uint32_t*)(uint64_t)AF_bufferPtr + sample * AF_NUMBER_OF_CHANNELS;
 	        	audio_sample_in_period_l[sample/2] = *AF_PeriodPtr_s2mm;
 	        	audio_sample_in_period_lr[sample] = *AF_PeriodPtr_s2mm;
+	        	audio_sample_l = *AF_PeriodPtr_s2mm;
+
 	            AF_PeriodPtr_s2mm++;
 	            audio_sample_in_period_r[sample/2] = *AF_PeriodPtr_s2mm;
 	        	audio_sample_in_period_lr[sample+1] = *AF_PeriodPtr_s2mm;
+	        	audio_sample_r = *AF_PeriodPtr_s2mm;
+
 	            AF_PeriodPtr_s2mm++;
 
-	            xil_printf("Audio Formatter audio sample left: %d\r\n", (int)audio_sample_in_period_l[sample]);
-	            xil_printf("Audio Formatter audio sample right: %d\r\n", (int)audio_sample_in_period_r[sample]);
+	            *AF_PeriodPtr_mm2s = audio_sample_in_period_l[sample/2];
+				AF_PeriodPtr_mm2s++;
+				*AF_PeriodPtr_mm2s = audio_sample_in_period_r[sample/2];
+				AF_PeriodPtr_mm2s++;
+
+	            //xil_printf("Audio Formatter audio sample left: %d\r\n", (int)audio_sample_in_period_l[sample]);
+				//xil_printf("Audio Formatter audio sample right: %d\r\n", (int)audio_sample_in_period_r[sample]);
 
 
 	            // Process the audio samples or store them as needed
@@ -334,7 +390,7 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 
 	/* start the MM2S transfer */
 	/* transfer data to the I2S transmitter */
-	//AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
 	//XAudioFormatterDMAStart(&AFInstance);
 	return(data);
 }
@@ -578,11 +634,11 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	AF_MM2S_IOC_counter++;
 	/* do not start automatically a next MM2S transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+	//XAudioFormatterDMAStop(&AFInstance);
 	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_MM2S)
 	{
 		AF_bufferPtr = (u32*) (uintptr_t) (af_mm2s_hw_params.buf_addr )  ;
 	}
-	XAudioFormatterDMAStop(&AFInstance);
 	/* reset if last period reached */
 	if (current_period_mm2s > AF_NUMBER_OF_PERIODS)
 	{
@@ -615,7 +671,10 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 		// ...
 	}
 	current_period_mm2s++;
+	/* start DMA for S2MM again */
 
+	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+	//XAudioFormatterDMAStart(&AFInstance);
 	return(data);
 }
 /*****************************************************************************/

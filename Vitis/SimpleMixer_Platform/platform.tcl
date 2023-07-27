@@ -76,3 +76,5 @@ platform generate -domains standalone_domain,standalone_ps7_cortexa9_0,zynq_fsbl
 platform active {SimpleMixer_Platform}
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/design_1_wrapper.xsa}
 platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/design_1_wrapper.xsa}
+platform generate -domains 

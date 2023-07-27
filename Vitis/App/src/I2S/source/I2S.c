@@ -252,7 +252,7 @@ u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr)
 	/* enable logging for Tx */
 	XI2s_Tx_LogEnable(I2sTxInstancePtr);
 	/* enable the core*/
-	XI2s_Tx_Enable(I2sTxInstancePtr, 0x1);
+	XI2s_Tx_Enable(I2sTxInstancePtr, TRUE);
 	/* Read the set up of the Rx core */
 	I2STx_GetHwConfig(I2sTxInstancePtr, &I2sTx_HwConfig);
 	return(XST_SUCCESS);
@@ -311,8 +311,8 @@ void I2sTxAesBlockCmplIntrHandler(void *CallBackRef)
 	/* display log buffer */
 	//XI2s_Tx_LogDisplay(InstancePtr);
 	/* stop the transfer of data from MM2S */
-	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-	XAudioFormatterDMAStop(&AFInstance);
+	//AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+	//XAudioFormatterDMAStart(&AFInstance);
 	/* enable the I2S Tx core*/
 	//XI2s_Tx_Enable(&I2sTxInstance, 0x1);
 	}
@@ -351,8 +351,8 @@ void I2sRxAesBlockCmplIntrHandler(void *CallBackRef)
 			//u32 validitybit_regval = XI2s_Rx_ReadReg(I2sRxInstancePtr->Config.BaseAddress, XI2S_RX_VALIDITY_BIT_OFFSET);
 
 			/* start the S2MM DMA transfer */
-			AFInstance.ChannelId = XAudioFormatter_S2MM;
-			XAudioFormatterDMAStart(&AFInstance);
+			//AFInstance.ChannelId = XAudioFormatter_S2MM;
+			//XAudioFormatterDMAStart(&AFInstance);
 		}
 }
 /*****************************************************************************/

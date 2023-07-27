@@ -3939,7 +3939,7 @@
       "i2s_receiver_0_m_axis_aud_tid": {
         "ports": [
           "i2s_receiver_0/m_axis_aud_tid",
-          "xlconcat_2/In1"
+          "xlconcat_2/In0"
         ]
       },
       "i2s_receiver_0_m_axis_aud_tvalid": {
@@ -4058,7 +4058,7 @@
       "xlconstant_0_dout": {
         "ports": [
           "xlconstant_0/dout",
-          "xlconcat_2/In0"
+          "xlconcat_2/In1"
         ]
       },
       "xlslice_0_Dout": {
