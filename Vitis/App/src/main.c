@@ -92,8 +92,8 @@ u32 RxStatus = 0;
 /* includes all interrupts processed by the PS7 */
 const ivt_t ivt[] =
 {
-	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance },
+	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
 	{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance },
 	{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance },
 	//{XPAR_FABRIC_AXI_GPIO_1_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio },
@@ -189,6 +189,11 @@ int main()
 	{
 		print("Initializing I2S Rx and Tx IP FAILED!\n\r");
 	}
+	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+	XAudioFormatterDMAStart(AFInstancePtr);
+	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+	XAudioFormatterDMAStart(AFInstancePtr);
+
     print("Hello from Simple Mixer App\n\r");
     print("Successfully ran the Simple Mixer application\n\r");
     print("Entering infinite loop\n\r");

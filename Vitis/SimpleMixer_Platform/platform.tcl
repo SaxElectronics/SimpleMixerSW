@@ -78,3 +78,5 @@ platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado
 platform generate -domains 
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/Vivado_SimpleMixer/design_1_wrapper.xsa}
 platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
+platform generate -domains 
