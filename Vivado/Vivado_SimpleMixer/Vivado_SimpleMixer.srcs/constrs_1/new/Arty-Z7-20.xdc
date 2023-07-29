@@ -11,7 +11,7 @@
 #set_property -dict { PACKAGE_PIN M20    IOSTANDARD LVCMOS33 } [get_ports { sw_rst[0] }]; #IO_L7N_T1_AD2N_35 Sch=SW0
 #set_property -dict { PACKAGE_PIN M19    IOSTANDARD LVCMOS33 } [get_ports { sw_rst[1] }]; #IO_L7P_T1_AD2P_35 Sch=SW1
 
-## RGB LEDs
+# RGB LEDs
 set_property -dict { PACKAGE_PIN L15    IOSTANDARD LVCMOS33 } [get_ports { rgb1_tri_o[0] }]; #IO_L22N_T3_AD7P_35 Sch=LED4_B
 set_property -dict { PACKAGE_PIN G17    IOSTANDARD LVCMOS33 } [get_ports { rgb1_tri_o[1] }]; #IO_L16P_T2_35 Sch=LED4_G
 set_property -dict { PACKAGE_PIN N15    IOSTANDARD LVCMOS33 } [get_ports { rgb1_tri_o[2] }]; #IO_L21P_T3_DQS_AD14P_35 Sch=LED4_R
@@ -19,17 +19,17 @@ set_property -dict { PACKAGE_PIN G14    IOSTANDARD LVCMOS33 } [get_ports { rgb2_
 set_property -dict { PACKAGE_PIN L14    IOSTANDARD LVCMOS33 } [get_ports { rgb2_tri_o[1] }]; #IO_L22P_T3_AD7P_35 Sch=LED5_G
 set_property -dict { PACKAGE_PIN M15    IOSTANDARD LVCMOS33 } [get_ports { rgb2_tri_o[2] }]; #IO_L23N_T3_35 Sch=LED5_R
 
-## LEDs
-#set_property -dict { PACKAGE_PIN R14    IOSTANDARD LVCMOS33 } [get_ports { led[0] }]; #IO_L6N_T0_VREF_34 Sch=LED0
-#set_property -dict { PACKAGE_PIN P14    IOSTANDARD LVCMOS33 } [get_ports { led[1] }]; #IO_L6P_T0_34 Sch=LED1
-#set_property -dict { PACKAGE_PIN N16    IOSTANDARD LVCMOS33 } [get_ports { led[2] }]; #IO_L21N_T3_DQS_AD14N_35 Sch=LED2
-#set_property -dict { PACKAGE_PIN M14    IOSTANDARD LVCMOS33 } [get_ports { led[3] }]; #IO_L23P_T3_35 Sch=LED3
+# LEDs
+set_property -dict { PACKAGE_PIN R14    IOSTANDARD LVCMOS33 } [get_ports { leds_4bits_tri_o[0] }]; #IO_L6N_T0_VREF_34 Sch=LED0
+set_property -dict { PACKAGE_PIN P14    IOSTANDARD LVCMOS33 } [get_ports { leds_4bits_tri_o[1] }]; #IO_L6P_T0_34 Sch=LED1
+set_property -dict { PACKAGE_PIN N16    IOSTANDARD LVCMOS33 } [get_ports { leds_4bits_tri_o[2] }]; #IO_L21N_T3_DQS_AD14N_35 Sch=LED2
+set_property -dict { PACKAGE_PIN M14    IOSTANDARD LVCMOS33 } [get_ports { leds_4bits_tri_o[3] }]; #IO_L23P_T3_35 Sch=LED3
 
 ## Buttons
-set_property -dict { PACKAGE_PIN D19    IOSTANDARD LVCMOS33 } [get_ports { btn[0] }]; #IO_L4P_T0_35 Sch=BTN0
-set_property -dict { PACKAGE_PIN D20    IOSTANDARD LVCMOS33 } [get_ports { btn[1] }]; #IO_L4N_T0_35 Sch=BTN1
-set_property -dict { PACKAGE_PIN L20    IOSTANDARD LVCMOS33 } [get_ports { btn[2] }]; #IO_L9N_T1_DQS_AD3N_35 Sch=BTN2
-set_property -dict { PACKAGE_PIN L19    IOSTANDARD LVCMOS33 } [get_ports { btn[3] }]; #IO_L9P_T1_DQS_AD3P_35 Sch=BTN3
+set_property -dict { PACKAGE_PIN D19    IOSTANDARD LVCMOS33 } [get_ports { btns_4bits_tri_i[0] }]; #IO_L4P_T0_35 Sch=BTN0
+set_property -dict { PACKAGE_PIN D20    IOSTANDARD LVCMOS33 } [get_ports { btns_4bits_tri_i[1] }]; #IO_L4N_T0_35 Sch=BTN1
+set_property -dict { PACKAGE_PIN L20    IOSTANDARD LVCMOS33 } [get_ports { btns_4bits_tri_i[2] }]; #IO_L9N_T1_DQS_AD3N_35 Sch=BTN2
+set_property -dict { PACKAGE_PIN L19    IOSTANDARD LVCMOS33 } [get_ports { btns_4bits_tri_i[3] }]; #IO_L9P_T1_DQS_AD3P_35 Sch=BTN3
 
 ## Pmod Header JA
 set_property -dict { PACKAGE_PIN Y18   IOSTANDARD LVCMOS33 } [get_ports { MCLK_TX }]; #IO_L17P_T2_34 Sch=JA1_P (Pin 1)
@@ -193,20 +193,4 @@ set_property -dict { PACKAGE_PIN W13   IOSTANDARD LVCMOS33 } [get_ports { PMOD[7
 #set_property PACKAGE_PIN T9 [get_ports {netic20_t9}]; #IO_L12P_T1_MRCC_13
 #set_property PACKAGE_PIN U9 [get_ports {netic20_u9}]; #IO_L17P_T2_13
 
-#set_property IOSTANDARD LVCMOS33 [get_ports LRCK_RX]
-#set_property IOSTANDARD LVCMOS33 [get_ports LRCK_TX]
-set_property IOSTANDARD LVCMOS33 [get_ports MCLK_RX]
-set_property IOSTANDARD LVCMOS33 [get_ports MCLK_TX]
-#set_property IOSTANDARD LVCMOS33 [get_ports SCLK_RX]
-set_property IOSTANDARD LVCMOS33 [get_ports SCLK_TX]
-set_property IOSTANDARD LVCMOS33 [get_ports SDIN_RX]
-set_property IOSTANDARD LVCMOS33 [get_ports SDOUT_TX]
-#set_property IOSTANDARD LVCMOS33 [get_ports reset_rtl]
-#set_property PACKAGE_PIN U19 [get_ports LRCK_RX]
-#set_property PACKAGE_PIN Y19 [get_ports LRCK_TX]
-#set_property PACKAGE_PIN W18 [get_ports SCLK_RX]
-set_property PACKAGE_PIN Y16 [get_ports SCLK_TX]
-set_property PACKAGE_PIN W19 [get_ports SDIN_RX]
-set_property PACKAGE_PIN Y17 [get_ports SDOUT_TX]
-set_property PACKAGE_PIN U18 [get_ports MCLK_RX]
-set_property PACKAGE_PIN Y18 [get_ports MCLK_TX]
+
