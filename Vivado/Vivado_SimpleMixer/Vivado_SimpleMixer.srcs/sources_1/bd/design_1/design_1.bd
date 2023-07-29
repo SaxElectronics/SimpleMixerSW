@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x8FE22FDBEF202306",
+      "boundary_crc": "0x85DAC67CE0E6BF86",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -254,6 +254,18 @@
             "direction": "O",
             "left": "2",
             "right": "0"
+          },
+          "TRI_I": {
+            "physical_name": "rgb1_tri_i",
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "TRI_T": {
+            "physical_name": "rgb1_tri_t",
+            "direction": "O",
+            "left": "2",
+            "right": "0"
           }
         }
       },
@@ -466,9 +478,9 @@
       },
       "ps7_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
-        "xci_path": "ip\\design_1_ps7_0_axi_periph_4\\design_1_ps7_0_axi_periph_4.xci",
+        "xci_path": "ip\\design_1_ps7_0_axi_periph_0\\design_1_ps7_0_axi_periph_0.xci",
         "inst_hier_path": "ps7_0_axi_periph",
-        "xci_name": "design_1_ps7_0_axi_periph_4",
+        "xci_name": "design_1_ps7_0_axi_periph_0",
         "parameters": {
           "NUM_MI": {
             "value": "5"
@@ -620,8 +632,8 @@
         "components": {
           "xbar": {
             "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
-            "xci_name": "design_1_xbar_5",
-            "xci_path": "ip\\design_1_xbar_5\\design_1_xbar_5.xci",
+            "xci_name": "design_1_xbar_0",
+            "xci_path": "ip\\design_1_xbar_0\\design_1_xbar_0.xci",
             "inst_hier_path": "ps7_0_axi_periph/xbar",
             "parameters": {
               "NUM_MI": {
@@ -1205,8 +1217,8 @@
       },
       "audio_formatter_0": {
         "vlnv": "xilinx.com:ip:audio_formatter:1.0",
-        "xci_name": "design_1_audio_formatter_0_1",
-        "xci_path": "ip\\design_1_audio_formatter_0_1\\design_1_audio_formatter_0_1.xci",
+        "xci_name": "design_1_audio_formatter_0_0",
+        "xci_path": "ip\\design_1_audio_formatter_0_0\\design_1_audio_formatter_0_0.xci",
         "inst_hier_path": "audio_formatter_0",
         "parameters": {
           "C_MM2S_ADDR_WIDTH": {
@@ -1265,8 +1277,8 @@
       },
       "rst_clk_wiz_98Mhz": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "xci_name": "design_1_proc_sys_reset_0_0",
-        "xci_path": "ip\\design_1_proc_sys_reset_0_0\\design_1_proc_sys_reset_0_0.xci",
+        "xci_name": "design_1_rst_clk_wiz_98Mhz_0",
+        "xci_path": "ip\\design_1_rst_clk_wiz_98Mhz_0\\design_1_rst_clk_wiz_98Mhz_0.xci",
         "inst_hier_path": "rst_clk_wiz_98Mhz"
       },
       "axi_mem_intercon": {
@@ -1365,8 +1377,8 @@
         "components": {
           "xbar": {
             "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
-            "xci_name": "design_1_xbar_6",
-            "xci_path": "ip\\design_1_xbar_6\\design_1_xbar_6.xci",
+            "xci_name": "design_1_xbar_1",
+            "xci_path": "ip\\design_1_xbar_1\\design_1_xbar_1.xci",
             "inst_hier_path": "axi_mem_intercon/xbar",
             "parameters": {
               "NUM_MI": {
@@ -1767,8 +1779,8 @@
       },
       "i2s_receiver_0": {
         "vlnv": "xilinx.com:ip:i2s_receiver:1.0",
-        "xci_name": "design_1_i2s_receiver_0_1",
-        "xci_path": "ip\\design_1_i2s_receiver_0_1\\design_1_i2s_receiver_0_1.xci",
+        "xci_name": "design_1_i2s_receiver_0_0",
+        "xci_path": "ip\\design_1_i2s_receiver_0_0\\design_1_i2s_receiver_0_0.xci",
         "inst_hier_path": "i2s_receiver_0",
         "parameters": {
           "C_32BIT_LR": {
@@ -1784,8 +1796,8 @@
       },
       "i2s_transmitter_0": {
         "vlnv": "xilinx.com:ip:i2s_transmitter:1.0",
-        "xci_name": "design_1_i2s_transmitter_0_1",
-        "xci_path": "ip\\design_1_i2s_transmitter_0_1\\design_1_i2s_transmitter_0_1.xci",
+        "xci_name": "design_1_i2s_transmitter_0_0",
+        "xci_path": "ip\\design_1_i2s_transmitter_0_0\\design_1_i2s_transmitter_0_0.xci",
         "inst_hier_path": "i2s_transmitter_0",
         "parameters": {
           "C_32BIT_LR": {
@@ -1795,7 +1807,7 @@
             "value": "128"
           },
           "C_ENABLE_FIFO_COUNT": {
-            "value": "true"
+            "value": "false"
           },
           "C_IS_MASTER": {
             "value": "1"
@@ -1804,8 +1816,8 @@
       },
       "axi_gpio_0": {
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "xci_name": "design_1_axi_gpio_0_1",
-        "xci_path": "ip\\design_1_axi_gpio_0_1\\design_1_axi_gpio_0_1.xci",
+        "xci_name": "design_1_axi_gpio_0_0",
+        "xci_path": "ip\\design_1_axi_gpio_0_0\\design_1_axi_gpio_0_0.xci",
         "inst_hier_path": "axi_gpio_0",
         "parameters": {
           "C_ALL_OUTPUTS_2": {
