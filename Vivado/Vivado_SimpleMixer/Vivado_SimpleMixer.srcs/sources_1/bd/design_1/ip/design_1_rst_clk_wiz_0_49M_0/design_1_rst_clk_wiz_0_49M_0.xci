@@ -5,7 +5,7 @@
     "cell_name": "rst_clk_wiz_0_49M",
     "component_reference": "xilinx.com:ip:proc_sys_reset:5.0",
     "ip_revision": "13",
-    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_0_49M_0_1",
+    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_0_49M_0",
     "parameters": {
       "component_parameters": {
         "C_NUM_PERP_ARESETN": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -50,7 +50,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "13" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_0_49M_0_1" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_0_49M_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],

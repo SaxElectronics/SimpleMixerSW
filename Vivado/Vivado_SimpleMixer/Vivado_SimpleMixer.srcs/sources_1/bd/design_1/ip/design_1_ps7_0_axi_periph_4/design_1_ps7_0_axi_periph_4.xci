@@ -1,15 +1,15 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "design_1_axi_mem_intercon_0",
-    "cell_name": "axi_mem_intercon",
+    "xci_name": "design_1_ps7_0_axi_periph_4",
+    "cell_name": "ps7_0_axi_periph",
     "component_reference": "xilinx.com:ip:axi_interconnect:2.1",
     "ip_revision": "28",
-    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_0",
+    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_ps7_0_axi_periph_4",
     "parameters": {
       "component_parameters": {
-        "NUM_SI": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "NUM_MI": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "NUM_SI": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "NUM_MI": [ { "value": "5", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "STRATEGY": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ENABLE_ADVANCED_OPTIONS": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ENABLE_PROTOCOL_CHECKERS": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -322,7 +322,7 @@
         "S13_ARB_PRIORITY": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "S14_ARB_PRIORITY": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "S15_ARB_PRIORITY": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "Component_Name": [ { "value": "design_1_axi_mem_intercon_0", "resolve_type": "user", "usage": "all" } ]
+        "Component_Name": [ { "value": "design_1_ps7_0_axi_periph_4", "resolve_type": "user", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -343,7 +343,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator_AppCore" } ],
         "IPREVISION": [ { "value": "28" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_axi_mem_intercon_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_ps7_0_axi_periph_4" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],

@@ -5,7 +5,7 @@
     "cell_name": "rst_ps7_0_100M",
     "component_reference": "xilinx.com:ip:proc_sys_reset:5.0",
     "ip_revision": "13",
-    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0_1",
+    "gen_directory": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0",
     "parameters": {
       "component_parameters": {
         "C_NUM_PERP_ARESETN": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -50,7 +50,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "13" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0_1" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1/ip/design_1_rst_ps7_0_100M_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],
@@ -95,7 +95,7 @@
           "mode": "slave",
           "parameters": {
             "BOARD.ASSOCIATED_PARAM": [ { "value": "RESET_BOARD_INTERFACE", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           },
           "port_maps": {
