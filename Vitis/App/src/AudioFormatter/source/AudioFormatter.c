@@ -331,7 +331,7 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	/* stop the S2MM transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
 	/* do not stop the DMA? */
-	XAudioFormatterDMAStop(&AFInstance);
+	//XAudioFormatterDMAStop(&AFInstance);
 	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_S2MM)
 	{
 	    AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
@@ -404,8 +404,8 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 
 	/* start the MM2S transfer */
 	/* transfer data to the I2S transmitter */
-	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-	XAudioFormatterDMAStop(&AFInstance);
+	//AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+	//XAudioFormatterDMAStop(&AFInstance);
 	return(data);
 }
 
@@ -648,10 +648,10 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	AF_MM2S_IOC_counter++;
 	/* start DMA for S2MM again */
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-	XAudioFormatterDMAStart(&AFInstance);
+	//XAudioFormatterDMAStart(&AFInstance);
 	/* do not start automatically a next MM2S transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-	XAudioFormatterDMAStart(&AFInstance);
+	//XAudioFormatterDMAStart(&AFInstance);
 	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_MM2S)
 	{
 		AF_bufferPtr = (u32*) (uintptr_t) (af_mm2s_hw_params.buf_addr )  ;

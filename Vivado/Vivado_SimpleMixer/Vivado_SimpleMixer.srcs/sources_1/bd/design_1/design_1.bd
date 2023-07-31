@@ -1850,7 +1850,7 @@
             "value": "1"
           },
           "C_DEPTH": {
-            "value": "512"
+            "value": "256"
           },
           "C_IS_MASTER": {
             "value": "1"
@@ -1867,7 +1867,7 @@
             "value": "1"
           },
           "C_DEPTH": {
-            "value": "512"
+            "value": "256"
           },
           "C_ENABLE_FIFO_COUNT": {
             "value": "false"

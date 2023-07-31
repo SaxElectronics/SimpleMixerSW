@@ -84,7 +84,7 @@ levelinfo -pg 1 0 200 480 770 1160 1650 2110 2560 2820
 pagesize -pg 1 -db -bbox -sgen -110 0 2940 1180
 ",
    "Color Coded_ScaleFactor":"0.958394",
-   "Color Coded_TopLeft":"1277,245",
+   "Color Coded_TopLeft":"2065,-2",
    "Default View_ScaleFactor":"0.44404",
    "Default View_TopLeft":"-104,-491",
    "ExpandedHierarchyInLayout":"",

@@ -246,7 +246,7 @@ u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr)
 	/* enable underflow error interrupt */
 	XI2s_Tx_IntrEnable(I2sTxInstancePtr, XI2S_TX_INTR_AUDUNDRFLW_MASK);
 	/* enable left, right justification */
-	XI2s_Tx_JustifyEnable(I2sTxInstancePtr, true);
+	XI2s_Tx_JustifyEnable(I2sTxInstancePtr, false);
 	/* set left justification */
 	XI2s_Tx_Justify(I2sTxInstancePtr, (XI2s_Rx_Justification) 0U);
 	/* enable logging for Tx */
