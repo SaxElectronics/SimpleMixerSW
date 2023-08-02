@@ -314,16 +314,16 @@
       "SDOUT_TX": {
         "direction": "O"
       },
-      "lrclk_out_0": {
-        "direction": "O"
-      },
-      "sclk_out_0": {
-        "direction": "O"
-      },
       "lrclk_out_1": {
         "direction": "O"
       },
       "sclk_out_1": {
+        "direction": "O"
+      },
+      "lrclk_out_0": {
+        "direction": "O"
+      },
+      "sclk_out_0": {
         "direction": "O"
       }
     },
@@ -3938,7 +3938,7 @@
           "xlconcat_0/In0"
         ]
       },
-      "i2s_receiver_0_lrclk_out1": {
+      "i2s_receiver_0_lrclk_out": {
         "ports": [
           "i2s_receiver_0/lrclk_out",
           "lrclk_out_0"
@@ -3962,7 +3962,7 @@
           "audio_formatter_0/s_axis_s2mm_tvalid"
         ]
       },
-      "i2s_receiver_0_sclk_out1": {
+      "i2s_receiver_0_sclk_out": {
         "ports": [
           "i2s_receiver_0/sclk_out",
           "sclk_out_0"

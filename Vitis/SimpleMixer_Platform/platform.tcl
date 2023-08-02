@@ -83,3 +83,7 @@ platform generate -domains
 platform generate -domains zynq_fsbl 
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_30_07.xsa}
 platform generate -domains 
+platform generate
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_30_07.xsa}
+platform generate -domains 
