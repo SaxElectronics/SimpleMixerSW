@@ -68,6 +68,16 @@ u32 MM2S_PCMNoPeriods;
 u32 s2mm_NumberOfBytestransfered;
 u32 mm2s_NumberOfBytestransfered;
 
+u32 s2mm_DMA_errors;
+u32 s2mm_DMA_TimeOut_error;
+u32 s2mm_DMA_Decode_error;
+u32 s2mm_DMA_Slave_error;
+
+u32 mm2s_DMA_TimeOut_error;
+u32 mm2s_DMA_Decode_error;
+u32 mm2s_DMA_Slave_error;
+
+u32 mm2s_DMA_errors;
 //typedef struct {u64 buf_addr; u32 active_ch; u32 bits_per_sample; u32 periods; u32 bytes_per_period;
 //} XAudioFormatterHwParams;
 /* 8*64 = 512 bytes buffer size */
@@ -121,7 +131,7 @@ XAudioFormatterHwParams af_mm2s_hw_params = {
 		64*4};
 XAudioFormatterHwParams af_s2mm_hw_params = {
 		/* buf_addr */
-		0x0000000000000000UL,
+		0x0000000010000000UL,
 		/* active_ch */
 		2,
 		/* bits_per_sample */
@@ -155,6 +165,8 @@ void *XMM2SAFCallbackError(void *data);
 void *XMM2SAFCallbackTimeOut(void *data);
 
 void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
+
+u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
 
 
 /*****************************************************************************/
@@ -329,7 +341,18 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	S2MMAFIntrReceived = 1;
 	AF_S2MM_IOC_counter++;
 	/* stop the S2MM transfer */
+	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+	mm2s_DMA_errors = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_ERRORS_MASK);
+	mm2s_DMA_TimeOut_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_TIMEOUT_ERR_MASK);
+	mm2s_DMA_Decode_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DECODE_ERR_MASK);
+	mm2s_DMA_Slave_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_SLAVE_ERR_MASK);
+
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+	s2mm_DMA_errors = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_ERRORS_MASK);
+	s2mm_DMA_TimeOut_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_TIMEOUT_ERR_MASK);
+	s2mm_DMA_Decode_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DECODE_ERR_MASK);
+	s2mm_DMA_Slave_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_SLAVE_ERR_MASK);
+
 	/* do not stop the DMA? */
 	//XAudioFormatterDMAStop(&AFInstance);
 	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_S2MM)
@@ -658,6 +681,9 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	}
 	/* get the number of bytes transfered to memory */
 	mm2s_NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
+
+	mm2s_DMA_errors = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_ERRORS_MASK);
+
 	xil_printf("Audio Formatter current channel ID: %d\r\n",(XAudioFormatter_ChannelId) AFInstancePtr->ChannelId);
 
 		xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
@@ -741,4 +767,39 @@ void *XMM2SAFCallbackTimeOut(void *data)
 	//AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
 	//XAudioFormatterDMAStop(&AFInstance);
 	return(data);
+}
+
+
+
+/*****************************************************************************/
+/**
+*
+* This function reads out Audio Formatter status errors
+*
+* @param	InstancePtr is a pointer to the XAudioFormatter instance.
+* @param	offset this is the offset to S2MM or MM2S.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask)
+{
+	u32 offset;
+	u32 val;
+
+	//Xil_AssertVoid(InstancePtr != NULL);
+	//Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+	if (InstancePtr->ChannelId == XAudioFormatter_S2MM) {
+		offset = XAUD_FORMATTER_S2MM_OFFSET;
+	}
+	if (InstancePtr->ChannelId == XAudioFormatter_MM2S) {
+		offset = XAUD_FORMATTER_MM2S_OFFSET;
+	}
+	val = XAudioFormatter_ReadReg(InstancePtr->BaseAddress,
+		XAUD_FORMATTER_STS + offset);
+	val = val & mask;
+	return(val);
 }

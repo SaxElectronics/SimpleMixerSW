@@ -50,6 +50,16 @@
 #define XAUD_PERIOD_CFG_PERIODSIZE_SHIFT    0
 
 
+#define XAUD_STS_TIMEOUT_ERR_MASK        BIT(19)
+#define XAUD_STS_DECODE_ERR_MASK    BIT(18)
+#define XAUD_STS_SLAVE_ERR_MASK      BIT(17)
+
+#define XAUD_STS_ERRORS_MASK        (BIT(19) || BIT(18) || BIT(17))
+
+
+#define XAUD_STS_DMA_HALT_MASK      BIT(0)
+
+
 /*
  * - No support for non-aligned Buffer address. The Buffer address must be aligned to Memory Map width.
 *  - Period size must be integer multiples of (32 bytes * # of valid channels). For example:
