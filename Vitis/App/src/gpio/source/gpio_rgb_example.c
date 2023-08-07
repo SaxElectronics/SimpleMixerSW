@@ -105,6 +105,10 @@
 
 XGpio Gpio; /* The Instance of the GPIO Driver */
 
+static u16 GlobalIntrMask; /* GPIO channel mask that is needed by
+			    * the Interrupt Handler */
+static volatile u32 IntrFlag; /* Interrupt Handler Flag */
+
 /*****************************************************************************/
 /**
 *
@@ -150,4 +154,27 @@ int GPIO_rgb_Init(void)
 //		for (Delay = 0; Delay < LED_DELAY; Delay++);
 //	}
 	return XST_SUCCESS;
+}
+
+/******************************************************************************/
+/**
+*
+* This is the interrupt handler routine for the GPIO for this example.
+*
+* @param	CallbackRef is the Callback reference for the handler.
+*
+* @return	None.
+*
+* @note		None.
+*
+******************************************************************************/
+void GpioHandler(void *CallbackRef)
+{
+	XGpio *GpioPtr = (XGpio *)CallbackRef;
+
+	IntrFlag = 1;
+
+	/* Clear the Interrupt */
+	XGpio_InterruptClear(GpioPtr, GlobalIntrMask);
+
 }

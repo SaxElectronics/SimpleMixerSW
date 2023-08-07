@@ -16,6 +16,8 @@
 /* extern variable declarations */
 extern XGpio Gpio;
 
+extern void GpioHandler(void *CallBackRef);
+
 extern int GPIO_rgb_Init(void);
 
 

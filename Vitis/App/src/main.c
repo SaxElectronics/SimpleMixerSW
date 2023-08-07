@@ -92,11 +92,11 @@ u32 RxStatus = 0;
 /* includes all interrupts processed by the PS7 */
 const ivt_t ivt[] =
 {
+	{XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio },
 	{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance },
-	{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance },
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance },
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
-	//{XPAR_FABRIC_AXI_GPIO_1_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio },
+	{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance },
 	//{XPAR_XQSPIPS_0_INTR, (Xil_InterruptHandler)XQspiPs_InterruptHandler, &sQSpi},
 	//{XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR, (XInterruptHandler)fnMM2SInterruptHandler, &sAxiDma}
 };
@@ -195,14 +195,14 @@ int main()
     	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
 		s2mm_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
     	s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
-
+    	I2sRxIntrAesComplete = 1;
 		/* what to do when both Rx and S2MM interrupts received? */
     	if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt) )
     	{
     		I2sRxIntrCount++;
 
     		//AF_ProcessAudioData();
-    		AF_ReadAudioData();
+    		//AF_ReadAudioData();
 
     		//AF_WriteAudioData();
 
@@ -214,6 +214,7 @@ int main()
     	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
     	mm2s_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
     	mm2s_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+    	I2sTxIntrAesComplete = 1;
     	/* what to do when both Tx and MM2S interrupts received? */
 		if ((I2sTxIntrAesComplete == 1 && MM2SAFIntrReceived == 1)  && (!mm2s_DMA_halt) )
 		{

@@ -110,3 +110,4 @@ platform clean
 platform generate
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper.xsa}
 platform generate -domains 
+platform generate -domains standalone_domain,standalone_ps7_cortexa9_0 
