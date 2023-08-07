@@ -74,7 +74,7 @@
 
 #define AF_CONVERT_BYTES_TO_AUDIOSAMPLES 	4 // 4 bytes per audio sample (24bit occupies 32bits in memory)
 #define AF_NUMBER_OF_PERIODS 	2
-#define AF_BYTES_PER_PERIOD 	(64*4)
+#define AF_BYTES_PER_PERIOD 	(2*8*32*2)
 
 #define AF_AUDIOSAMPLES_PER_PERIOD (AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
 #define AUDIO_BUFFER_BASE_ADDRESS 0x20000000ULL
@@ -114,6 +114,12 @@ extern void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
 extern void AF_GenerateSineWaveAndWriteToBuff(void);
 extern void AF_GetHwConfig(XAudioFormatter *AFInstancePtr, AudioFormatter_HwConfig* AFHwConfigPtr);
 extern void AF_RestartDMAs(void);
+extern void AF_ProcessAudioData(void);
+extern void AF_WriteAudioData(void);
+extern void AF_ReadAudioData(void);
+
+extern u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
+extern u32 XAudioFormatter_getDMAStatus(XAudioFormatter *InstancePtr);
 
 
 /*
@@ -124,5 +130,13 @@ extern XAudioFormatter *AFInstancePtr;
 
 extern u32 S2MMAFIntrReceived;
 extern u32 MM2SAFIntrReceived;
+
+extern u32 s2mm_DMA_halt;
+extern u32 mm2s_DMA_halt;
+
+
+extern u32 s2mm_DMA_ctrl_state;
+extern u32 mm2s_DMA_ctrl_state;
+
 
 #endif // __AUDIOFORMATTER_H_

@@ -92,10 +92,10 @@ u32 RxStatus = 0;
 /* includes all interrupts processed by the PS7 */
 const ivt_t ivt[] =
 {
-	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance },
-	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
 	{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance },
 	{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance },
+	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance },
+	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
 	//{XPAR_FABRIC_AXI_GPIO_1_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio },
 	//{XPAR_XQSPIPS_0_INTR, (Xil_InterruptHandler)XQspiPs_InterruptHandler, &sQSpi},
 	//{XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR, (XInterruptHandler)fnMM2SInterruptHandler, &sAxiDma}
@@ -130,10 +130,11 @@ int main()
 //		xil_printf("Gpio Initialization Failed\r\n");
 //		return XST_FAILURE;
 //	}
-	/* Initialize I2S Transmitter and Receiver */
-	I2S_Init();
+
 	/* Initialize Audio Formatter */
 	AudioFormatter_Init();
+	/* Initialize I2S Transmitter and Receiver */
+	I2S_Init();
 	/* initialize rgb GPIOs */
 	GPIO_rgb_Init();
 
@@ -146,41 +147,32 @@ int main()
 	//Xil_ExceptionEnable();
 
 	/* while loop to test the I2S interrupts */
+	RxStatus =  XST_FAILURE;
 	while (I2sRxIntrCount < I2S_RX_TIME_OUT)
 	{
 		//	while(1) {
 		/* Wait until an interrupts has been received. */
-		if (I2sRxIntrAesComplete == 1) {
-			XstStatus = XST_SUCCESS;
-			break;
-		}
-		if (I2sRxIntrOvfDetected == 1)
-		{
-			break;
-		}
+		if (I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) {
+					RxStatus =  XST_SUCCESS;
+					break;
+				}
 		XstStatus = XST_FAILURE;
 		I2sRxIntrCount++;
 
 	}
 	while (I2sTxIntrCount < I2S_TX_TIME_OUT)
+	{
+		if (I2sTxIntrUvfDetected == 1 && MM2SAFIntrReceived == 1)
 		{
-			//	while(1) {
-			/* Wait until an interrupts has been received. */
-			if (I2sTxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) {
-				RxStatus = XST_SUCCESS;
-				break;
-			}
-			if (I2sTxIntrUvfDetected == 1 && MM2SAFIntrReceived == 1)
-			{
-				TxStatus = XST_SUCCESS;
-				break;
-			}
-			if(TxStatus == XST_SUCCESS && RxStatus == XST_SUCCESS)
-			{
-				XstStatus = XST_SUCCESS;
-			}
-			I2sTxIntrCount++;
+			TxStatus = XST_SUCCESS;
+			break;
 		}
+		I2sTxIntrCount++;
+	}
+	if(TxStatus == XST_SUCCESS && RxStatus == XST_SUCCESS)
+	{
+		XstStatus = XST_SUCCESS;
+	}
 	if (XstStatus == XST_SUCCESS)
 	{
 		print("Successfully Initialized the I2S Rx and Tx IP\n\r");
@@ -189,16 +181,54 @@ int main()
 	{
 		print("Initializing I2S Rx and Tx IP FAILED!\n\r");
 	}
-	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-	XAudioFormatterDMAStart(AFInstancePtr);
-	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-	XAudioFormatterDMAStart(AFInstancePtr);
+
+//	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+//	XAudioFormatterDMAStart(AFInstancePtr);
+//	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+//	XAudioFormatterDMAStart(AFInstancePtr);
 
     print("Hello from Simple Mixer App\n\r");
     print("Successfully ran the Simple Mixer application\n\r");
     print("Entering infinite loop\n\r");
     for (;;)
     {
+    	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+		s2mm_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
+    	s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+
+		/* what to do when both Rx and S2MM interrupts received? */
+    	if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt) )
+    	{
+    		I2sRxIntrCount++;
+
+    		//AF_ProcessAudioData();
+    		AF_ReadAudioData();
+
+    		//AF_WriteAudioData();
+
+    		/* reset variables for next run */
+    		I2sRxIntrAesComplete = 0;
+			S2MMAFIntrReceived = 0;
+    	}
+
+    	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+    	mm2s_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
+    	mm2s_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+    	/* what to do when both Tx and MM2S interrupts received? */
+		if ((I2sTxIntrAesComplete == 1 && MM2SAFIntrReceived == 1)  && (!mm2s_DMA_halt) )
+		{
+    		I2sTxIntrCount++;
+
+//        	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+//			XAudioFormatterDMAStart(AFInstancePtr);
+//	    	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+//			XAudioFormatterDMAStart(AFInstancePtr);
+
+			/* reset variables for next run */
+			I2sTxIntrAesComplete = 0;
+			MM2SAFIntrReceived = 0;
+		}
+
     	//AF_GenerateSineWaveAndWriteToBuff();
     	//AF_RestartDMAs();
     	//AF_ReadAudioSamples(&AFInstance);

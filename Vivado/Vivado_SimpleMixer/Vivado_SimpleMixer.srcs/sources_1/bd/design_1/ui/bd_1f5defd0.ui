@@ -34,15 +34,11 @@ preplace inst rst_clk_wiz_0_49M -pg 1 -lvl 4 -x 1360 -y 1260 -defaultsOSRD
 preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 1170 -defaultsOSRD
 preplace inst axi_gpio_2 -pg 1 -lvl 7 -x 2790 -y 940 -defaultsOSRD
 preplace netloc SDIN_RX_1 1 0 5 NJ 740 NJ 740 NJ 740 NJ 740 1550J
-preplace netloc audio_formatter_0_irq_mm2s 1 5 1 2100 550n
-preplace netloc audio_formatter_0_irq_s2mm 1 5 1 2080 570n
 preplace netloc audio_formatter_0_m_axis_mm2s_tid 1 5 1 2080 120n
 preplace netloc axi_gpio_1_ip2intc_irpt 1 5 3 2140 1010 2520J 1030 3000
 preplace netloc clk_wiz_0_CLK_100Mhz 1 2 5 680 1030 1170 720 1590 680 2140 370 2540
 preplace netloc clk_wiz_0_CLK_49Mhz 1 2 6 690J 1230 1140 710 1580 260 NJ 260 2560 70 3090J
 preplace netloc clk_wiz_0_locked 1 2 2 680 1300 NJ
-preplace netloc i2s_receiver_0_irq 1 5 1 2110 740n
-preplace netloc i2s_transmitter_0_irq 1 5 3 2130 1020 2510J 1040 3030
 preplace netloc i2s_transmitter_0_lrclk_out1 1 7 1 3050J 150n
 preplace netloc i2s_transmitter_0_sclk_out1 1 7 1 3060J 180n
 preplace netloc i2s_transmitter_0_sdata_0_out 1 7 1 3070J 210n
@@ -65,6 +61,10 @@ preplace netloc i2s_receiver_0_m_axis_aud_tdata 1 4 2 1610 300 2050
 preplace netloc i2s_receiver_0_m_axis_aud_tid 1 5 1 2050 830n
 preplace netloc audio_formatter_0_s_axis_s2mm_tready 1 4 2 1600 280 2060
 preplace netloc i2s_receiver_0_m_axis_aud_tvalid 1 4 2 1590 270 2070
+preplace netloc i2s_transmitter_0_irq 1 5 3 2130 1020 2510J 1040 3030
+preplace netloc i2s_receiver_0_irq 1 5 1 2110 760n
+preplace netloc audio_formatter_0_irq_mm2s 1 5 1 2100 550n
+preplace netloc audio_formatter_0_irq_s2mm 1 5 1 2080 570n
 preplace netloc audio_formatter_0_m_axi_mm2s 1 5 1 2120 430n
 preplace netloc audio_formatter_0_m_axi_s2mm 1 5 1 2090 450n
 preplace netloc axi_gpio_0_GPIO 1 7 1 3080J 960n
@@ -83,8 +83,8 @@ preplace netloc ps7_0_axi_periph_M04_AXI 1 4 3 1530J 990 NJ 990 2570
 levelinfo -pg 1 0 200 580 970 1360 1850 2360 2790 3110
 pagesize -pg 1 -db -bbox -sgen -110 -40 3230 1440
 ",
-   "Color Coded_ScaleFactor":"1.64445",
-   "Color Coded_TopLeft":"855,11",
+   "Color Coded_ScaleFactor":"1.53893",
+   "Color Coded_TopLeft":"1389,325",
    "Default View_ScaleFactor":"0.44404",
    "Default View_TopLeft":"-104,-491",
    "ExpandedHierarchyInLayout":"",

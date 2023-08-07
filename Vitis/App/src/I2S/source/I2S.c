@@ -73,6 +73,7 @@ void I2sTxAesBlockCmplIntrHandler(void *CallBackRef);
 u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr);
 extern u32 XI2s_Rx_GetChMux(XI2s_Rx *InstancePtr, XI2s_Rx_ChannelId ChID);
 extern u32 XI2s_Tx_GetChMux(XI2s_Tx *InstancePtr, XI2s_Tx_ChannelId ChID);
+void XI2s_Rx_SetValidity(XI2s_Rx *InstancePtr, u8 Enable);
 
 /*****************************************************************************/
 /**
@@ -245,6 +246,9 @@ u32 InitializeI2sTx(XI2s_Tx *I2sTxInstancePtr)
 	XI2s_Tx_IntrEnable(I2sTxInstancePtr, XI2S_TX_INTR_AES_BLKCMPLT_MASK);
 	/* enable underflow error interrupt */
 	XI2s_Tx_IntrEnable(I2sTxInstancePtr, XI2S_TX_INTR_AUDUNDRFLW_MASK);
+	/* enable underflow error interrupt */
+	XI2s_Tx_IntrEnable(I2sTxInstancePtr, XI2S_TX_INTR_AES_BLKSYNCERR_MASK);
+
 	/* enable left, right justification */
 	XI2s_Tx_JustifyEnable(I2sTxInstancePtr, false);
 	/* set left justification */
@@ -342,6 +346,8 @@ void I2sRxAesBlockCmplIntrHandler(void *CallBackRef)
 		{
 			I2sRxIntrAesComplete = 1;
 			I2sRxIntrAesCntr++;
+			//XI2s_Rx_SetValidity(I2sRxInstancePtr, 1U);
+
 			/* display log buffer */
 			//XI2s_Rx_LogDisplay(I2sRxInstancePtr);
 			/* read the interrupt status */
@@ -556,8 +562,10 @@ void I2STx_GetHwConfig(XI2s_Tx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr )
 
 	/* get Channel Mux status */
 	I2SHwConfigPtr->ChannelMux = XI2s_Tx_GetChMux(I2SInstancePtr, 0x0);
-	VERBOSE("I2S Tx Channel Mux is: ");
+	VERBOSE("I2S Tx Channel Mux is enabled: ");
 	VERBOSE("%d",(I2SHwConfigPtr->ChannelMux ));
+	VERBOSE("with MuxID: ");
+	VERBOSE("%d",(0x0));
 }
 
 
@@ -595,7 +603,7 @@ u32 XI2s_Rx_GetChMux(XI2s_Rx *InstancePtr, XI2s_Rx_ChannelId ChID)
 
 /****************************************************************************/
 /**
- * This function sets the input source for the specified AXI-Stream channel pair
+ * This function gets the input source for the specified AXI-Stream channel pair
  *
  * @param  InstancePtr is a pointer to the XI2s Receiver instance.
  * @param  ChID specifies the AXI-Stream channel pair
@@ -622,4 +630,31 @@ u32 XI2s_Tx_GetChMux(XI2s_Tx *InstancePtr, XI2s_Tx_ChannelId ChID)
 	u32 data = XI2s_Tx_ReadReg(InstancePtr->Config.BaseAddress,
 			RegOffset);
 	return data;
+}
+
+
+/*****************************************************************************/
+/**
+ * This function sets the validity of the audio stream.
+ *
+ * @param  InstancePtr is a pointer to the XI2s Receiver instance.
+ * @param  Enable specifies TRUE/FALSE value to either set or unset validity reg.
+ *
+ * @return None.
+ *
+ *****************************************************************************/
+void XI2s_Rx_SetValidity(XI2s_Rx *InstancePtr, u8 Enable)
+{
+	Xil_AssertVoid(InstancePtr != NULL);
+
+
+	if (Enable) {
+		XI2s_Rx_WriteReg(InstancePtr->Config.BaseAddress,
+					XPAR_I2S_RECEIVER_0_VALIDITY_REG, 1U);
+	} else {
+		XI2s_Rx_WriteReg(InstancePtr->Config.BaseAddress,
+					XPAR_I2S_RECEIVER_0_VALIDITY_REG, 0U);
+	}
+
+
 }
