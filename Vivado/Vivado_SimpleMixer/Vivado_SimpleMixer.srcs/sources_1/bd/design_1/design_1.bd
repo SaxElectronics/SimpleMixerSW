@@ -1670,7 +1670,7 @@
             "value": "0"
           },
           "C_MM2S_DATAFORMAT": {
-            "value": "2"
+            "value": "0"
           },
           "C_S2MM_ADDR_WIDTH": {
             "value": "32"
@@ -1679,7 +1679,7 @@
             "value": "0"
           },
           "C_S2MM_DATAFORMAT": {
-            "value": "2"
+            "value": "0"
           }
         },
         "interface_ports": {
@@ -1850,7 +1850,7 @@
             "value": "1"
           },
           "C_DEPTH": {
-            "value": "256"
+            "value": "128"
           },
           "C_IS_MASTER": {
             "value": "1"
@@ -1867,7 +1867,7 @@
             "value": "1"
           },
           "C_DEPTH": {
-            "value": "256"
+            "value": "128"
           },
           "C_ENABLE_FIFO_COUNT": {
             "value": "false"
@@ -4090,7 +4090,7 @@
               "SEG_processing_system7_0_HP0_DDR_LOWOCM": {
                 "address_block": "/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM",
                 "offset": "0x00000000",
-                "range": "4K"
+                "range": "512K"
               }
             }
           },
@@ -4099,7 +4099,7 @@
               "SEG_processing_system7_0_HP0_DDR_LOWOCM": {
                 "address_block": "/processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM",
                 "offset": "0x10000000",
-                "range": "4K"
+                "range": "512K"
               }
             }
           }

@@ -374,8 +374,8 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
 			(int)s2mm_NumberOfBytestransfered);
 
-	//AF_ProcessAudioData();
-	AF_ReadAudioData();
+	AF_ProcessAudioData();
+	//AF_ReadAudioData();
 
 
 //	    }
@@ -407,6 +407,10 @@ void AF_ProcessAudioData(void)
 	if (current_period_s2mm >= AF_NUMBER_OF_PERIODS)
 	{
 		current_period_s2mm = 0;
+	}
+	if (current_period_mm2s >= AF_NUMBER_OF_PERIODS)
+	{
+		current_period_mm2s = 0;
 	}
 	// Check if the pointer is outside the buffer range
 	if (ptrToRxBuf < RxBuf || ptrToRxBuf >= RxBuf + AF_NUMBER_OF_PERIODS * AF_AUDIOSAMPLES_PER_PERIOD) {
@@ -833,7 +837,7 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	mm2s_DMA_Decode_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DECODE_ERR_MASK);
 	mm2s_DMA_Slave_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_SLAVE_ERR_MASK);
 
-	AF_WriteAudioData();
+	//AF_WriteAudioData();
 
 //	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_MM2S)
 //	{
