@@ -138,7 +138,7 @@ XAudioFormatterHwParams af_mm2s_hw_params = {
 		AF_BYTES_PER_PERIOD};
 XAudioFormatterHwParams af_s2mm_hw_params = {
 		/* buf_addr */
-		0x0000000010000000UL,
+		0x0000000000000000UL,
 		/* active_ch */
 		2,
 		/* bits_per_sample */
@@ -374,8 +374,9 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
 			(int)s2mm_NumberOfBytestransfered);
 
-	AF_ProcessAudioData();
-	//AF_ReadAudioData();
+	//AF_ProcessAudioData();
+	AF_ReadAudioData();
+	//AF_WriteAudioData();
 
 
 //	    }
@@ -428,6 +429,10 @@ void AF_ProcessAudioData(void)
 	   // Loop through all periods
 //	    for (period = 0; period < AF_NUMBER_OF_PERIODS; period++)
 //	    {
+
+			AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
+			AF_TxbufferPtr = (u32*)  (uintptr_t) (  (af_mm2s_hw_params.buf_addr )  );
+
 	        // get the pointer to the next sample
     		AF_RxbufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
     		AF_TxbufferPtr += current_period_mm2s * AF_AUDIOSAMPLES_PER_PERIOD;
@@ -499,6 +504,7 @@ void AF_ReadAudioData(void)
 		ptrToRxBuf = RxBuf;
 	}
     uint32_t sample;
+	AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
 
 	AF_RxbufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
 
@@ -559,6 +565,8 @@ void AF_WriteAudioData(void)
 	}
 
     uint32_t sample;
+	AF_TxbufferPtr = (u32*)  (uintptr_t) (  (af_mm2s_hw_params.buf_addr )  );
+
 	AF_TxbufferPtr += current_period_mm2s * AF_AUDIOSAMPLES_PER_PERIOD;
 
 	// Loop through all samples in the period

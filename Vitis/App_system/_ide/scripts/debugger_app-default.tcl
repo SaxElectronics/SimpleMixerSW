@@ -14,9 +14,9 @@ targets -set -nocase -filter {name =~"APU*"}
 rst -system
 after 3000
 targets -set -filter {jtag_cable_name =~ "Digilent Arty Z7 003017B5BD7AA" && level==0 && jtag_device_ctx=="jsn-Arty Z7-003017B5BD7AA-23727093-0"}
-fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_AES.bit
+fpga -file D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/hw/design_1_wrapper_DMA_LoopBack.bit
 targets -set -nocase -filter {name =~"APU*"}
-loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_AES.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+loadhw -hw D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/SimpleMixer_Platform/export/SimpleMixer_Platform/hw/design_1_wrapper_DMA_LoopBack.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
 configparams force-mem-access 1
 targets -set -nocase -filter {name =~"APU*"}
 source D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vitis/App/_ide/psinit/ps7_init.tcl

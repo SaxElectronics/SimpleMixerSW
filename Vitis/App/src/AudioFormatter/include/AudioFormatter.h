@@ -73,13 +73,13 @@
 #define PERIOD_SIZE_PER_CHANNEL 32
 
 #define AF_CONVERT_BYTES_TO_AUDIOSAMPLES 	4 // 4 bytes per audio sample (24bit occupies 32bits in memory)
-#define AF_NUMBER_OF_PERIODS 	2
+#define AF_NUMBER_OF_PERIODS 	8
 
-//#define AF_BYTES_PER_PERIOD 	(2*2*8*32*2)
+#define AF_BYTES_PER_PERIOD 	(2*2*8*32*2)
 /* use the define below to make one period equal to one AES3 audio block containing 192 frames (with 2 audio samples each - 32bits) */
 /* with two dma periods there will be 2 AES3 blocks of audio data */
 
-#define AF_BYTES_PER_PERIOD		(384*4)
+//#define AF_BYTES_PER_PERIOD		(384*4)
 #define AF_AUDIOSAMPLES_PER_PERIOD (AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
 #define AUDIO_BUFFER_BASE_ADDRESS 0x20000000ULL
 
