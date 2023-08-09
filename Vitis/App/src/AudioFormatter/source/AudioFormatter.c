@@ -75,13 +75,16 @@ u32 s2mm_DMA_Slave_error;
 u32 s2mm_DMA_halt;
 u32 s2mm_DMA_ctrl_state;
 
+s2mm_DMA_errors_t s2mm_AF_errors;
+
 u32 mm2s_DMA_TimeOut_error;
 u32 mm2s_DMA_Decode_error;
 u32 mm2s_DMA_Slave_error;
-
 u32 mm2s_DMA_errors;
 u32 mm2s_DMA_halt;
 u32 mm2s_DMA_ctrl_state;
+
+mm2s_DMA_errors_t mm2s_AF_errors;
 
 //typedef struct {u64 buf_addr; u32 active_ch; u32 bits_per_sample; u32 periods; u32 bytes_per_period;
 //} XAudioFormatterHwParams;
@@ -177,6 +180,8 @@ void *XMM2SAFCallbackTimeOut(void *data);
 void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
 
 u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
+
+InterruptCounters_t AllInterruptCounters;
 
 
 /*****************************************************************************/
@@ -353,6 +358,7 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	/* clear interrupt flag */
 	S2MMAFIntrReceived = 1;
 	AF_S2MM_IOC_counter++;
+	AllInterruptCounters.AF_S2MM_IOC_counter++;
 
 	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
 	AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
@@ -376,7 +382,7 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 
 	//AF_ProcessAudioData();
 	AF_ReadAudioData();
-	//AF_WriteAudioData();
+	AF_WriteAudioData();
 
 
 //	    }
@@ -833,6 +839,7 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	/* clear interrupt flag */
 	MM2SAFIntrReceived = 1;
 	AF_MM2S_IOC_counter++;
+	AllInterruptCounters.AF_MM2S_IOC_counter++;
 
 	/* do not start automatically a next MM2S transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
@@ -844,6 +851,10 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	mm2s_DMA_TimeOut_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_TIMEOUT_ERR_MASK);
 	mm2s_DMA_Decode_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DECODE_ERR_MASK);
 	mm2s_DMA_Slave_error = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_SLAVE_ERR_MASK);
+
+	mm2s_AF_errors.mm2s_DMA_Decode_error = mm2s_DMA_Decode_error;
+	mm2s_AF_errors.mm2s_DMA_Slave_error = mm2s_DMA_Slave_error;
+	mm2s_AF_errors.mm2s_DMA_TimeOut_error = mm2s_DMA_TimeOut_error;
 
 	//AF_WriteAudioData();
 

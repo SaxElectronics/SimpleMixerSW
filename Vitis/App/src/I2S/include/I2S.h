@@ -117,6 +117,36 @@ typedef struct I2S_HwConfig
 
 }I2S_HwConfig;
 
+typedef struct
+{
+	/* AES Block Complete Interrupt Received*/
+	u32 I2sRxIntrAesComplete;
+	/* Overflow Rx Interrupt Received*/
+	u32 I2sRxIntrOvfDetected;
+	/* General Rx Intr Count*/
+	u32 I2sRxIntrCount;
+	/* Rx AES Block Complete Count*/
+	u32 I2sRxIntrAesCntr;
+} I2S_Rx_Interrups_t;
+
+typedef struct
+{
+	/* Underflow Interrupt Received*/
+	u32 I2sTxIntrUvfDetected;
+	/* AES synchronisation error */
+	u32 I2sTxIntrSyncErr;
+	/* Aes Ch Sts Upd Interrupt */
+	u32 I2sTxIntrAesChStsUpd;
+	/* Aes Ch Sts Upd Interrupt Counter */
+	u32 I2sTxIntrAesChStsUpdCntr;
+	/* General Interrupt Count */
+	u32 I2sTxIntrCount;
+	/* Aes Interrupt Complete */
+	u32 I2sTxIntrAesComplete;
+	/* Tx Interrupt AES Block Complete */
+	u32 I2sTxIntrAesCntr;
+} I2S_Tx_Interrups_t;
+
 /*
  * function prototypes
  */

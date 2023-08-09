@@ -73,13 +73,13 @@
 #define PERIOD_SIZE_PER_CHANNEL 32
 
 #define AF_CONVERT_BYTES_TO_AUDIOSAMPLES 	4 // 4 bytes per audio sample (24bit occupies 32bits in memory)
-#define AF_NUMBER_OF_PERIODS 	8
+#define AF_NUMBER_OF_PERIODS 	2
 
-#define AF_BYTES_PER_PERIOD 	(2*2*8*32*2)
+//#define AF_BYTES_PER_PERIOD 	(2*2*8*32*2)
 /* use the define below to make one period equal to one AES3 audio block containing 192 frames (with 2 audio samples each - 32bits) */
 /* with two dma periods there will be 2 AES3 blocks of audio data */
 
-//#define AF_BYTES_PER_PERIOD		(384*4)
+#define AF_BYTES_PER_PERIOD		(384*4)
 #define AF_AUDIOSAMPLES_PER_PERIOD (AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
 #define AUDIO_BUFFER_BASE_ADDRESS 0x20000000ULL
 
@@ -105,6 +105,39 @@ typedef struct
 	u32 PeriodSize;
 
 } AudioFormatter_HwConfig;
+
+typedef struct
+{
+	u32 s2mm_DMA_errors;
+	u32 s2mm_DMA_TimeOut_error;
+	u32 s2mm_DMA_Decode_error;
+	u32 s2mm_DMA_Slave_error;
+	u32 s2mm_DMA_halt;
+	u32 s2mm_DMA_ctrl_state;
+} s2mm_DMA_errors_t;
+
+
+typedef struct
+{
+	u32 mm2s_DMA_TimeOut_error;
+	u32 mm2s_DMA_Decode_error;
+	u32 mm2s_DMA_Slave_error;
+	u32 mm2s_DMA_errors;
+	u32 mm2s_DMA_halt;
+	u32 mm2s_DMA_ctrl_state;
+} mm2s_DMA_errors_t;
+
+
+
+
+typedef struct
+{
+	u32 AF_MM2S_IOC_counter;
+	u32 AF_S2MM_IOC_counter;
+	u32 I2sTxIntrAesCntr;
+	u32 I2sRxIntrAesCntr;
+} InterruptCounters_t;
+
 
 
 /*
@@ -142,5 +175,9 @@ extern u32 mm2s_DMA_halt;
 extern u32 s2mm_DMA_ctrl_state;
 extern u32 mm2s_DMA_ctrl_state;
 
+extern mm2s_DMA_errors_t mm2s_AF_errors;
+extern s2mm_DMA_errors_t s2mm_AF_errors;
+
+extern InterruptCounters_t AllInterruptCounters;
 
 #endif // __AUDIOFORMATTER_H_

@@ -37,6 +37,9 @@ u32 I2sRxIntrOvfDetected; /* Overflow Rx Interrupt Received*/
 u32 I2sRxIntrCount =0;
 u32 I2sRxIntrAesCntr = 0;
 
+I2S_Rx_Interrups_t I2sRxIntrs;
+
+
 I2S_HwConfig I2sRx_HwConfig;
 
 /* Tx */
@@ -45,10 +48,13 @@ XI2s_Tx *I2sTxInstancePtr = &I2sTxInstance;
 u32 I2sTxIntrAesComplete;
 u32 I2sTxIntrAesCntr = 0;
 
+
 u32 I2sTxIntrUvfDetected;
 u32 I2sTxIntrSyncErr;
 u32 I2sTxIntrAesChStsUpd;
 u32 I2sTxIntrCount =0;
+
+I2S_Tx_Interrups_t I2sTxIntrs;
 
 I2S_HwConfig I2sTx_HwConfig;
 
@@ -283,8 +289,9 @@ void I2sTxAesBlockErrIntrHandler(void *CallBackRef)
 	XI2s_Tx *InstancePtr = (XI2s_Tx *)CallBackRef;
 	if (InstancePtr!=NULL)
 	{
-	/* Set the interrupt received flag. */
-	I2sTxIntrSyncErr = 1;
+		/* Set the interrupt received flag. */
+		I2sTxIntrSyncErr = 1;
+		I2sTxIntrs.I2sTxIntrSyncErr = 1;
 	}
 }
 /*****************************************************************************/
@@ -309,9 +316,14 @@ void I2sTxAesBlockCmplIntrHandler(void *CallBackRef)
 	XI2s_Tx *InstancePtr = (XI2s_Tx *)CallBackRef;
 	if (InstancePtr!=NULL)
 	{
-	/* Set the interrupt received flag. */
-	I2sTxIntrAesComplete = 1;
-	I2sTxIntrAesCntr++;
+		/* Set the interrupt received flag. */
+		I2sTxIntrAesComplete = 1;
+		I2sTxIntrAesCntr++;
+		AllInterruptCounters.I2sTxIntrAesCntr++;
+
+		I2sTxIntrs.I2sTxIntrAesComplete = 1;
+		I2sTxIntrs.I2sTxIntrAesCntr++;
+
 	/* display log buffer */
 	//XI2s_Tx_LogDisplay(InstancePtr);
 	/* stop the transfer of data from MM2S */
@@ -346,6 +358,10 @@ void I2sRxAesBlockCmplIntrHandler(void *CallBackRef)
 		{
 			I2sRxIntrAesComplete = 1;
 			I2sRxIntrAesCntr++;
+			I2sRxIntrs.I2sRxIntrAesComplete = 1;
+			I2sRxIntrs.I2sRxIntrAesCntr++;
+			AllInterruptCounters.I2sRxIntrAesCntr++;
+
 			//XI2s_Rx_SetValidity(I2sRxInstancePtr, 1U);
 
 			/* display log buffer */
@@ -385,6 +401,7 @@ void I2sRxOvrflwIntrHandler(void *CallBackRef)
 		if (I2sRxInstancePtr!= NULL)
 		{
 			I2sRxIntrOvfDetected = 1;
+			I2sRxIntrs.I2sRxIntrOvfDetected = 1;
 		}
 }
 /*****************************************************************************/
@@ -409,8 +426,10 @@ void I2sTxAesGetChStsHandler(void *CallBackRef)
 	XI2s_Tx *InstancePtr = (XI2s_Tx *)CallBackRef;
 	if (InstancePtr != NULL)
 	{
-	/* Set the interrupt received flag. */
-	I2sTxIntrAesChStsUpd = 1;
+		/* Set the interrupt received flag. */
+		I2sTxIntrAesChStsUpd = 1;
+		I2sTxIntrs.I2sTxIntrAesChStsUpd = 1;
+		I2sTxIntrs.I2sTxIntrAesChStsUpdCntr++;
 	}
 }
 
@@ -436,8 +455,9 @@ void I2sTxUnderflowIntrHandler(void *CallBackRef)
 	XI2s_Tx *InstancePtr = (XI2s_Tx *)CallBackRef;
 	if (InstancePtr!=NULL)
 	{
-	/* Set the interrupt received flag. */
-	I2sTxIntrUvfDetected = 1;
+		/* Set the interrupt received flag. */
+		I2sTxIntrUvfDetected = 1;
+		I2sTxIntrs.I2sTxIntrUvfDetected = 1;
 	}
 }
 

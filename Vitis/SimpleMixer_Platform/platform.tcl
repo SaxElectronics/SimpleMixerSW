@@ -121,3 +121,13 @@ platform active {SimpleMixer_Platform}
 platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_DMA_LoopBack.xsa}
 platform generate -domains 
 platform generate -domains standalone_domain,standalone_ps7_cortexa9_0 
+platform generate -domains standalone_domain,standalone_ps7_cortexa9_0 
+platform active {SimpleMixer_Platform}
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_PCM_to_PCM.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_DMA_LoopBack.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_DMA_Loopback_different_addresses.xsa}
+platform generate -domains 
+platform config -updatehw {D:/AudioProcessing/Project/Repo/SimpleMixer/SW/Vivado/exported/design_1_wrapper_DMA_LoopBack.xsa}
+platform generate -domains 

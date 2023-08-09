@@ -93,16 +93,16 @@ u32 RxStatus = 0;
 const ivt_t ivt[] =
 {
 	//{XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio },
+	{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance },
 	{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance },
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance },
-	{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance },
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance },
+
 
 
 	//{XPAR_XQSPIPS_0_INTR, (Xil_InterruptHandler)XQspiPs_InterruptHandler, &sQSpi},
 	//{XPAR_FABRIC_AXI_DMA_0_MM2S_INTROUT_INTR, (XInterruptHandler)fnMM2SInterruptHandler, &sAxiDma}
 };
-
 
 int main()
 {
@@ -197,6 +197,8 @@ int main()
     	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
 		s2mm_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
     	s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+    	s2mm_AF_errors.s2mm_DMA_ctrl_state = s2mm_DMA_ctrl_state;
+    	s2mm_AF_errors.s2mm_DMA_halt = s2mm_DMA_halt;
     	I2sRxIntrAesComplete = 1;
 		/* what to do when both Rx and S2MM interrupts received? */
     	if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt) )
