@@ -51,17 +51,13 @@
                                 								
                                 <option id="xilinx.gnu.compiler.option.debugging.level.1018495891" name="Debug Level" superClass="xilinx.gnu.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
                                 								
-                                <option id="xilinx.gnu.compiler.inferred.swplatform.includes.1812008330" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" useByScannerDiscovery="false" valueType="includePath">
-                                    									
-                                    <listOptionValue builtIn="false" value="${resolvePlatformFile:project=App,fileType=bspInclude}"/>
-                                    								
-                                </option>
+                                <option id="xilinx.gnu.compiler.inferred.swplatform.includes.1812008330" name="Software Platform Include Path" superClass="xilinx.gnu.compiler.inferred.swplatform.includes" useByScannerDiscovery="false"/>
                                 								
                                 <option id="xilinx.gnu.compiler.misc.other.1550210830" name="Other flags" superClass="xilinx.gnu.compiler.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -MT&quot;$@&quot; -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard" valueType="string"/>
                                 								
                                 <option id="xilinx.gnu.compiler.dircategory.includes.1189971319" name="Include Paths" superClass="xilinx.gnu.compiler.dircategory.includes" useByScannerDiscovery="false" valueType="includePath">
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${resolvePlatformFile:project=App,fileType=bspInclude}&quot;"/>
+                                    <listOptionValue builtIn="false" value="${resolvePlatformFile:project=App,fileType=bspInclude}"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\AudioFormatter\include&quot;"/>
                                     									
@@ -74,6 +70,8 @@
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\verbose\include&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\gpio\include&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\I2C\include&quot;"/>
                                     								
                                 </option>
                                 								

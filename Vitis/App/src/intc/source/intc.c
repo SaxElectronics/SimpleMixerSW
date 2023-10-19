@@ -97,6 +97,9 @@ void fnEnableInterrupts(XScuGic *psIntc, const ivt_t *prgsIvt, unsigned int csIV
 	{
 		XScuGic_Connect(psIntc, prgsIvt[isIVector].id, prgsIvt[isIVector].handler, prgsIvt[isIVector].pvCallbackRef);
 
+		// Set the priority and trigger type
+		XScuGic_SetPriorityTriggerType(psIntc, prgsIvt[isIVector].id, prgsIvt[isIVector].priority, prgsIvt[isIVector].triggerType);
+
 		/* Enable the interrupt vector at the interrupt controller */
 		XScuGic_Enable(psIntc, prgsIvt[isIVector].id);
 	}

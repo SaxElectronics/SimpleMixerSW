@@ -377,8 +377,8 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
 	s2mm_NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
     xil_printf("Audio Formatter current channel ID: %d\r\n",(XAudioFormatter_ChannelId) AFInstancePtr->ChannelId);
 
-	xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
-			(int)s2mm_NumberOfBytestransfered);
+//	xil_printf(" Xilinx Audio Formatter DMA number of bytes transfered %s\r\n",
+//			(int)s2mm_NumberOfBytestransfered);
 
 	//AF_ProcessAudioData();
 	AF_ReadAudioData();

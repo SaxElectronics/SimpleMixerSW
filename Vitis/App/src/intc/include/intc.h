@@ -67,7 +67,10 @@ typedef struct {
 	u8 id;
 	XInterruptHandler handler;
 	void *pvCallbackRef;
+	u32 priority;       // Priority of the interrupt
+	u32 triggerType;    // Trigger type of the interrupt
 } ivt_t;
+
 
 XStatus fnInitInterruptController(XScuGic *psIntc);
 void fnEnableInterrupts(XScuGic *psIntc, const ivt_t *prgsIvt, unsigned int csIVectors);

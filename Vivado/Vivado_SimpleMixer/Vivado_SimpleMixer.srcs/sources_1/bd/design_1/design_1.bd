@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x8FE22FDBEF202306",
+      "boundary_crc": "0xFFF3D77E35BE773B",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../Vivado_SimpleMixer.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -44,10 +44,10 @@
       "i2s_receiver_0": "",
       "i2s_transmitter_0": "",
       "rst_clk_wiz_98Mhz": "",
-      "processing_system7_0": "",
       "rst_clk_wiz_0_49M": "",
       "rst_ps7_0_100M": "",
-      "axi_gpio_2": ""
+      "axi_gpio_2": "",
+      "processing_system7_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -267,6 +267,37 @@
             "direction": "O",
             "left": "2",
             "right": "0"
+          }
+        }
+      },
+      "IIC_0_0": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
+        "vlnv": "xilinx.com:interface:iic_rtl:1.0",
+        "port_maps": {
+          "SDA_I": {
+            "physical_name": "IIC_0_0_sda_i",
+            "direction": "I"
+          },
+          "SDA_O": {
+            "physical_name": "IIC_0_0_sda_o",
+            "direction": "O"
+          },
+          "SDA_T": {
+            "physical_name": "IIC_0_0_sda_t",
+            "direction": "O"
+          },
+          "SCL_I": {
+            "physical_name": "IIC_0_0_scl_i",
+            "direction": "I"
+          },
+          "SCL_O": {
+            "physical_name": "IIC_0_0_scl_o",
+            "direction": "O"
+          },
+          "SCL_T": {
+            "physical_name": "IIC_0_0_scl_t",
+            "direction": "O"
           }
         }
       }
@@ -1835,6 +1866,44 @@
         "xci_path": "ip\\design_1_proc_sys_reset_0_0\\design_1_proc_sys_reset_0_0.xci",
         "inst_hier_path": "rst_clk_wiz_98Mhz"
       },
+      "rst_clk_wiz_0_49M": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "xci_name": "design_1_rst_clk_wiz_0_49M_0",
+        "xci_path": "ip\\design_1_rst_clk_wiz_0_49M_0\\design_1_rst_clk_wiz_0_49M_0.xci",
+        "inst_hier_path": "rst_clk_wiz_0_49M"
+      },
+      "rst_ps7_0_100M": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "xci_name": "design_1_rst_ps7_0_100M_0",
+        "xci_path": "ip\\design_1_rst_ps7_0_100M_0\\design_1_rst_ps7_0_100M_0.xci",
+        "inst_hier_path": "rst_ps7_0_100M"
+      },
+      "axi_gpio_2": {
+        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+        "xci_name": "design_1_axi_gpio_2_0",
+        "xci_path": "ip\\design_1_axi_gpio_2_0_1\\design_1_axi_gpio_2_0.xci",
+        "inst_hier_path": "axi_gpio_2",
+        "parameters": {
+          "C_ALL_INPUTS": {
+            "value": "1"
+          },
+          "C_ALL_OUTPUTS_2": {
+            "value": "1"
+          },
+          "C_GPIO2_WIDTH": {
+            "value": "4"
+          },
+          "C_GPIO_WIDTH": {
+            "value": "4"
+          },
+          "C_INTERRUPT_PRESENT": {
+            "value": "1"
+          },
+          "C_IS_DUAL": {
+            "value": "1"
+          }
+        }
+      },
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
         "xci_name": "design_1_processing_system7_0_0",
@@ -2112,7 +2181,7 @@
             "value": "0"
           },
           "PCW_EN_EMIO_I2C0": {
-            "value": "0"
+            "value": "1"
           },
           "PCW_EN_EMIO_I2C1": {
             "value": "0"
@@ -2175,7 +2244,7 @@
             "value": "1"
           },
           "PCW_EN_I2C0": {
-            "value": "0"
+            "value": "1"
           },
           "PCW_EN_I2C1": {
             "value": "0"
@@ -2321,17 +2390,35 @@
           "PCW_GPIO_PERIPHERAL_ENABLE": {
             "value": "0"
           },
+          "PCW_I2C0_BASEADDR": {
+            "value": "0xE0004000"
+          },
+          "PCW_I2C0_HIGHADDR": {
+            "value": "0xE0004FFF"
+          },
+          "PCW_I2C0_I2C0_IO": {
+            "value": "EMIO"
+          },
           "PCW_I2C0_PERIPHERAL_ENABLE": {
+            "value": "1"
+          },
+          "PCW_I2C0_RESET_ENABLE": {
             "value": "0"
           },
           "PCW_I2C1_PERIPHERAL_ENABLE": {
             "value": "0"
+          },
+          "PCW_I2C_PERIPHERAL_FREQMHZ": {
+            "value": "108.333336"
           },
           "PCW_I2C_RESET_ENABLE": {
             "value": "1"
           },
           "PCW_I2C_RESET_POLARITY": {
             "value": "Active Low"
+          },
+          "PCW_I2C_RESET_SELECT": {
+            "value": "Share reset pin"
           },
           "PCW_IMPORT_BOARD_PRESET": {
             "value": "None"
@@ -2951,6 +3038,9 @@
           "PCW_P2F_GPIO_INTR": {
             "value": "0"
           },
+          "PCW_P2F_I2C0_INTR": {
+            "value": "0"
+          },
           "PCW_P2F_QSPI_INTR": {
             "value": "0"
           },
@@ -3133,6 +3223,15 @@
           },
           "PCW_S_AXI_HP0_ID_WIDTH": {
             "value": "6"
+          },
+          "PCW_S_AXI_HP1_DATA_WIDTH": {
+            "value": "64"
+          },
+          "PCW_S_AXI_HP2_DATA_WIDTH": {
+            "value": "64"
+          },
+          "PCW_S_AXI_HP3_DATA_WIDTH": {
+            "value": "64"
           },
           "PCW_TPIU_PERIPHERAL_CLKSRC": {
             "value": "External"
@@ -3657,44 +3756,6 @@
             }
           }
         }
-      },
-      "rst_clk_wiz_0_49M": {
-        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "xci_name": "design_1_rst_clk_wiz_0_49M_0",
-        "xci_path": "ip\\design_1_rst_clk_wiz_0_49M_0\\design_1_rst_clk_wiz_0_49M_0.xci",
-        "inst_hier_path": "rst_clk_wiz_0_49M"
-      },
-      "rst_ps7_0_100M": {
-        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "xci_name": "design_1_rst_ps7_0_100M_0",
-        "xci_path": "ip\\design_1_rst_ps7_0_100M_0\\design_1_rst_ps7_0_100M_0.xci",
-        "inst_hier_path": "rst_ps7_0_100M"
-      },
-      "axi_gpio_2": {
-        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-        "xci_name": "design_1_axi_gpio_2_0",
-        "xci_path": "ip\\design_1_axi_gpio_2_0_1\\design_1_axi_gpio_2_0.xci",
-        "inst_hier_path": "axi_gpio_2",
-        "parameters": {
-          "C_ALL_INPUTS": {
-            "value": "1"
-          },
-          "C_ALL_OUTPUTS_2": {
-            "value": "1"
-          },
-          "C_GPIO2_WIDTH": {
-            "value": "4"
-          },
-          "C_GPIO_WIDTH": {
-            "value": "4"
-          },
-          "C_INTERRUPT_PRESENT": {
-            "value": "1"
-          },
-          "C_IS_DUAL": {
-            "value": "1"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -3750,6 +3811,12 @@
         "interface_ports": [
           "FIXED_IO",
           "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_IIC_0": {
+        "interface_ports": [
+          "IIC_0_0",
+          "processing_system7_0/IIC_0"
         ]
       },
       "processing_system7_0_M_AXI_GP0": {
@@ -3861,9 +3928,9 @@
           "i2s_transmitter_0/s_axi_ctrl_aclk",
           "i2s_transmitter_0/s_axis_aud_aclk",
           "rst_clk_wiz_98Mhz/slowest_sync_clk",
+          "axi_gpio_2/s_axi_aclk",
           "processing_system7_0/M_AXI_GP0_ACLK",
-          "processing_system7_0/S_AXI_HP0_ACLK",
-          "axi_gpio_2/s_axi_aclk"
+          "processing_system7_0/S_AXI_HP0_ACLK"
         ]
       },
       "clk_wiz_0_CLK_49Mhz": {
