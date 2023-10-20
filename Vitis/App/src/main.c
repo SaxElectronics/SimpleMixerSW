@@ -249,7 +249,8 @@ int main()
 			MM2SAFIntrReceived = 0;
 		}
 
-		I2C_SendTestMessage();
+		//I2C_SendTestMessage();
+		I2C_CyclicFunction();
 
 	//	I2C_CyclicFunction();
     	//AF_GenerateSineWaveAndWriteToBuff();
