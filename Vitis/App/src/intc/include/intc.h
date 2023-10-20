@@ -56,6 +56,8 @@
 #include "xstatus.h"
 #include "xscugic.h"
 #include "xil_exception.h"
+/* gpio interrupt handler */
+#include <gpio_rgb_example.h>
 
 
 #define RETURN_ON_FAILURE(x) if ((x) != XST_SUCCESS) return XST_FAILURE;
@@ -72,8 +74,33 @@ typedef struct {
 } ivt_t;
 
 
+/****************** Static Global Variable Definitions ***********************/
+//#define XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR 61U
+//#define XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR 62U
+//#define XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR 63U
+//#define XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR 64U
+//#define XPAR_FABRIC_AXI_GPIO_1_IP2INTC_IRPT_INTR 65U
+ /* interrupt vector tables*/
+/* includes all interrupts processed by the PS7 */
+// Interrupt Priorities
+#define GPIO_INTR_PRIORITY          			XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR
+#define I2S_TX_INTR_PRIORITY        			XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR
+#define I2S_RX_INTR_PRIORITY        			XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR
+#define AUDIO_FMT_S2MM_INTR_PRIORITY 			XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR
+#define AUDIO_FMT_MM2S_INTR_PRIORITY 			XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR
+#define IIC_INTR_PRIORITY           			IIC_INT_VEC_ID
+// ... other priorities ...
+
+
+#define XSCUGIC_INT_CFG_EDGE_SENSITIVE 	0x3 // rising edge
+
 XStatus fnInitInterruptController(XScuGic *psIntc);
 void fnEnableInterrupts(XScuGic *psIntc, const ivt_t *prgsIvt, unsigned int csIVectors);
 
+extern void InterrupController_Init(void);
+
+
+/* interrupt controller to be accessed by other modules */
+extern XScuGic xInterruptController;
 
 #endif /* INTC_H_ */

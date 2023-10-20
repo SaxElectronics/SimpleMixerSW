@@ -61,8 +61,6 @@
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\AudioFormatter\include&quot;"/>
                                     									
-                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\platform&quot;"/>
-                                    									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\I2S\include&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\intc\include&quot;"/>
@@ -72,6 +70,16 @@
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\gpio\include&quot;"/>
                                     									
                                     <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\I2C\include&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\OS\FreeRTOS\include&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\OS\FreeRTOS\portable&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\OS\OS_Config\include&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\OS\FreeRTOS\common\include&quot;"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;${ProjDirPath}\src\platform\include&quot;"/>
                                     								
                                 </option>
                                 								

@@ -52,8 +52,63 @@
 
 #include "intc.h"
 #include "xparameters.h"
+#include <platform.h>
+#include <ps7_init.h>
+#include <stdio.h>
+#include "xil_printf.h"
+#include <xiicps_driver.h>
+
+/* I2S Tx and Rx */
+#include "I2S.h"
+/* audio formatter */
+#include "AudioFormatter.h"
+/* verbose */
+#include "verbose.h"
 
 #define INTC_DEVICE_ID XPAR_SCUGIC_0_DEVICE_ID
+
+XScuGic xInterruptController;
+
+
+
+const ivt_t ivt[] =
+{
+	{XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio, GPIO_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+			{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance, I2S_TX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+			{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance, I2S_RX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+			{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance, AUDIO_FMT_S2MM_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance, AUDIO_FMT_MM2S_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+	{IIC_INT_VEC_ID, (XInterruptHandler)XIicPs_MasterInterruptHandler, &Iic, IIC_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+   // {XPAR_SCUTIMER_INTR, (XInterruptHandler)FreeRTOS_Tick_Handler, &xTimer, portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+
+	//... other entries ...
+};
+
+
+
+XStatus fnInitInterruptController(XScuGic *psIntc);
+void fnEnableInterrupts(XScuGic *psIntc, const ivt_t *prgsIvt, unsigned int csIVectors);
+
+
+void InterrupController_Init(void)
+{
+	XStatus Status, fInitSuccess;
+
+	// Initialize the interrupt controller
+	Status = fnInitInterruptController(&xInterruptController);
+	if(Status != XST_SUCCESS) {
+		VERBOSE("err:irpt");
+		fInitSuccess = XST_FAILURE;
+		if (fInitSuccess==XST_FAILURE)
+			{VERBOSE("init:failed");}
+		//goto endinit;
+	}
+
+	// Enable all interrupts in our interrupt vector table
+	// Make sure all driver instances using this IVT are initialized first
+	fnEnableInterrupts(&xInterruptController, &ivt[0], sizeof(ivt)/sizeof(ivt[0]));
+
+}
 
 XStatus fnInitInterruptController(XScuGic *psIntc)
 {

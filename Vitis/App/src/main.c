@@ -46,12 +46,13 @@
  */
 
 /*
- * platfor includes
+ * platform includes
  */
 #include <gpio_rgb_example.h>
+#include <platform.h>
+#include <ps7_init.h>
 #include <stdio.h>
 #include <xiicps_driver.h>
-#include "platform.h"
 #include "xil_printf.h"
 #include "xparameters.h"
 #include "xil_io.h"
@@ -70,7 +71,6 @@
 /* interrupt controller */
 #include "intc.h"
 /* gpio interrupt init */
-#include "ps7_init.h"
 /* I2C includes */
 
 /*
@@ -84,42 +84,11 @@ u32 XstStatus = 0;
 u32 TxStatus = 0;
 u32 RxStatus = 0;
 
-/****************** Static Global Variable Definitions ***********************/
-//#define XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR 61U
-//#define XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR 62U
-//#define XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR 63U
-//#define XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR 64U
-//#define XPAR_FABRIC_AXI_GPIO_1_IP2INTC_IRPT_INTR 65U
- /* interrupt vector tables*/
-/* includes all interrupts processed by the PS7 */
-// Interrupt Priorities
-#define GPIO_INTR_PRIORITY          			XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR
-#define I2S_TX_INTR_PRIORITY        			XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR
-#define I2S_RX_INTR_PRIORITY        			XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR
-#define AUDIO_FMT_S2MM_INTR_PRIORITY 			XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR
-#define AUDIO_FMT_MM2S_INTR_PRIORITY 			XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR
-#define IIC_INTR_PRIORITY           			IIC_INT_VEC_ID
-// ... other priorities ...
 
-
-#define XSCUGIC_INT_CFG_EDGE_SENSITIVE 	0x3 // rising edge
-
-const ivt_t ivt[] =
-{
-	{XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio, GPIO_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-			{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance, I2S_TX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-			{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance, I2S_RX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-			{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance, AUDIO_FMT_S2MM_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance, AUDIO_FMT_MM2S_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-	{IIC_INT_VEC_ID, (XInterruptHandler)XIicPs_MasterInterruptHandler, &Iic, IIC_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-	//... other entries ...
-};
 
 
 int main()
 {
-	XStatus Status, fInitSuccess;
-	static XScuGic sIntc;
 
 	/* init platform */
     init_platform();
@@ -129,15 +98,7 @@ int main()
     SET_VERBOSE_FLAG();
 	VERBOSE("Initializing...");
 
-	// Initialize the interrupt controller
-	Status = fnInitInterruptController(&sIntc);
-	if(Status != XST_SUCCESS) {
-		VERBOSE("err:irpt");
-		fInitSuccess = XST_FAILURE;
-		if (fInitSuccess==XST_FAILURE)
-			{VERBOSE("init:failed");}
-		//goto endinit;
-	}
+
 	/* Initialize the GPIO driver */
 //	Status = XGpio_Initialize(&Gpio, XPAR_GPIO_1_DEVICE_ID);
 //	if (Status != XST_SUCCESS) {
@@ -152,12 +113,12 @@ int main()
 	/* initialize rgb GPIOs */
 	GPIO_rgb_Init();
 
-	// Enable all interrupts in our interrupt vector table
-	// Make sure all driver instances using this IVT are initialized first
-	fnEnableInterrupts(&sIntc, &ivt[0], sizeof(ivt)/sizeof(ivt[0]));
-
 	/* initialize I2C */
 	I2C_main_init();
+
+	/* initialize Interrupt Controller */
+	InterrupController_Init();
+
 	 /*
 	 * Enable non-critical exceptions.
 	 */
