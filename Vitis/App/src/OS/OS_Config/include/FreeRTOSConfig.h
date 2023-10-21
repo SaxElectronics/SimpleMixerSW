@@ -129,6 +129,19 @@ to exclude the API function. */
 #define INCLUDE_xTaskGetHandle					1
 #define INCLUDE_xSemaphoreGetMutexHolder		1
 
+
+/* Priorities at which the tasks are created. */
+#define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
+#define	mainQUEUE_SEND_TASK_PRIORITY		( tskIDLE_PRIORITY + 1 )
+
+/* The rate at which data is sent to the queue.  The 200ms value is converted
+to ticks using the portTICK_PERIOD_MS constant. */
+#define mainQUEUE_SEND_FREQUENCY_MS			( 200 / portTICK_PERIOD_MS )
+
+#define TASK_PERIOD_TICKS_1MS                     ( 1 / portTICK_PERIOD_MS )
+#define TASK_PERIOD_TICKS_10MS                    ( 10 / portTICK_PERIOD_MS )
+#define TASK_PERIOD_TICKS_100MS                   ( 100 / portTICK_PERIOD_MS )
+
 /* This demo makes use of one or more example stats formatting functions.  These
 format the raw data provided by the uxTaskGetSystemState() function in to human
 readable ASCII form.  See the notes in the implementation of vTaskList() within
@@ -192,10 +205,19 @@ website for more information. ***********************************************/
 
 /* The priority for the task that unblocked by the MAC interrupt to process
 received packets. */
-#define configMAC_INPUT_TASK_PRIORITY		( configMAX_PRIORITIES - 1 )
+#define configMAC_INPUT_TASK_PRIORITY		( configMAX_PRIORITIES - 4 )
+
+
+// set the task priority for 1ms, 10ms, 100ms
+
+#define TASK_PRIORITY_1MS             ( configMAX_PRIORITIES - 1 )
+#define TASK_PRIORITY_10MS             ( configMAX_PRIORITIES - 2 )
+#define TASK_PRIORITY_100MS             ( configMAX_PRIORITIES - 3 )
+#define mainCHECK_TASK_PRIORITY                 (tskIDLE_PRIORITY)
+
 
 /* The priority of the task that runs the lwIP stack. */
-#define configLWIP_TASK_PRIORITY			( configMAX_PRIORITIES - 2 )
+#define configLWIP_TASK_PRIORITY			( configMAX_PRIORITIES - 5 )
 
 /* The priority of the task that uses lwIP sockets to provide a simple command
 line interface. */

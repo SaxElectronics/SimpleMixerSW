@@ -158,6 +158,7 @@ extern void AF_ReadAudioData(void);
 extern u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
 extern u32 XAudioFormatter_getDMAStatus(XAudioFormatter *InstancePtr);
 
+extern void ProcessI2SInterruptsAndDMA(void);
 
 /*
  * variables declarations

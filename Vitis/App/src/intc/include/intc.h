@@ -59,6 +59,10 @@
 /* gpio interrupt handler */
 #include <gpio_rgb_example.h>
 
+/* Xilinx includes. */
+#include "xscutimer.h"
+#include "xscugic.h"
+#include "FreeRTOS_tick_config.h"
 
 #define RETURN_ON_FAILURE(x) if ((x) != XST_SUCCESS) return XST_FAILURE;
 
@@ -96,6 +100,8 @@ typedef struct {
 
 XStatus fnInitInterruptController(XScuGic *psIntc);
 void fnEnableInterrupts(XScuGic *psIntc, const ivt_t *prgsIvt, unsigned int csIVectors);
+
+extern volatile u8 xIsGICInitialized;
 
 extern void InterrupController_Init(void);
 

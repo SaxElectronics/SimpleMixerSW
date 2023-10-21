@@ -184,6 +184,56 @@ u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
 InterruptCounters_t AllInterruptCounters;
 
 
+
+/**
+ * @brief Processes I2S receive and transmit interrupt status and handles DMA operations.
+ *
+ * This function monitors the I2S and Audio Formatter for both receive and transmit interrupts.
+ * Based on the status of the interrupts and DMA HALT states, it updates counters and manages
+ * the audio data processing. This function can be integrated into an RTOS task or called cyclically.
+ */
+void ProcessI2SInterruptsAndDMA(void)
+{
+
+
+    AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
+    s2mm_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
+    s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+    s2mm_AF_errors.s2mm_DMA_ctrl_state = s2mm_DMA_ctrl_state;
+    s2mm_AF_errors.s2mm_DMA_halt = s2mm_DMA_halt;
+    I2sRxIntrAesComplete = 1;
+
+    /* What to do when both Rx and S2MM interrupts received? */
+    if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt))
+    {
+        I2sRxIntrCount++;
+
+        // Potential operations on audio data can be added here
+
+        /* Reset variables for next run */
+        I2sRxIntrAesComplete = 0;
+        S2MMAFIntrReceived = 0;
+    }
+
+    AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
+    mm2s_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
+    mm2s_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
+    I2sTxIntrAesComplete = 1;
+
+    /* What to do when both Tx and MM2S interrupts received? */
+    if ((I2sTxIntrAesComplete == 1 && MM2SAFIntrReceived == 1) && (!mm2s_DMA_halt))
+    {
+        I2sTxIntrCount++;
+
+        // Potential operations on audio data can be added here
+
+        /* Reset variables for next run */
+        I2sTxIntrAesComplete = 0;
+        MM2SAFIntrReceived = 0;
+    }
+}
+
+
 /*****************************************************************************/
 /**
  * This function is the main init function of the audio formatter

@@ -73,6 +73,11 @@
 /* gpio interrupt init */
 /* I2C includes */
 
+/* OS Includes */
+#include "Tasks_Init.h"
+#include "FreeRTOS_main.h"
+
+
 /*
  * global variables
  */
@@ -80,9 +85,6 @@
 
 /********************* Global Variable Definitions ***************************/
 //static XAxiDma sAxiDma;
-u32 XstStatus = 0;
-u32 TxStatus = 0;
-u32 RxStatus = 0;
 
 
 
@@ -119,105 +121,16 @@ int main()
 	/* initialize Interrupt Controller */
 	InterrupController_Init();
 
-	 /*
-	 * Enable non-critical exceptions.
-	 */
-	//Xil_ExceptionEnable();
-
-	/* while loop to test the I2S interrupts */
-	RxStatus =  XST_FAILURE;
-	while (I2sRxIntrCount < I2S_RX_TIME_OUT)
-	{
-		//	while(1) {
-		/* Wait until an interrupts has been received. */
-		if (I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) {
-					RxStatus =  XST_SUCCESS;
-					break;
-				}
-		XstStatus = XST_FAILURE;
-		I2sRxIntrCount++;
-
-	}
-	while (I2sTxIntrCount < I2S_TX_TIME_OUT)
-	{
-		if (I2sTxIntrUvfDetected == 1 && MM2SAFIntrReceived == 1)
-		{
-			TxStatus = XST_SUCCESS;
-			break;
-		}
-		I2sTxIntrCount++;
-	}
-	if(TxStatus == XST_SUCCESS && RxStatus == XST_SUCCESS)
-	{
-		XstStatus = XST_SUCCESS;
-	}
-	if (XstStatus == XST_SUCCESS)
-	{
-		print("Successfully Initialized the I2S Rx and Tx IP\n\r");
-	}
-	else
-	{
-		print("Initializing I2S Rx and Tx IP FAILED!\n\r");
-	}
-
-//	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-//	XAudioFormatterDMAStart(AFInstancePtr);
-//	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-//	XAudioFormatterDMAStart(AFInstancePtr);
-
+	/* setup HW config for OS and create OS tasks */
+	FreeRTOS_Main_Init();
     print("Hello from Simple Mixer App\n\r");
-    print("Successfully ran the Simple Mixer application\n\r");
-    print("Entering infinite loop\n\r");
-    for (;;)
-    {
-    	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-		s2mm_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
-    	s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
-    	s2mm_AF_errors.s2mm_DMA_ctrl_state = s2mm_DMA_ctrl_state;
-    	s2mm_AF_errors.s2mm_DMA_halt = s2mm_DMA_halt;
-    	I2sRxIntrAesComplete = 1;
-		/* what to do when both Rx and S2MM interrupts received? */
-    	if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt) )
-    	{
-    		I2sRxIntrCount++;
+	print("Successfully ran the Simple Mixer application\n\r");
+	print("Entering the OS loop\n\r");
 
-    		//AF_ProcessAudioData();
-    		//AF_ReadAudioData();
+	/* decide when to start the scheduler */
+	FreeRTOS_StartScheduler();
+	/* code lines after FreeRTOS_StartScheduler won't be reached */
 
-    		//AF_WriteAudioData();
 
-    		/* reset variables for next run */
-    		I2sRxIntrAesComplete = 0;
-			S2MMAFIntrReceived = 0;
-    	}
-
-    	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-    	mm2s_DMA_halt = XAudioFormatter_GetStatusErrors(&AFInstance, XAUD_STS_DMA_HALT_MASK);
-    	mm2s_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
-    	I2sTxIntrAesComplete = 1;
-    	/* what to do when both Tx and MM2S interrupts received? */
-		if ((I2sTxIntrAesComplete == 1 && MM2SAFIntrReceived == 1)  && (!mm2s_DMA_halt) )
-		{
-    		I2sTxIntrCount++;
-
-//        	AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-//			XAudioFormatterDMAStart(AFInstancePtr);
-//	    	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-//			XAudioFormatterDMAStart(AFInstancePtr);
-
-			/* reset variables for next run */
-			I2sTxIntrAesComplete = 0;
-			MM2SAFIntrReceived = 0;
-		}
-
-		//I2C_SendTestMessage();
-		I2C_CyclicFunction();
-
-	//	I2C_CyclicFunction();
-    	//AF_GenerateSineWaveAndWriteToBuff();
-    	//AF_RestartDMAs();
-    	//AF_ReadAudioSamples(&AFInstance);
-
-    }
     cleanup_platform();
 }

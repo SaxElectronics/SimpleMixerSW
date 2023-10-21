@@ -89,6 +89,9 @@
 
 /* interrupt controller includes */
 #include "intc.h"
+/* tasks init routine functions */
+#include "Tasks_Init.h"
+
 
 /* mainSELECTED_APPLICATION is used to select between three demo applications,
  * as described at the top of this file.
@@ -147,7 +150,7 @@ XScuWdt xWatchDogInstance;
 
 /*-----------------------------------------------------------*/
 
-int FreeRTOS_main( void )
+int FreeRTOS_Main_Init( void )
 {
 	/* See http://www.freertos.org/RTOS-Xilinx-Zynq.html for instructions. */
 
@@ -158,7 +161,7 @@ int FreeRTOS_main( void )
 	file. */
 	#if( mainSELECTED_APPLICATION == 0 )
 	{
-		main_blinky();
+		FreeRTOS_CreateTasks_Init();
 	}
 	#elif( mainSELECTED_APPLICATION == 1 )
 	{
@@ -174,7 +177,30 @@ int FreeRTOS_main( void )
 	return 0;
 }
 /*-----------------------------------------------------------*/
-
+/**
+ * @brief   Initializes the hardware for the FreeRTOS application.
+ *
+ * This function sets up hardware configurations necessary for the FreeRTOS
+ * application to run. It primarily focuses on configuring the interrupt
+ * controller and ensuring the system is in a state ready to start the FreeRTOS
+ * scheduler.
+ *
+ * The function performs the following operations:
+ * 1. Disables interrupts to ensure no interrupts execute while setting up.
+ * 2. Obtains the configuration of the Generic Interrupt Controller (GIC).
+ * 3. Validates the configurations from FreeRTOSConfig.h.
+ * 4. Installs a default handler for each GIC interrupt.
+ * 5. Configures the tick interrupt and the associated timer for FreeRTOS's
+ *    time-slicing.
+ * 6. Initializes the LED port for testing and debug purposes.
+ * 7. Switches to use the FreeRTOS vector table since the Xilinx project's BSP
+ *    might not easily allow alteration of the start-up code.
+ *
+ * @note    This function asserts if any of the FreeRTOSConfig.h configurations
+ *          are inconsistent with the hardware settings.
+ *
+ * @return  None.
+ */
 static void prvSetupHardware( void )
 {
 BaseType_t xStatus;
@@ -194,13 +220,19 @@ XScuGic_Config *pxGICConfig;
 	configASSERT( pxGICConfig->CpuBaseAddress == ( configINTERRUPT_CONTROLLER_BASE_ADDRESS + configINTERRUPT_CONTROLLER_CPU_INTERFACE_OFFSET ) );
 	configASSERT( pxGICConfig->DistBaseAddress == configINTERRUPT_CONTROLLER_BASE_ADDRESS );
 
-	/* Install a default handler for each GIC interrupt. */
-	xStatus = XScuGic_CfgInitialize( &xInterruptController, pxGICConfig, pxGICConfig->CpuBaseAddress );
+	/* only initialize if GIC not already initialized */
+	if (xIsGICInitialized == FALSE)
+	{
+		/* Install a default handler for each GIC interrupt. */
+		xStatus = XScuGic_CfgInitialize( &xInterruptController, pxGICConfig, pxGICConfig->CpuBaseAddress );
+	}
+	else
+	{
+		xStatus = XST_SUCCESS;
+	}
 	configASSERT( xStatus == XST_SUCCESS );
 	( void ) xStatus; /* Remove compiler warning if configASSERT() is not defined. */
 
-	/* configure tick interrupt and timer */
-	vConfigureTickInterrupt();
 
 	/* Initialise the LED port. */
 	vParTestInitialise();
@@ -209,6 +241,8 @@ XScuGic_Config *pxGICConfig;
 	altered easily.  Therefore the vector table used by FreeRTOS is defined in
 	FreeRTOS_asm_vectors.S, which is part of this project.  Switch to use the
 	FreeRTOS vector table. */
+	/* this is a problem ?? */
+
 	vPortInstallFreeRTOSVectorTable();
 }
 

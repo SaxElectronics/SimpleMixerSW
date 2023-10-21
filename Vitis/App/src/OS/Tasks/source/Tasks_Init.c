@@ -70,6 +70,13 @@
 /* Standard demo includes. */
 #include "partest.h"
 
+/*
+ * include Tasks headers
+ */
+#include "Task_100ms.h"
+#include "Task_10ms.h"
+#include "Task_1ms.h"
+
 /* Priorities at which the tasks are created. */
 #define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
 #define	mainQUEUE_SEND_TASK_PRIORITY		( tskIDLE_PRIORITY + 1 )
@@ -99,9 +106,7 @@ static void prvQueueSendTask( void *pvParameters );
 /* The queue used by both tasks. */
 static QueueHandle_t xQueue = NULL;
 
-/*-----------------------------------------------------------*/
-
-void main_blinky( void )
+void FreeRTOS_CreateTasks_Init(void)
 {
 	/* Create the queue. */
 	xQueue = xQueueCreate( mainQUEUE_LENGTH, sizeof( uint32_t ) );
@@ -117,11 +122,46 @@ void main_blinky( void )
 					mainQUEUE_RECEIVE_TASK_PRIORITY, 	/* The priority assigned to the task. */
 					NULL );								/* The task handle is not required, so NULL is passed. */
 
-		xTaskCreate( prvQueueSendTask, "TX", configMINIMAL_STACK_SIZE, NULL, mainQUEUE_SEND_TASK_PRIORITY, NULL );
+		xTaskCreate( prvQueueSendTask,
+				"TX",
+				configMINIMAL_STACK_SIZE,
+				NULL,
+				mainQUEUE_SEND_TASK_PRIORITY,
+				NULL );
 
-		/* Start the tasks and timer running. */
-		vTaskStartScheduler();
+		 /*
+		 * create periodic tasks 1ms, 10ms and 100ms
+		 */
+		xTaskCreateStatic(Task_1ms,         // Function that implements the task.
+								 "1ms Task",      // Text name for the task.
+								 STACK_SIZE_TASK_1MS,           // Number of indexes in the xStack array.
+								 ( void * ) NULL,      // Parameter passed into the task.
+								 TASK_PRIORITY_1MS, // Priority at which the task is created.
+								 TaskStack_1ms,        // Array to use as the task's stack.
+								 &TaskBuffer_1ms );    // Variable to hold the task's data structure.
+		xTaskCreateStatic(Task_10ms,         // Function that implements the task.
+									 "10ms Task",      // Text name for the task.
+									 STACK_SIZE_TASK_10MS,           // Number of indexes in the xStack array.
+									 ( void * ) NULL,      // Parameter passed into the task.
+									 TASK_PRIORITY_10MS, // Priority at which the task is created.
+									 TaskStack_10ms,        // Array to use as the task's stack.
+									 &TaskBuffer_10ms );    // Variable to hold the task's data structure.
+		xTaskCreateStatic(Task_100ms,         // Function that implements the task.
+									  "100ms Task",      // Text name for the task.
+									  STACK_SIZE_TASK_100MS,           // Number of indexes in the xStack array.
+									  ( void * ) NULL,      // Parameter passed into the task.
+									  TASK_PRIORITY_100MS, // Priority at which the task is created.
+									  TaskStack_100ms,        // Array to use as the task's stack.
+									  &TaskBuffer_100ms );    // Variable to hold the task's data structure.
+
+
 	}
+}
+
+void FreeRTOS_StartScheduler(void)
+{
+	/* Start the tasks and timer running. */
+	vTaskStartScheduler();
 
 	/* If all is well, the scheduler will now be running, and the following
 	line will never be reached.  If the following line does execute, then
@@ -133,6 +173,7 @@ void main_blinky( void )
 	a privileged mode (not user mode). */
 	for( ;; );
 }
+
 /*-----------------------------------------------------------*/
 
 static void prvQueueSendTask( void *pvParameters )

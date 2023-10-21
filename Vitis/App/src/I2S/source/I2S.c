@@ -81,6 +81,66 @@ extern u32 XI2s_Rx_GetChMux(XI2s_Rx *InstancePtr, XI2s_Rx_ChannelId ChID);
 extern u32 XI2s_Tx_GetChMux(XI2s_Tx *InstancePtr, XI2s_Tx_ChannelId ChID);
 void XI2s_Rx_SetValidity(XI2s_Rx *InstancePtr, u8 Enable);
 
+u32 TxStatus = 0;
+u32 RxStatus = 0;
+u32 XstStatus = 0;
+
+
+
+/**
+ * @brief Checks the status of I2S interrupts and prints the initialization status.
+ *
+ * The function monitors the I2S receive and transmit interrupts by inspecting
+ * global flags which are presumably set by corresponding interrupt handlers.
+ * For each of the Rx and Tx channels, there is a timeout mechanism that
+ * incrementally checks the interrupt status. If the status indicates success
+ * before the timeout, it continues with the other channel.
+ *
+ * If both channels indicate success, the function prints a successful
+ * initialization message. If either channel fails or times out, it prints an
+ * initialization failure message.
+ *
+ * @note This adapted function is designed to be more task-friendly in an RTOS
+ * environment, removing the continuous while loops to avoid potential task
+ * blocking for extended periods.
+ */
+void I2S_CycleFunction(void)
+{
+	/* while loop to test the I2S interrupts */
+	RxStatus =  XST_FAILURE;
+	if (I2sRxIntrCount < I2S_RX_TIME_OUT)
+	{
+		//	while(1) {
+		/* Wait until an interrupts has been received. */
+		if (I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) {
+					RxStatus =  XST_SUCCESS;
+				}
+		XstStatus = XST_FAILURE;
+		I2sRxIntrCount++;
+
+	}
+	if (I2sTxIntrCount < I2S_TX_TIME_OUT)
+	{
+		if (I2sTxIntrUvfDetected == 1 && MM2SAFIntrReceived == 1)
+		{
+			TxStatus = XST_SUCCESS;
+		}
+		I2sTxIntrCount++;
+	}
+	if(TxStatus == XST_SUCCESS && RxStatus == XST_SUCCESS)
+	{
+		XstStatus = XST_SUCCESS;
+	}
+	if (XstStatus == XST_SUCCESS)
+	{
+		print("Successfully Initialized the I2S Rx and Tx IP\n\r");
+	}
+	else
+	{
+		print("Initializing I2S Rx and Tx IP FAILED!\n\r");
+	}
+}
+
 /*****************************************************************************/
 /**
  * This function initializes the I2S receiver and then

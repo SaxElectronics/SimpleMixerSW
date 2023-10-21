@@ -38,7 +38,7 @@
 
 #define XSCUTIMER_CLOCK_HZ ( XPAR_CPU_CORTEXA9_0_CPU_CLK_FREQ_HZ / 2UL )
 
-static XScuTimer xTimer;
+XScuTimer xTimer;
 
 /*
  * The application must provide a function that configures a peripheral to
@@ -58,20 +58,27 @@ const uint8_t ucRisingEdge = 3;
 	interrupt should be left disabled.  It is enabled automatically when the
 	scheduler is started. */
 
-	/* Ensure XScuGic_CfgInitialize() has been called.  In this demo it has
-	already been called from prvSetupHardware() in main(). */
-	pxGICConfig = XScuGic_LookupConfig( XPAR_SCUGIC_SINGLE_DEVICE_ID );
-	xStatus = XScuGic_CfgInitialize( &xInterruptController, pxGICConfig, pxGICConfig->CpuBaseAddress );
-	configASSERT( xStatus == XST_SUCCESS );
-	( void ) xStatus; /* Remove compiler warning if configASSERT() is not defined. */
+	if (xIsGICInitialized == FALSE )
+	{
+		/* run only if GIC with FreeRTOS interrupt has not been initalized */
 
-	/* The priority must be the lowest possible. */
-	XScuGic_SetPriorityTriggerType( &xInterruptController, XPAR_SCUTIMER_INTR, portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT, ucRisingEdge );
+		/* Ensure XScuGic_CfgInitialize() has been called.  In this demo it has
+		already been called from prvSetupHardware() in main(). */
+		pxGICConfig = XScuGic_LookupConfig( XPAR_SCUGIC_SINGLE_DEVICE_ID );
+		xStatus = XScuGic_CfgInitialize( &xInterruptController, pxGICConfig, pxGICConfig->CpuBaseAddress );
+		configASSERT( xStatus == XST_SUCCESS );
+		( void ) xStatus; /* Remove compiler warning if configASSERT() is not defined. */
 
-	/* Install the FreeRTOS tick handler. */
-	xStatus = XScuGic_Connect( &xInterruptController, XPAR_SCUTIMER_INTR, (Xil_ExceptionHandler) FreeRTOS_Tick_Handler, ( void * ) &xTimer );
-	configASSERT( xStatus == XST_SUCCESS );
-	( void ) xStatus; /* Remove compiler warning if configASSERT() is not defined. */
+		/* The priority must be the lowest possible. */
+		XScuGic_SetPriorityTriggerType( &xInterruptController, XPAR_SCUTIMER_INTR, portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT, ucRisingEdge );
+
+		/* Install the FreeRTOS tick handler. */
+		xStatus = XScuGic_Connect( &xInterruptController, XPAR_SCUTIMER_INTR, (Xil_ExceptionHandler) FreeRTOS_Tick_Handler, ( void * ) &xTimer );
+		configASSERT( xStatus == XST_SUCCESS );
+		( void ) xStatus; /* Remove compiler warning if configASSERT() is not defined. */
+
+	}
+
 
 	/* Initialise the timer. */
 	pxTimerConfig = XScuTimer_LookupConfig( XPAR_SCUTIMER_DEVICE_ID );

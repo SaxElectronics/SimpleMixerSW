@@ -25,13 +25,13 @@
 #define I2S_RX_INTERRUPT_ID	XPAR_FABRIC_I2SRX_0_VEC_ID
 #define I2S_RX_FS		48 //kHz
 #define I2S_RX_MCLK		(384 * I2S_RX_FS)
-#define I2S_RX_TIME_OUT 500000
+#define I2S_RX_TIME_OUT 5000
 
 #define I2S_TX_DEVICE_ID	XPAR_XI2STX_0_DEVICE_ID
 #define I2S_TX_INTERRUPT_ID	XPAR_FABRIC_I2STX_0_VEC_ID
 #define I2S_TX_FS		48 /* kHz */
 #define I2S_TX_MCLK		(384 * I2S_TX_FS)
-#define I2S_TX_TIME_OUT 500000
+#define I2S_TX_TIME_OUT 5000
 
 #define XI2S_RX_IRQSTS_SET_BIT0 0x00000001 // Bit 0 set to 1
 
@@ -155,6 +155,8 @@ extern void I2sTxAesBlockCmplIntrHandler(void *CallBackRef);
 extern void I2sRxAesBlockCmplIntrHandler(void *CallBackRef);
 extern void I2STx_GetHwConfig(XI2s_Tx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr );
 extern void I2SRx_GetHwConfig(XI2s_Rx *I2SInstancePtr, I2S_HwConfig* I2SHwConfigPtr );
+/* main cyclic function */
+extern void I2S_CycleFunction(void);
 
 
 #endif // I2S_H

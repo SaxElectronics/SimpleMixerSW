@@ -45,7 +45,7 @@ int I2C_main_init(void)
  * @brief Initialize the I2C peripheral.
  *
  * This function initializes the I2C device and configures it for communication.
- * The initialization involves looking up configuration, initializing the driver,
+ * The initialization involves looking up configuration, initializing the driver,I2C_CyclicFunction
  * performing a self-test, and setting up the handler and clock rate.
  *
  * @param DeviceId The device ID of the I2C peripheral as defined in xparameters.h
