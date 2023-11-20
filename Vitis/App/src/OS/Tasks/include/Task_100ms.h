@@ -27,8 +27,13 @@
 
 extern StaticTask_t TaskBuffer_100ms;
 extern StackType_t  TaskStack_100ms[STACK_SIZE_TASK_100MS];
+extern TaskHandle_t xTaskHandle_100ms;
 
+extern uint32_t TaskCounter_100ms;
 
+/*
+ * function prototypes
+ */
 extern void Task_100ms(void * pvParameters);
 
 #endif//TASK_100MS_H

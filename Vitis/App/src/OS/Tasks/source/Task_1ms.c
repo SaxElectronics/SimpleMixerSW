@@ -20,6 +20,7 @@
 StaticTask_t TaskBuffer_1ms;
 StackType_t  TaskStack_1ms[STACK_SIZE_TASK_1MS];
 uint32_t TaskCounter_1ms;
+TaskHandle_t xTaskHandle_1ms;
 
 
 /*

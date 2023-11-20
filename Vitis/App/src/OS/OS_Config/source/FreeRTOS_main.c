@@ -91,7 +91,7 @@
 #include "intc.h"
 /* tasks init routine functions */
 #include "Tasks_Init.h"
-
+#include "ISR_Tasks.h"
 
 /* mainSELECTED_APPLICATION is used to select between three demo applications,
  * as described at the top of this file.
@@ -161,7 +161,10 @@ int FreeRTOS_Main_Init( void )
 	file. */
 	#if( mainSELECTED_APPLICATION == 0 )
 	{
+		/* Create cyclic tasks */
 		FreeRTOS_CreateTasks_Init();
+		/* Create ISR tasks */
+		Create_ISR_Tasks_Init();
 	}
 	#elif( mainSELECTED_APPLICATION == 1 )
 	{

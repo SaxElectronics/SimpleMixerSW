@@ -26,6 +26,8 @@
  */
 extern StaticTask_t TaskBuffer_10ms;
 extern StackType_t  TaskStack_10ms[STACK_SIZE_TASK_10MS];
+extern TaskHandle_t xTaskHandle_10ms;
+extern uint32_t TaskCounter_10ms;
 
 /*
  * function prototypes

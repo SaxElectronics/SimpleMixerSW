@@ -988,7 +988,7 @@ void XMM2SAFCallbackInterruptOnComplete_InTask(void *data)
 
 	if ( (AFInstancePtr->ChannelId) == XAudioFormatter_MM2S)
 	{
-		AF_bufferPtr = (u32*) (uintptr_t) (af_mm2s_hw_params.buf_addr )  ;
+		//AF_bufferPtr = (u32*) (uintptr_t) (af_mm2s_hw_params.buf_addr )  ;
 	}
 	/* get the number of bytes transfered to memory */
 	mm2s_NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);

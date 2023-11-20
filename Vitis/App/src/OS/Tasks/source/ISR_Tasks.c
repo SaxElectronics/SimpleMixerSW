@@ -23,9 +23,9 @@ TaskHandle_t xIsrHandle_I2C = NULL;
 /* ISR Tasks Counters */
 uint32_t IsrTask_Counter_AF_MM2S = 0;
 uint32_t IsrTask_Counter_AF_S2MM = 0;
-uint32_t IsrTask_Counter_ClaTask8 = 0;
-uint32_t IsrTask_Counter_CANA = 0;
 uint32_t IsrTask_Counter_Check = 0;
+
+
 
 /* Task functions prototypes */
 void CANA_InterruptServiceRoutine_Task(void *pvParameters);
@@ -104,6 +104,7 @@ void XMM2SAFCallbackInterruptOnComplete_Task(void *pvParameters)
         // Receive data from the queue
         if (xQueueReceive(audioFormatterQueue, &AFInstancePtr, portMAX_DELAY) == pdPASS)
         {
+            IsrTask_Counter_AF_MM2S++;
             // Call the function to process the data
             XMM2SAFCallbackInterruptOnComplete_InTask(AFInstancePtr);
         }
@@ -121,6 +122,7 @@ void XS2MMAFCallbackInterruptOnComplete_Task(void *pvParameters)
         // Receive data from the queue
         if (xQueueReceive(audioDataQueueOutput, &audioDataFromISR, portMAX_DELAY) == pdPASS)
         {
+            IsrTask_Counter_AF_S2MM++;
             // Process the audio data for one period
             ProcessAudioPeriod(&audioDataFromISR);
         }

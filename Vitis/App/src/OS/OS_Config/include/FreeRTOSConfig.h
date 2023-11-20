@@ -221,6 +221,17 @@ received packets. */
 #define TASK_PRIORITY_I2C_ISR            ( configMAX_PRIORITIES - 3 )
 
 
+/*
+ * run time statistics macros
+ */
+#define configGENERATE_RUN_TIME_STATS                   1
+// configTICK_RATE_STATS_HZ 100kHz - 10us per tick, 10kHz - 100us per tick, 1Mhz = 1us per tick
+#define configTICK_RATE_STATS_HZ                  ( ( TickType_t ) 6500000 )
+#define configUSE_STATS_FORMATTING_FUNCTIONS            1 // to use statistics function
+
+#define configSTATS_MAXNUMBER_OF_TASKS                     10
+
+
 /* The priority of the task that runs the lwIP stack. */
 #define configLWIP_TASK_PRIORITY			( configMAX_PRIORITIES - 5 )
 

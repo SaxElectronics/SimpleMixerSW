@@ -23,10 +23,10 @@ extern SemaphoreHandle_t xCanSemaphore;
 extern SemaphoreHandle_t xClaSemaphore;
 extern SemaphoreHandle_t xI2cSemaphore;
 /* Task handles */
-extern TaskHandle_t xCanIsrHandle;
-extern TaskHandle_t xClaIsrTask1Handle;
-extern TaskHandle_t xClaIsrTask8Handle;
-extern TaskHandle_t xI2cIsrHandle;
+extern TaskHandle_t xIsrHandle_AF_MM2S;
+extern TaskHandle_t xIsrHandle_AF_S2MM;
+extern TaskHandle_t xIsrHandle_AF_I2C;
+
 
 /* ISR Tasks Counters */
 extern uint32_t IsrTask_Counter_I2C;

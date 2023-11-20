@@ -25,7 +25,8 @@
 
 extern StaticTask_t TaskBuffer_1ms;
 extern StackType_t  TaskStack_1ms[STACK_SIZE_TASK_1MS];
-
+extern uint32_t TaskCounter_1ms;
+extern TaskHandle_t xTaskHandle_1ms;
 
 extern void Task_1ms(void * pvParameters);
 

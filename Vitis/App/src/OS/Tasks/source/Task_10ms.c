@@ -18,6 +18,8 @@
 StaticTask_t TaskBuffer_10ms;
 StackType_t  TaskStack_10ms[STACK_SIZE_TASK_10MS];
 uint32_t TaskCounter_10ms;
+TaskHandle_t xTaskHandle_10ms;
+
 
 /*
  *      Task 10ms

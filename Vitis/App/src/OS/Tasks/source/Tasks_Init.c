@@ -132,21 +132,21 @@ void FreeRTOS_CreateTasks_Init(void)
 		 /*
 		 * create periodic tasks 1ms, 10ms and 100ms
 		 */
-		xTaskCreateStatic(Task_1ms,         // Function that implements the task.
+		xTaskHandle_1ms =  xTaskCreateStatic(Task_1ms,         // Function that implements the task.
 								 "1ms Task",      // Text name for the task.
 								 STACK_SIZE_TASK_1MS,           // Number of indexes in the xStack array.
 								 ( void * ) NULL,      // Parameter passed into the task.
 								 TASK_PRIORITY_1MS, // Priority at which the task is created.
 								 TaskStack_1ms,        // Array to use as the task's stack.
 								 &TaskBuffer_1ms );    // Variable to hold the task's data structure.
-		xTaskCreateStatic(Task_10ms,         // Function that implements the task.
+		xTaskHandle_10ms =  xTaskCreateStatic(Task_10ms,         // Function that implements the task.
 									 "10ms Task",      // Text name for the task.
 									 STACK_SIZE_TASK_10MS,           // Number of indexes in the xStack array.
 									 ( void * ) NULL,      // Parameter passed into the task.
 									 TASK_PRIORITY_10MS, // Priority at which the task is created.
 									 TaskStack_10ms,        // Array to use as the task's stack.
 									 &TaskBuffer_10ms );    // Variable to hold the task's data structure.
-		xTaskCreateStatic(Task_100ms,         // Function that implements the task.
+		xTaskHandle_100ms =  xTaskCreateStatic(Task_100ms,         // Function that implements the task.
 									  "100ms Task",      // Text name for the task.
 									  STACK_SIZE_TASK_100MS,           // Number of indexes in the xStack array.
 									  ( void * ) NULL,      // Parameter passed into the task.
@@ -157,6 +157,7 @@ void FreeRTOS_CreateTasks_Init(void)
 
 	}
 }
+
 
 void FreeRTOS_StartScheduler(void)
 {
