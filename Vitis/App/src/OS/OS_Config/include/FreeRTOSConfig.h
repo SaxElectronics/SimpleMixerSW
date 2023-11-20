@@ -210,10 +210,15 @@ received packets. */
 
 // set the task priority for 1ms, 10ms, 100ms
 
-#define TASK_PRIORITY_1MS             ( configMAX_PRIORITIES - 1 )
-#define TASK_PRIORITY_10MS             ( configMAX_PRIORITIES - 2 )
-#define TASK_PRIORITY_100MS             ( configMAX_PRIORITIES - 3 )
+#define TASK_PRIORITY_1MS             ( configMAX_PRIORITIES - 4 )
+#define TASK_PRIORITY_10MS             ( configMAX_PRIORITIES - 5 )
+#define TASK_PRIORITY_100MS             ( configMAX_PRIORITIES - 6 )
 #define mainCHECK_TASK_PRIORITY                 (tskIDLE_PRIORITY)
+
+/* ISR Task Interrupts */
+#define TASK_PRIORITY_AF_MM2S_ISR             ( configMAX_PRIORITIES - 1 )
+#define TASK_PRIORITY_AF_S2MM_ISR             ( configMAX_PRIORITIES - 2 )
+#define TASK_PRIORITY_I2C_ISR            ( configMAX_PRIORITIES - 3 )
 
 
 /* The priority of the task that runs the lwIP stack. */

@@ -85,8 +85,8 @@ preplace netloc ps7_0_axi_periph_M04_AXI 1 4 3 1340 640 NJ 640 2330J
 levelinfo -pg 1 0 200 490 800 1170 1650 2150 2640 2930
 pagesize -pg 1 -db -bbox -sgen -110 0 3050 1340
 ",
-   "Color Coded_ScaleFactor":"2.03302",
-   "Color Coded_TopLeft":"2332,117",
+   "Color Coded_ScaleFactor":"1.25147",
+   "Color Coded_TopLeft":"1220,-155",
    "Default View_ScaleFactor":"0.44404",
    "Default View_TopLeft":"-104,-491",
    "ExpandedHierarchyInLayout":"",

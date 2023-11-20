@@ -19,6 +19,8 @@
  */
 #include "verbose.h"
 
+#include "ISR_Tasks.h"
+
 /*
  * own defines
  */
@@ -79,8 +81,8 @@
 /* use the define below to make one period equal to one AES3 audio block containing 192 frames (with 2 audio samples each - 32bits) */
 /* with two dma periods there will be 2 AES3 blocks of audio data */
 
-#define AF_BYTES_PER_PERIOD		(384*4)
-#define AF_AUDIOSAMPLES_PER_PERIOD (AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
+#define AF_BYTES_PER_PERIOD					(384*4)
+#define AF_AUDIOSAMPLES_PER_PERIOD 			(AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
 #define AUDIO_BUFFER_BASE_ADDRESS 0x20000000ULL
 
 /*
@@ -159,6 +161,12 @@ extern u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mas
 extern u32 XAudioFormatter_getDMAStatus(XAudioFormatter *InstancePtr);
 
 extern void ProcessI2SInterruptsAndDMA(void);
+
+
+extern void XMM2SAFCallbackInterruptOnComplete_InTask(void *data);
+extern void ProcessAudioPeriod(AudioData_t *audioData);
+
+
 
 /*
  * variables declarations
