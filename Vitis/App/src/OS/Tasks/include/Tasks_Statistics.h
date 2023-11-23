@@ -28,6 +28,7 @@ typedef struct {
 
 
 extern void FreeRTOS_GetRunTimeStats(void);
+extern void FreeRTOS_InitTimerForRunTimeStats(void);
 
 extern void FreeRTOS_MappTasksForTaskExecutionTime(void);
 

@@ -92,6 +92,7 @@
 /* tasks init routine functions */
 #include "Tasks_Init.h"
 #include "ISR_Tasks.h"
+#include "Tasks_Statistics.h"
 
 /* mainSELECTED_APPLICATION is used to select between three demo applications,
  * as described at the top of this file.
@@ -142,9 +143,7 @@ void vApplicationIdleHook( void );
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 void vApplicationTickHook( void );
 
-/* The private watchdog is used as the timer that generates run time
-stats.  This frequency means it will overflow quite quickly. */
-XScuWdt xWatchDogInstance;
+
 
 
 
@@ -275,6 +274,7 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 	for( ;; );
 }
 /*-----------------------------------------------------------*/
+uint32_t ulIdleTaskCounter;
 
 void vApplicationIdleHook( void )
 {
@@ -289,6 +289,8 @@ volatile size_t xFreeHeapSpace, xMinimumEverFreeHeapSpace;
 	RAM. */
 	xFreeHeapSpace = xPortGetFreeHeapSize();
 	xMinimumEverFreeHeapSpace = xPortGetMinimumEverFreeHeapSize();
+
+    ulIdleTaskCounter++;
 
 	/* Remove compiler warning about xFreeHeapSpace being set but never used. */
 	( void ) xFreeHeapSpace;
@@ -431,20 +433,7 @@ volatile size_t x;
 
 void vInitialiseTimerForRunTimeStats( void )
 {
-XScuWdt_Config *pxWatchDogInstance;
-uint32_t ulValue;
-const uint32_t ulMaxDivisor = 0xff, ulDivisorShift = 0x08;
-
-	 pxWatchDogInstance = XScuWdt_LookupConfig( XPAR_SCUWDT_0_DEVICE_ID );
-	 XScuWdt_CfgInitialize( &xWatchDogInstance, pxWatchDogInstance, pxWatchDogInstance->BaseAddr );
-
-	 ulValue = XScuWdt_GetControlReg( &xWatchDogInstance );
-	 ulValue |= ulMaxDivisor << ulDivisorShift;
-	 XScuWdt_SetControlReg( &xWatchDogInstance, ulValue );
-
-	 XScuWdt_LoadWdt( &xWatchDogInstance, UINT_MAX );
-	 XScuWdt_SetTimerMode( &xWatchDogInstance );
-	 XScuWdt_Start( &xWatchDogInstance );
+	FreeRTOS_InitTimerForRunTimeStats();
 }
 /*-----------------------------------------------------------*/
 

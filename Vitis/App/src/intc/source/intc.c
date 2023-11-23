@@ -67,6 +67,11 @@
 /* OS */
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
+/*
+ * Timers
+ */
+#include "ttc_init.h"
+
 
 #define INTC_DEVICE_ID XPAR_SCUGIC_0_DEVICE_ID
 
@@ -84,6 +89,8 @@ const ivt_t ivt[] =
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance, AUDIO_FMT_MM2S_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
 	{IIC_INT_VEC_ID, (XInterruptHandler)XIicPs_MasterInterruptHandler, &Iic, IIC_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
     {XPAR_SCUTIMER_INTR, (XInterruptHandler)FreeRTOS_Tick_Handler, &xTimer, portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+	// Add the TTC0 interrupt handler entry
+	{XPAR_XTTCPS_0_INTR, (XInterruptHandler)XTtcPs_InterruptHandler, &Ttc0PsInstance, TTC0_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
 
 	//... other entries ...
 };

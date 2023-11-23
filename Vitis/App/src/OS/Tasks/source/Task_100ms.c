@@ -6,6 +6,8 @@
 
 #include "Tasks_Init.h"
 #include "Task_100ms.h"
+#include "Tasks_Statistics.h"
+
 /* I2S */
 #include "I2S.h"
 /* I2C includes */
@@ -61,5 +63,6 @@ void Task_100ms(void * pvParameters)
 
             /* I2C processing */
 			I2C_CyclicFunction();
+			FreeRTOS_GetRunTimeStats();
         }
 }

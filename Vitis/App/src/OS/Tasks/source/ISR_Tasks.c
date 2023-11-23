@@ -23,7 +23,6 @@ TaskHandle_t xIsrHandle_I2C = NULL;
 /* ISR Tasks Counters */
 uint32_t IsrTask_Counter_AF_MM2S = 0;
 uint32_t IsrTask_Counter_AF_S2MM = 0;
-uint32_t IsrTask_Counter_Check = 0;
 
 
 

@@ -62,6 +62,8 @@
  * the LED every 200 milliseconds.
  */
 
+#include "stdbool.h"
+
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -120,14 +122,14 @@ void FreeRTOS_CreateTasks_Init(void)
 					configMINIMAL_STACK_SIZE, 			/* The size of the stack to allocate to the task. */
 					NULL, 								/* The parameter passed to the task - not used in this case. */
 					mainQUEUE_RECEIVE_TASK_PRIORITY, 	/* The priority assigned to the task. */
-					NULL );								/* The task handle is not required, so NULL is passed. */
+					&xRxTaskHandle );								/* The task handle is not required, so NULL is passed. */
 
 		xTaskCreate( prvQueueSendTask,
 				"TX",
 				configMINIMAL_STACK_SIZE,
 				NULL,
 				mainQUEUE_SEND_TASK_PRIORITY,
-				NULL );
+				&xTxTaskHandle  );
 
 		 /*
 		 * create periodic tasks 1ms, 10ms and 100ms
@@ -154,6 +156,9 @@ void FreeRTOS_CreateTasks_Init(void)
 									  TaskStack_100ms,        // Array to use as the task's stack.
 									  &TaskBuffer_100ms );    // Variable to hold the task's data structure.
 
+		 /* Create the task that performs the 'check' functionality with dynamic memory allocation */
+		/* ToDo: Check if a second semaphore is required for dynamic memory allocation is required*/
+		xTaskCreate( prvCheckTask, "Check", configMINIMAL_STACK_SIZE, NULL, mainCHECK_TASK_PRIORITY, &xCheckTaskHandle );
 
 	}
 }
@@ -176,7 +181,8 @@ void FreeRTOS_StartScheduler(void)
 }
 
 /*-----------------------------------------------------------*/
-
+TaskHandle_t xTxTaskHandle;
+uint32_t ulTxTaskCounter;
 static void prvQueueSendTask( void *pvParameters )
 {
 TickType_t xNextWakeTime;
@@ -192,7 +198,7 @@ const unsigned long ulValueToSend = 100UL;
 	{
 		/* Place this task in the blocked state until it is time to run again. */
 		vTaskDelayUntil( &xNextWakeTime, mainQUEUE_SEND_FREQUENCY_MS );
-
+		ulTxTaskCounter++;
 		/* Send to the queue - causing the queue receive task to unblock and
 		toggle the LED.  0 is used as the block time so the sending operation
 		will not block - it shouldn't need to block as the queue should always
@@ -201,6 +207,8 @@ const unsigned long ulValueToSend = 100UL;
 	}
 }
 /*-----------------------------------------------------------*/
+TaskHandle_t xRxTaskHandle;
+uint32_t ulRxTaskCounter;
 
 static void prvQueueReceiveTask( void *pvParameters )
 {
@@ -216,7 +224,7 @@ const unsigned long ulExpectedValue = 100UL;
 		indefinitely provided INCLUDE_vTaskSuspend is set to 1 in
 		FreeRTOSConfig.h. */
 		xQueueReceive( xQueue, &ulReceivedValue, portMAX_DELAY );
-
+		ulRxTaskCounter++;
 		/*  To get here something must have been received from the queue, but
 		is it the expected value?  If it is, toggle the LED. */
 		if( ulReceivedValue == ulExpectedValue )
@@ -226,5 +234,69 @@ const unsigned long ulExpectedValue = 100UL;
 		}
 	}
 }
-/*-----------------------------------------------------------*/
 
+
+/*
+ * if xTaskError is true, some of the tasks are not running;
+ */
+bool xTaskError;
+TaskHandle_t xCheckTaskHandle;
+uint32_t IsrTask_Counter_Check = 0;
+
+void prvCheckTask( void *pvParameters )
+{
+TickType_t xDelayPeriod = TASK_PERIOD_TICKS_100MS;
+TickType_t xLastExecutionTime;
+static uint32_t TaskCounter_1ms_old;
+static uint32_t TaskCounter_10ms_old;
+static uint32_t TaskCounter_100ms_old;
+
+unsigned long ulErrorFound = pdFALSE;
+
+    /* Just to stop compiler warnings. */
+    ( void ) pvParameters;
+
+    /* Initialise xLastExecutionTime so the first call to vTaskDelayUntil()
+    works correctly. */
+    xLastExecutionTime = xTaskGetTickCount();
+
+    /* Cycle for ever, delaying then checking all the other tasks are still
+    operating without error.  The LEDs will increase toglling if one of the tasks
+    is not anymore running */
+    for( ;; )
+    {
+        /* Delay until it is time to execute again. */
+        vTaskDelayUntil( &xLastExecutionTime, xDelayPeriod );
+
+
+        /* Check all tasks if they have incremented their counter (running)*/
+        if( TaskCounter_1ms == TaskCounter_1ms_old)
+        {
+            ulErrorFound |= 1UL << 0UL;
+        }
+
+        if( TaskCounter_10ms == TaskCounter_10ms_old)
+        {
+            ulErrorFound |= 1UL << 1UL;
+        }
+
+        if( TaskCounter_100ms == TaskCounter_100ms_old)
+        {
+            ulErrorFound |= 1UL << 2UL;
+        }
+
+        TaskCounter_1ms_old = TaskCounter_1ms;
+        TaskCounter_10ms_old = TaskCounter_10ms;
+        TaskCounter_100ms_old = TaskCounter_100ms;
+
+        if( ulErrorFound != pdFALSE )
+        {
+            /* An error has been detected in one of the tasks - flash the LED
+            at a higher frequency to give visible feedback that something has
+            gone wrong (it might just be that the loop back connector required
+            by the comtest tasks has not been fitted). */
+            xDelayPeriod = mainERROR_CHECK_TASK_PERIOD;
+            xTaskError = true;
+        }
+    }
+}

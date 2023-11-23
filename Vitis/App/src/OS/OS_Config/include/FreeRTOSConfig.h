@@ -29,6 +29,8 @@
 #define FREERTOS_CONFIG_H
 
 #include "xparameters.h"
+//#include "scu_wdt.h" --> don't use watchdog counter for statistics
+#include "ttc_init.h" // --> use TTC0
 
 /*-----------------------------------------------------------
  * Application specific definitions.
@@ -76,7 +78,7 @@
 #define configUSE_PREEMPTION					1
 #define configUSE_IDLE_HOOK						1
 #define configUSE_TICK_HOOK						1
-#define configMAX_PRIORITIES					( 7 )
+#define configMAX_PRIORITIES					( 12 )
 #define configMINIMAL_STACK_SIZE				( ( unsigned short ) 250 ) /* Large in case configUSE_TASK_FPU_SUPPORT is 2 in which case all tasks have an FPU context. */
 #define configTOTAL_HEAP_SIZE					( 125 * 1024 )
 #define configMAX_TASK_NAME_LEN					( 10 )
@@ -128,7 +130,7 @@ to exclude the API function. */
 #define INCLUDE_xTaskGetTaskHandle				1
 #define INCLUDE_xTaskGetHandle					1
 #define INCLUDE_xSemaphoreGetMutexHolder		1
-
+#define INCLUDE_xTaskGetIdleTaskHandle      	1
 
 /* Priorities at which the tasks are created. */
 #define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
@@ -148,13 +150,11 @@ readable ASCII form.  See the notes in the implementation of vTaskList() within
 FreeRTOS/Source/tasks.c for limitations. */
 #define configUSE_STATS_FORMATTING_FUNCTIONS	1
 
-/* The private watchdog is used to generate run time stats. */
-#include "xscuwdt.h"
-extern XScuWdt xWatchDogInstance;
+
 extern void vInitialiseTimerForRunTimeStats( void );
 #define configGENERATE_RUN_TIME_STATS 1
 #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vInitialiseTimerForRunTimeStats()
-#define portGET_RUN_TIME_COUNTER_VALUE() ( ( 0xffffffffUL - XScuWdt_ReadReg( xWatchDogInstance.Config.BaseAddr, XSCUWDT_COUNTER_OFFSET ) ) >> 1 )
+#define portGET_RUN_TIME_COUNTER_VALUE()  GetMonotonicTtcTime()
 
 /* The size of the global output buffer that is available for use when there
 are multiple command interpreters running at once (for example, one on a UART
@@ -216,9 +216,9 @@ received packets. */
 #define mainCHECK_TASK_PRIORITY                 (tskIDLE_PRIORITY)
 
 /* ISR Task Interrupts */
-#define TASK_PRIORITY_AF_MM2S_ISR             ( configMAX_PRIORITIES - 1 )
-#define TASK_PRIORITY_AF_S2MM_ISR             ( configMAX_PRIORITIES - 2 )
-#define TASK_PRIORITY_I2C_ISR            ( configMAX_PRIORITIES - 3 )
+#define TASK_PRIORITY_AF_MM2S_ISR             ( configMAX_PRIORITIES - 2 )
+#define TASK_PRIORITY_AF_S2MM_ISR             ( configMAX_PRIORITIES - 3 )
+#define TASK_PRIORITY_I2C_ISR            ( configMAX_PRIORITIES - 7 )
 
 
 /*

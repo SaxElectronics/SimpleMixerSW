@@ -14,6 +14,8 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
+#include "timers.h"
+
 
 #include "Task_100ms.h"
 #include "Task_10ms.h"
@@ -22,6 +24,8 @@
 #include "ISR_Tasks.h"
 #include "Tasks_Statistics.h"
 
+#include "global_timer.h"
+#include "ttc_init.h"
 
 // Assuming configTICK_RATE_STATS_HZ is defined elsewhere and is the rate in Hz at which the stats tick counter increments.
 #define TICKS_PER_SECOND (configTICK_RATE_STATS_HZ)
@@ -61,6 +65,10 @@ void FreeRTOS_MappTasksForTaskExecutionTime(void)
         uint32_t* pulTaskCounter;
     };
 
+    TaskHandle_t xIdleTaskHandle = xTaskGetIdleTaskHandle();
+    // Temporary variable for the timer service task handle
+	TaskHandle_t xTimerServiceTaskHandle = xTimerGetTimerDaemonTaskHandle();
+	static uint32_t ulTimerServiceTaskCounter;
     // Initialize the array with task data
     struct TaskInfo taskInfos[] = {
         {&xTaskHandle_1ms, "1ms Task", &TaskCounter_1ms},
@@ -68,6 +76,11 @@ void FreeRTOS_MappTasksForTaskExecutionTime(void)
         {&xTaskHandle_100ms, "100ms Task", &TaskCounter_100ms},
         {&xIsrHandle_AF_MM2S, "AF MM2S ISR Task", &IsrTask_Counter_AF_MM2S},
         {&xIsrHandle_AF_S2MM, "AF S2MM ISR Task", &IsrTask_Counter_AF_S2MM},
+        {&xCheckTaskHandle, "Check", &IsrTask_Counter_Check},
+        {&xRxTaskHandle, "Rx", &ulRxTaskCounter},
+        {&xTxTaskHandle, "Tx", &ulTxTaskCounter},
+        {&xIdleTaskHandle, "IDLE", &ulIdleTaskCounter},
+        {&xTimerServiceTaskHandle, "Tmr Svc", &ulTimerServiceTaskCounter},
     };
 
     // Use a loop to populate the task mappings
@@ -86,55 +99,11 @@ void FreeRTOS_MappTasksForTaskExecutionTime(void)
  * task execution times. It assumes that the CPU timers have been
  * initialized elsewhere in the main initialization code of the CPU.
  */
-#include "xil_io.h"
-#include "xil_types.h"
-
-#define GLOBAL_TIMER_BASEADDR      0xF8F00200U
-#define GTIMER_CONTROL_OFFSET      0x00U
-#define GTIMER_COUNTER_LOWER_OFFSET 0x04U
-#define GTIMER_COUNTER_UPPER_OFFSET 0x08U
-#define GTIMER_PRESCALER_OFFSET    0x08U
-
-void InitializeGlobalTimer(uint32_t system_clock_freq, uint32_t desired_freq)
+void FreeRTOS_InitTimerForRunTimeStats(void)
 {
-    uint32_t prescaler;
-
-    // Calculate the prescaler value for 10kHz
-    prescaler = (system_clock_freq / desired_freq) - 1;
-
-    // Disable the Global Timer
-    Xil_Out32(GLOBAL_TIMER_BASEADDR + GTIMER_CONTROL_OFFSET, 0x0);
-
-    // Set the prescaler value
-    Xil_Out32(GLOBAL_TIMER_BASEADDR + GTIMER_PRESCALER_OFFSET, prescaler);
-
-    // Reset the Global Timer Counter Register
-    Xil_Out32(GLOBAL_TIMER_BASEADDR + GTIMER_COUNTER_LOWER_OFFSET, 0x0);
-    Xil_Out32(GLOBAL_TIMER_BASEADDR + GTIMER_COUNTER_UPPER_OFFSET, 0x0);
-
-    // Enable the Global Timer
-    Xil_Out32(GLOBAL_TIMER_BASEADDR + GTIMER_CONTROL_OFFSET, 0x1);
+	FreeRTOS_CounterInit_TTC();
 }
 
-
-
-/*
- * Retrieves the current run-time counter value for FreeRTOS,
- * which is used to calculate how much CPU time each task has consumed.
- * This function should return a monotonically increasing timer value.
- */
-static inline uint32_t FreeRTOS_GetRunTimeCounterValue(void)
-{
-
-	uint32_t low, high;
-
-	// Reading Global Timer Counter Register
-	high = Xil_In32(GLOBAL_TIMER_BASEADDR + GTIMER_COUNTER_UPPER_OFFSET);
-	low = Xil_In32(GLOBAL_TIMER_BASEADDR + GTIMER_COUNTER_LOWER_OFFSET);
-
-	return (((uint64_t)high) << 32) | (uint64_t)low;
-
-}
 
 static uint32_t GetAverageTaskExecutionTimeByTaskHandle(TaskHandle_t xTaskHandle, uint32_t ulTotalRunTimeCounter) {
     for (int i = 0; i < sizeof(xTaskMappings) / sizeof(xTaskMappings[0]); ++i) {
