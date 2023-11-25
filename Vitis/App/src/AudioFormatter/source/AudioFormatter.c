@@ -136,7 +136,7 @@ AudioFormatter_HwConfig HwConfig_MM2S;
 
 XAudioFormatterHwParams af_mm2s_hw_params = {
 		/* buf_addr */
-		0x0000000000001000UL,
+		0x0000000000000000UL,
 		/* active_ch */
 		2,
 		/* bits_per_sample */
