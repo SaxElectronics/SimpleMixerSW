@@ -79,13 +79,15 @@ XScuGic xInterruptController;
 // Define a flag for GIC initialization
 u8 volatile xIsGICInitialized = FALSE;
 
+#define I2S_RX_INTR_PRIORITY_OWN 					0xA0
+#define AUDIO_FMT_S2MM_INTR_PRIORITY_OWN 			0xA8
 
 const ivt_t ivt[] =
 {
 	{XPAR_FABRIC_AXI_GPIO_2_IP2INTC_IRPT_INTR, (XInterruptHandler)GpioHandler, &Gpio, GPIO_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
 			{XPAR_FABRIC_I2S_TRANSMITTER_0_IRQ_INTR, (XInterruptHandler)XI2s_Tx_IntrHandler, &I2sTxInstance, I2S_TX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-			{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance, I2S_RX_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
-			{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance, AUDIO_FMT_S2MM_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+			{XPAR_FABRIC_I2S_RECEIVER_0_IRQ_INTR, (XInterruptHandler)XI2s_Rx_IntrHandler, &I2sRxInstance, I2S_RX_INTR_PRIORITY_OWN, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
+			{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_S2MM_INTR, (XInterruptHandler)XAudioFormatterS2MMIntrHandler, &AFInstance, AUDIO_FMT_S2MM_INTR_PRIORITY_OWN, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
 	{XPAR_FABRIC_AUDIO_FORMATTER_0_IRQ_MM2S_INTR, (XInterruptHandler)XAudioFormatterMM2SIntrHandler, &AFInstance, AUDIO_FMT_MM2S_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
 	{IIC_INT_VEC_ID, (XInterruptHandler)XIicPs_MasterInterruptHandler, &Iic, IIC_INTR_PRIORITY, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
     {XPAR_SCUTIMER_INTR, (XInterruptHandler)FreeRTOS_Tick_Handler, &xTimer, portLOWEST_USABLE_INTERRUPT_PRIORITY << portPRIORITY_SHIFT, XSCUGIC_INT_CFG_EDGE_SENSITIVE},
@@ -119,6 +121,8 @@ void InterrupController_Init(void)
 	// Make sure all driver instances using this IVT are initialized first
 	fnEnableInterrupts(&xInterruptController, &ivt[0], sizeof(ivt)/sizeof(ivt[0]));
 
+	// Mark GIC as initialized
+	xIsGICInitialized = TRUE;
 }
 
 XStatus fnInitInterruptController(XScuGic *psIntc)
@@ -143,8 +147,7 @@ XStatus fnInitInterruptController(XScuGic *psIntc)
 				psIntc);
 	Xil_ExceptionEnable();
 
-	 // Mark GIC as initialized
-	xIsGICInitialized = TRUE;
+
 	return XST_SUCCESS;
 }
 

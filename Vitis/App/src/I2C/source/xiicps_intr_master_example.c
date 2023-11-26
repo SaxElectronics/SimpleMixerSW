@@ -157,12 +157,20 @@ void SwitchToDevice(ActiveDevice device) {
  * @param params Pointer to the structure containing I2C communication parameters.
  * @return XST_SUCCESS if data was successfully sent; XST_FAILURE otherwise.
  */
+#define TIMEOUT_VALUE		1000
 int I2C_SendData(I2C_Params *params) {
     SendComplete = FALSE;
 
     // Ensure the bus is not busy
+    int timeoutCounter = TIMEOUT_VALUE;
+
+    // Ensure the bus is not busy, with timeout
     while (XIicPs_BusIsBusy(&Iic)) {
-        // NOP
+        if (timeoutCounter-- <= 0) {
+            // Handle timeout here (e.g., break the loop, return an error, etc.)
+            xil_printf("Timeout occurred waiting for IIC bus to become free.\n");
+            return XST_FAILURE;  // Example of returning an error
+        }
     }
 
     SendBuffer[0] = params->send_buffer[0];

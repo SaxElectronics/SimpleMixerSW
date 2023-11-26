@@ -423,8 +423,8 @@ void I2sRxAesBlockCmplIntrHandler(void *CallBackRef)
 			AllInterruptCounters.I2sRxIntrAesCntr++;
 
 			//XI2s_Rx_SetValidity(I2sRxInstancePtr, 1U);
-
 			/* display log buffer */
+
 			//XI2s_Rx_LogDisplay(I2sRxInstancePtr);
 			/* read the interrupt status */
 			u32 intrsts_regval = XI2s_Rx_ReadReg(I2sRxInstancePtr->Config.BaseAddress, XI2S_RX_IRQSTS_OFFSET);

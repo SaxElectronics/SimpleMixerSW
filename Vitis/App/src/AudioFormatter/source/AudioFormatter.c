@@ -209,7 +209,6 @@ void ProcessI2SInterruptsAndDMA(void)
     s2mm_DMA_ctrl_state = XAudioFormatter_getDMAStatus(&AFInstance);
     s2mm_AF_errors.s2mm_DMA_ctrl_state = s2mm_DMA_ctrl_state;
     s2mm_AF_errors.s2mm_DMA_halt = s2mm_DMA_halt;
-    I2sRxIntrAesComplete = 1;
 
     /* What to do when both Rx and S2MM interrupts received? */
     if ((I2sRxIntrAesComplete == 1 && S2MMAFIntrReceived == 1) && (!s2mm_DMA_halt))
