@@ -119,7 +119,7 @@ void XS2MMAFCallbackInterruptOnComplete_Task(void *pvParameters)
     for (;;)
     {
         // Receive data from the queue
-        if (xQueueReceive(audioDataQueueOutput, &audioDataFromISR, portMAX_DELAY) == pdPASS)
+        if (xQueueReceive(audioDataQueueInput, &audioDataFromISR, portMAX_DELAY) == pdPASS)
         {
             IsrTask_Counter_AF_S2MM++;
             // Process the audio data for one period

@@ -216,7 +216,7 @@ received packets. */
 #define mainCHECK_TASK_PRIORITY                 (tskIDLE_PRIORITY)
 
 /* ISR Task Interrupts */
-#define TASK_PRIORITY_AF_MM2S_ISR             ( configMAX_PRIORITIES - 2 )
+#define TASK_PRIORITY_AF_MM2S_ISR             ( configMAX_PRIORITIES - 1 )
 #define TASK_PRIORITY_AF_S2MM_ISR             ( configMAX_PRIORITIES - 3 )
 #define TASK_PRIORITY_I2C_ISR            ( configMAX_PRIORITIES - 7 )
 

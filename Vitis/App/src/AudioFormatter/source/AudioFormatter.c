@@ -131,35 +131,6 @@ u32* AF_PeriodPtr_mm2s;
 u32 TxBufAdr;
 u32 RxBufAdr;
 
-AudioFormatter_HwConfig HwConfig_S2MM;
-AudioFormatter_HwConfig HwConfig_MM2S;
-
-XAudioFormatterHwParams af_mm2s_hw_params = {
-		/* buf_addr */
-		0x0000000000000000UL,
-		/* active_ch */
-		2,
-		/* bits_per_sample */
-		BIT_DEPTH_24,
-		/* periods */
-		AF_NUMBER_OF_PERIODS,
-		/* bytes_per_period */
-		/* period size must be multiples of 32* NumberOfChannels */
-		/* 8*32*2 would equal 128*4 FIFO buffer size in I2S */
-		AF_BYTES_PER_PERIOD};
-XAudioFormatterHwParams af_s2mm_hw_params = {
-		/* buf_addr */
-		0x0000000000000000UL,
-		/* active_ch */
-		2,
-		/* bits_per_sample */
-		BIT_DEPTH_24,
-		/* periods */
-		AF_NUMBER_OF_PERIODS,
-		/* bytes_per_period */
-		/* 8*32*2 would equal 128*4 FIFO buffer size in I2S */
-		AF_BYTES_PER_PERIOD};
-
 
 
 const double PI = 3.141592653589793238463;
@@ -190,7 +161,6 @@ void AF_ReadAudioSamples(XAudioFormatter *AFInstancePtr);
 u32 XAudioFormatter_GetStatusErrors(XAudioFormatter *InstancePtr, u32 mask);
 
 InterruptCounters_t AllInterruptCounters;
-
 
 
 /**
@@ -241,147 +211,7 @@ void ProcessI2SInterruptsAndDMA(void)
 }
 
 
-/*****************************************************************************/
-/**
- * This function is the main init function of the audio formatter
- * using Interrupts.
- *
- * @param	None.
- *
- * @return	XST_SUCCESS to indicate success, else XST_FAILURE to indicate a
- *		Failure.
- *
- * @note	None.
- *
-******************************************************************************/
-void AudioFormatter_Init(void)
-{
 
-	//af_mm2s_hw_params.buf_addr = (u64)(u32)(&TxBuf[0]);
-	//af_s2mm_hw_params.buf_addr = (u64)(u32)(&RxBuf[0]);
-	TxBufAdr = (u32) af_mm2s_hw_params.buf_addr;
-	RxBufAdr = (u32) af_s2mm_hw_params.buf_addr;
-
-	AF_RxbufferPtr = (u32*)  (uintptr_t) (  (af_s2mm_hw_params.buf_addr )  );
-	AF_TxbufferPtr = (u32*)  (uintptr_t) (  (af_mm2s_hw_params.buf_addr )  );
-
-	u32 Status;
-	XAudioFormatter *AFInstancePtr = &AFInstance;
-
-	xil_printf("\r\n-----------------------------------------------\r\n");
-	xil_printf(" Xilinx Audio Formatter Example Design %s\r\n",
-		XAUDIO_FORMATTER_SW_VER);
-	xil_printf("	(c) 2018 by Xilinx Inc.\r\n");
-
-	Status = InitializeAudioFormatter(AFInstancePtr);
-	if (Status == XST_FAILURE)
-	{
-	xil_printf("\nAudio Formatter Init failed\n");
-	}
-
-}
-
-/*****************************************************************************/
-/**
- * This function does the lookup and intialization of the audio formatter.
- *
- * @param	AFInstancePtr is a pointer to audio formatter driver instance
- *
- * @return	XST_SUCCESS if the call is successful, otherwise XST_FAILURE.
- *
- * @note	None.
- *
-******************************************************************************/
-u32 InitializeAudioFormatter(XAudioFormatter *AFInstancePtr)
-{
-	u32 Status;
-//	u32 offset;
-//	XAudioFormatter_Config *AFConfig;
-	/*
-	 * Lookup and Initialize the audio formatter so that it's ready to use.
-	 */
-	XAudioFormatter_Config *CfgPtr = NULL;
-
-	CfgPtr = XAudioFormatter_LookupConfig(AF_DEVICE_ID);
-	if (CfgPtr == NULL) {
-		//InstancePtr->IsReady = 0;
-		return XST_DEVICE_NOT_FOUND;
-	}
-	Status= XAudioFormatter_CfgInitialize(AFInstancePtr, CfgPtr);
-
-	// Status = XAudioFormatter_Initialize(&AFInstance, AF_DEVICE_ID);
-	if (Status != XST_SUCCESS)
-		return XST_FAILURE;
-
-	if (AFInstancePtr->s2mm_presence == 1) {
-//		XScuGic_Connect
-//		Status = XScuGic_Connect(&Intc, AF_S2MM_INTERRUPT_ID,
-//			(XInterruptHandler)XAudioFormatterS2MMIntrHandler,
-//			(void *)AFInstancePtr);
-		if (Status == XST_SUCCESS) {
-		//	XScuGic_Enable(&Intc, AF_S2MM_INTERRUPT_ID);
-		} else {
-			xil_printf("Failed to register AF interrupt handler");
-			return XST_FAILURE;
-		}
-		AFInstancePtr->ChannelId = XAudioFormatter_S2MM;
-		/* Set Callback function for Interrupt On Complete handler */
-		XAudioFormatter_SetS2MMCallback(AFInstancePtr,
-			XAudioFormatter_IOC_Handler, XS2MMAFCallbackInterruptOnComplete,
-			(void *)AFInstancePtr);
-		XAudioFormatter_InterruptEnable(AFInstancePtr,
-			XAUD_CTRL_IOC_IRQ_MASK);
-		/* Set Callback function for TimeOut handler */
-		XAudioFormatter_SetS2MMCallback(AFInstancePtr,
-				XAudioFormatter_TIMEOUT_Handler, XS2MMAFCallbackTimeOut,
-				(void *)AFInstancePtr);
-		XAudioFormatter_InterruptEnable(AFInstancePtr,
-				XAUD_CTRL_TIMEOUT_IRQ_MASK);
-		/* Set Callback function for Error handler */
-		XAudioFormatter_SetS2MMCallback(AFInstancePtr,
-				XAudioFormatter_ERROR_Handler, XS2MMAFCallbackError,
-				(void *)AFInstancePtr);
-		XAudioFormatter_InterruptEnable(AFInstancePtr,
-				XAUD_CTRL_ERR_IRQ_MASK);
-		XAudioFormatterSetS2MMTimeOut(AFInstancePtr, AF_S2MM_TIMEOUT);
-		/* Set Audio Sampling Frequency and Master clock */
-		XAudioFormatterSetHwParams(AFInstancePtr, &af_s2mm_hw_params);
-		XAudioFormatterDMAStart(AFInstancePtr);
-		/* Read the current configuration of the S2MM module */
-		AF_GetHwConfig(AFInstancePtr, &HwConfig_S2MM);
-	}
-	if (AFInstancePtr->mm2s_presence == 1) {
-//		Status = XScuGic_Connect(&Intc, AF_MM2S_INTERRUPT_ID,
-//			(XInterruptHandler)XAudioFormatterMM2SIntrHandler,
-//			(void *)AFInstancePtr);
-//		if (Status == XST_SUCCESS) {
-//			XScuGic_Enable(&Intc, AF_MM2S_INTERRUPT_ID);
-//		} else {
-//			xil_printf("Failed to register AF interrupt handler");
-//			return XST_FAILURE;
-//		}
-		AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
-		/* MM2S Interrupt on Complete Callback Function */
-		XAudioFormatter_SetMM2SCallback(AFInstancePtr,
-			XAudioFormatter_IOC_Handler, XMM2SAFCallbackInterruptOnComplete,
-			(void *)AFInstancePtr);
-		XAudioFormatter_InterruptEnable(AFInstancePtr,
-			XAUD_CTRL_IOC_IRQ_MASK);
-		/* MM2S Error Callback function */
-//		XAudioFormatter_SetMM2SCallback(AFInstancePtr,
-//				XAudioFormatter_ERROR_Handler, XMM2SAFCallbackError,
-//					(void *)AFInstancePtr);
-//		XAudioFormatter_InterruptEnable(AFInstancePtr,
-//						XAUD_CTRL_ERR_IRQ_MASK);
-		/* Set Audio Sampling Frequency and Master clock */
-		XAudioFormatterSetFsMultiplier(AFInstancePtr, AF_MCLK, AF_FS);
-		XAudioFormatterSetHwParams(AFInstancePtr, &af_mm2s_hw_params);
-		XAudioFormatterDMAStart(AFInstancePtr);
-		/* Read the current configuration of the MM2S module */
-		AF_GetHwConfig(AFInstancePtr, &HwConfig_MM2S);
-	}
-	return Status;
-}
 
 
 
@@ -473,8 +303,11 @@ void *XS2MMAFCallbackInterruptOnComplete(void *data)
     uint32_t *txBufferPtr = (uint32_t *)(uintptr_t)(af_mm2s_hw_params.buf_addr);
     txBufferPtr += current_period_s2mm * AF_AUDIOSAMPLES_PER_PERIOD;
 
-    /* Create an AudioData_t structure with the buffer pointers and size */
+    s2mm_NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
+
     AudioData_t audioData;
+
+    /* Create an AudioData_t structure with the buffer pointers and size */
     audioData.rxBufferPtr = rxBufferPtr;
     audioData.txBufferPtr = txBufferPtr;
     audioData.bufferSize = AF_AUDIOSAMPLES_PER_PERIOD; // Assuming this is the number of uint32_t samples
@@ -794,6 +627,9 @@ void *XS2MMAFCallbackError(void *data)
 void AF_GetHwConfig(XAudioFormatter *AFInstancePtr, AudioFormatter_HwConfig* AFHwConfigPtr )
 {
 	u32 offset;
+	u32 val_lsb;
+	u32 val_msb;
+
 	AFHwConfigPtr->ChannelId = AFInstancePtr->ChannelId;
 	if (AFHwConfigPtr->ChannelId == XAudioFormatter_S2MM)
 	{
@@ -849,6 +685,18 @@ void AF_GetHwConfig(XAudioFormatter *AFInstancePtr, AudioFormatter_HwConfig* AFH
 	AFHwConfigPtr->PeriodSize >>= XAUD_PERIOD_CFG_PERIODSIZE_SHIFT;
 	VERBOSE("Period Size is: ");
 	VERBOSE("%d",(AFHwConfigPtr->PeriodSize));
+	// Read the LSB and MSB of the buffer address
+	val_lsb = XAudioFormatter_ReadReg(AFInstancePtr->BaseAddress, offset + XAUD_FORMATTER_BUFF_ADDR_LSB);
+	val_msb = XAudioFormatter_ReadReg(AFInstancePtr->BaseAddress, offset + XAUD_FORMATTER_BUFF_ADDR_MSB);
+
+	// Combine LSB and MSB to form the full buffer address
+	AFHwConfigPtr->BufferAddr = ((u64)val_msb << 32) | val_lsb;
+
+	// VERBOSE output for debugging
+	VERBOSE("Buffer Address (LSB): 0x%08X\n", val_lsb);
+	VERBOSE("Buffer Address (MSB): 0x%08X\n", val_msb);
+	VERBOSE("Combined Buffer Address: 0x%016llX\n", AFHwConfigPtr->BufferAddr);
+
 
 }
 /*****************************************************************************/
@@ -957,6 +805,8 @@ void *XMM2SAFCallbackInterruptOnComplete(void *data)
 	/* do not start automatically a next MM2S transfer */
 	AFInstancePtr->ChannelId = XAudioFormatter_MM2S;
 	AF_TxbufferPtr = (u32*)  (uintptr_t) (  (af_mm2s_hw_params.buf_addr )  );
+
+    mm2s_NumberOfBytestransfered = XAudioFormatterGetDMATransferCount(&AFInstance);
 
 	// Send data to the queue from ISR
 	xQueueSendFromISR(audioDataQueueOutput, &data, &xHigherPriorityTaskWoken);

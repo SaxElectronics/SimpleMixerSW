@@ -81,7 +81,7 @@
 /* use the define below to make one period equal to one AES3 audio block containing 192 frames (with 2 audio samples each - 32bits) */
 /* with two dma periods there will be 2 AES3 blocks of audio data */
 
-#define AF_BYTES_PER_PERIOD					(384*4)
+#define AF_BYTES_PER_PERIOD					(384*4) // one AES3 audio block
 #define AF_AUDIOSAMPLES_PER_PERIOD 			(AF_BYTES_PER_PERIOD/AF_CONVERT_BYTES_TO_AUDIOSAMPLES)
 #define AUDIO_BUFFER_BASE_ADDRESS 0x20000000ULL
 
@@ -105,7 +105,8 @@ typedef struct
 	u32 NumberOfPeriods;
 	/* Period Size */
 	u32 PeriodSize;
-
+	/* Buff Addr */
+   u64 BufferAddr;
 } AudioFormatter_HwConfig;
 
 typedef struct
@@ -162,7 +163,17 @@ extern u32 XAudioFormatter_getDMAStatus(XAudioFormatter *InstancePtr);
 
 extern void ProcessI2SInterruptsAndDMA(void);
 
+/* MM2S Callbacks */
+extern void *XMM2SAFCallbackInterruptOnComplete(void *data);
+extern void *XMM2SAFCallbackError(void *data);
 
+/* S2MM Callbacks */
+extern void *XS2MMAFCallbackInterruptOnComplete(void *data);
+extern void *XS2MMAFCallbackTimeOut(void *data);
+extern void *XS2MMAFCallbackError(void *data);
+
+
+/* AF Tasks */
 extern void XMM2SAFCallbackInterruptOnComplete_InTask(void *data);
 extern void ProcessAudioPeriod(AudioData_t *audioData);
 
@@ -188,5 +199,18 @@ extern mm2s_DMA_errors_t mm2s_AF_errors;
 extern s2mm_DMA_errors_t s2mm_AF_errors;
 
 extern InterruptCounters_t AllInterruptCounters;
+
+extern XAudioFormatterHwParams af_mm2s_hw_params;
+extern XAudioFormatterHwParams af_s2mm_hw_params;
+
+extern u32* AF_PeriodPtr_s2mm;
+extern u32* AF_PeriodPtr_mm2s;
+
+extern u32 TxBufAdr;
+extern u32 RxBufAdr;
+
+extern u32* AF_bufferPtr;
+extern u32* AF_RxbufferPtr;
+extern u32* AF_TxbufferPtr;
 
 #endif // __AUDIOFORMATTER_H_

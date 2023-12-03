@@ -47,7 +47,8 @@
       "rst_clk_wiz_0_49M": "",
       "rst_ps7_0_100M": "",
       "axi_gpio_2": "",
-      "processing_system7_0": ""
+      "processing_system7_0": "",
+      "ila_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1653,7 +1654,7 @@
             "value": "0"
           },
           "C_MM2S_DATAFORMAT": {
-            "value": "0"
+            "value": "3"
           },
           "C_S2MM_ADDR_WIDTH": {
             "value": "32"
@@ -1662,7 +1663,7 @@
             "value": "0"
           },
           "C_S2MM_DATAFORMAT": {
-            "value": "0"
+            "value": "1"
           }
         },
         "interface_ports": {
@@ -3224,15 +3225,6 @@
           "PCW_S_AXI_HP0_ID_WIDTH": {
             "value": "6"
           },
-          "PCW_S_AXI_HP1_DATA_WIDTH": {
-            "value": "64"
-          },
-          "PCW_S_AXI_HP2_DATA_WIDTH": {
-            "value": "64"
-          },
-          "PCW_S_AXI_HP3_DATA_WIDTH": {
-            "value": "64"
-          },
           "PCW_TPIU_PERIPHERAL_CLKSRC": {
             "value": "External"
           },
@@ -3768,6 +3760,12 @@
             }
           }
         }
+      },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_1_ila_0_0",
+        "xci_path": "ip\\design_1_ila_0_0\\design_1_ila_0_0.xci",
+        "inst_hier_path": "ila_0"
       }
     },
     "interface_nets": {
@@ -3878,7 +3876,8 @@
       "audio_formatter_0_irq_mm2s": {
         "ports": [
           "audio_formatter_0/irq_mm2s",
-          "xlconcat_0/In2"
+          "xlconcat_0/In2",
+          "ila_0/probe13"
         ]
       },
       "audio_formatter_0_irq_s2mm": {
@@ -3890,7 +3889,8 @@
       "audio_formatter_0_m_axis_mm2s_tdata": {
         "ports": [
           "audio_formatter_0/m_axis_mm2s_tdata",
-          "i2s_transmitter_0/s_axis_aud_tdata"
+          "i2s_transmitter_0/s_axis_aud_tdata",
+          "ila_0/probe5"
         ]
       },
       "audio_formatter_0_m_axis_mm2s_tid": {
@@ -3902,7 +3902,8 @@
       "audio_formatter_0_m_axis_mm2s_tvalid": {
         "ports": [
           "audio_formatter_0/m_axis_mm2s_tvalid",
-          "i2s_transmitter_0/s_axis_aud_tvalid"
+          "i2s_transmitter_0/s_axis_aud_tvalid",
+          "ila_0/probe24"
         ]
       },
       "audio_formatter_0_s_axis_s2mm_tready": {
@@ -3942,7 +3943,8 @@
           "rst_clk_wiz_98Mhz/slowest_sync_clk",
           "axi_gpio_2/s_axi_aclk",
           "processing_system7_0/M_AXI_GP0_ACLK",
-          "processing_system7_0/S_AXI_HP0_ACLK"
+          "processing_system7_0/S_AXI_HP0_ACLK",
+          "ila_0/clk"
         ]
       },
       "clk_wiz_0_CLK_49Mhz": {
@@ -4014,7 +4016,8 @@
       "i2s_transmitter_0_s_axis_aud_tready": {
         "ports": [
           "i2s_transmitter_0/s_axis_aud_tready",
-          "audio_formatter_0/m_axis_mm2s_tready"
+          "audio_formatter_0/m_axis_mm2s_tready",
+          "ila_0/probe29"
         ]
       },
       "i2s_transmitter_0_sclk_out1": {
@@ -4109,7 +4112,8 @@
       "xlslice_0_Dout": {
         "ports": [
           "xlslice_0/Dout",
-          "i2s_transmitter_0/s_axis_aud_tid"
+          "i2s_transmitter_0/s_axis_aud_tid",
+          "ila_0/probe17"
         ]
       }
     },
