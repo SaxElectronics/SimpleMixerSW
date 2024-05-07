@@ -31,6 +31,8 @@ The Vitis directory contains the software components of the mixer project, struc
 - **FreeRTOS Application**: Includes the FreeRTOS-based application code with 3 cyclic tasks (1ms, 10ms, 100ms) and a special audio task.
 - **First Stage Bootloader (FSBL)**: Provides the initial boot loading mechanism required to prepare the system for the software application.
 
+**Note:** Working with relative paths in Vitis can be challenging. Users may need to adapt the paths in the project to match their specific setup.
+
 ## Getting Started
 
 To get started with this project, clone the repository and navigate to the respective project directories.
