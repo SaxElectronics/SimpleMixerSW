@@ -22,6 +22,7 @@ The Hardware in Vivado utilizes the following IPs:
 - I2S Receiver and Transmitter
 - Clock Wizard Generator
 - GIC (Generic Interrupt Controller)
+- I2C driver to a GPIO expansion board
 
 ### `Vitis`
 
