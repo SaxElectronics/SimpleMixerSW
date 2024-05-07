@@ -28,7 +28,7 @@ The Hardware in Vivado utilizes the following IPs:
 The Vitis directory contains the software components of the mixer project, structured as follows:
 
 - **Platform**: Contains the necessary settings and configurations to set up the hardware platform that the software will run on.
-- **FreeRTOS Application**: Includes the FreeRTOS-based application code that handles the operational logic for the mixer.
+- **FreeRTOS Application**: Includes the FreeRTOS-based application code with 3 cyclic tasks (1ms, 10ms, 100ms) and a special audio task.
 - **First Stage Bootloader (FSBL)**: Provides the initial boot loading mechanism required to prepare the system for the software application.
 
 ## Getting Started
