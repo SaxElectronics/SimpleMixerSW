@@ -1,6 +1,6 @@
 # SimpleMixerSW
 
-This repository contains the development files for a mixer software and hardware project, split into two main components managed with Vivado and Vitis tools. 
+This repository contains the development files for a mixer software and hardware project, split into two main components managed with Vivado and Vitis tools. The goal of this project is just to explore how the Zynq SoC can be utilized for an audio mixer application. This is a hobby project done in part time and without ANY guarantee that it works in all cases. It is just a showcase and of course the project has been tested and verified with an audio loopback.
 
 ## Structure
 
