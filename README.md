@@ -8,7 +8,16 @@ The repository is organized into two main directories:
 
 ### `Vivado`
 
-This folder houses the Vivado project files for hardware and Programmable Logic development. It includes all necessary design files, constraints, and synthesis configurations required to build the hardware side of the project.
+This folder houses the Vivado project files for hardware and Programmable Logic development. It includes all necessary design files, constraints, and synthesis configurations required to build the hardware side of the project. Below is a schematic diagram illustrating the architecture of the hardware setup in the Vivado project. This diagram shows the configuration of all major components and their interconnections, including the Zynq Processing System, various I/O components, and peripheral modules.
+
+![Vivado Hardware Architecture](docs/block_diagram.png)
+
+This diagram is crucial for understanding how the hardware components are integrated and interact within the system.
+The Hardware in Vivado utilizes the following IPs:
+- Audio Formatter
+- I2S Receiver and Transmitter
+- Clock Wizard Generator
+- GIC (Generic Interrupt Controller)
 
 ### `Vitis`
 
